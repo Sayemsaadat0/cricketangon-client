@@ -14,46 +14,6 @@
 }
 
 
-/* 
-.div1,
-.div2 {
-  transition: height 0.3s ease, transform 0.3s ease;
-  position: relative;
-}
-
-.div1:hover {
-  height: 24rem;
-}
-
-.div1:hover~.div2 {
-  height: 12rem;
-}
-
-.div2:hover { 
-  height: 24rem;
-  transform: translate(-6rem);
-}
-
-.div2:hover~.div1 {
-  height: 12rem !important;
-} */
-
-/* .relative:hover .div3 {
-  height: 24rem; 
-}
-
-.relative:hover .div4 {
-  height: 12rem; 
-}
-
-.relative .div4:hover {
-  height: 24rem; 
-}
-
-.relative .div3:hover {
-  height: 12rem; 
-}
- */
 .crick-Container {
   max-width: 1512px;
   margin-left: auto;
