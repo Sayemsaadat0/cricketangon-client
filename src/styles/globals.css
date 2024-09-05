@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.red{
+  color:  red;
+}
+
+.crick-Container {
+    max-width: 1512px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 117px;
+    padding-right: 117px;
+  }
+  
+  @media screen and (max-width: 1280px) {
+    .crick-Container {
+      padding-left: 80px;
+      padding-right: 80px;
+    }
+  }
+  
+  @media screen and (max-width: 1024px) {
+    .crick-Container {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .crick-Container {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {}
+  
+  @media screen and (max-width: 340px) {
+    .crick-Container {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
