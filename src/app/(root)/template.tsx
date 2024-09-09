@@ -4,7 +4,7 @@ import React from 'react';
 
 const template = ({ children }: { children: React.ReactNode }) => {
     return (
-        <div>
+        <div className=''>
             <DefaultNavbar />
             {children}
         </div>

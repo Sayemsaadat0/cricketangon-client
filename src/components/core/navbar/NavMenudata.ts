@@ -9,7 +9,7 @@ export const DefaultNavMenuData = [
     },
     {
       title: 'Photos',
-      url: '/Photos',
+      url: '/photos',
     },
     {
       title: 'Shop',

@@ -1,4 +1,5 @@
 "use client";
+import { usePathname } from 'next/navigation';
 import React, { useEffect } from 'react';
 
 const Page = () => {
@@ -34,6 +35,8 @@ const Page = () => {
       div2.removeEventListener('mouseleave', () => { });
     };
   }, []);
+
+
 
   return (
     <div className='home_bg flex items-center justify-center'>

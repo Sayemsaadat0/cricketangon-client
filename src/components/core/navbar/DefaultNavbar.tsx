@@ -4,18 +4,10 @@ import React from 'react'
 import Logo from '../logo/Logo'
 import { usePathname } from 'next/navigation';
 import { DefaultNavMenuData } from './NavMenudata';
+import Button from '../button/Button';
+// import DefaultNavbarDropdown from './DefaultNavbarDropdown';
 
-
-
-
-
-
-
-
-
-
-
-
+// List Items
 export const DefaultNavMenuList = () => {
     const pathname = usePathname();
     return (
@@ -26,7 +18,7 @@ export const DefaultNavMenuList = () => {
             {DefaultNavMenuData.map((i) => {
                 return (
                     <div key={Math.random()}>
-                        <Link className={`${pathname === i.url && 'text-c-violet-200'}`} href={i.url}>
+                        <Link className={`${pathname === i.url && 'text-c-violet-200 font-bold'}`} href={i.url}>
                             <p className="text-16-regular">{i.title}</p>
                             <p className="my-5 block h-[1px] bg-slate-400 lg:hidden "></p>
                         </Link>
@@ -38,15 +30,12 @@ export const DefaultNavMenuList = () => {
 };
 
 
-
-
-
-
+// Default Component
 const DefaultNavbar = () => {
     return (
         <div className="w-full  fixed top-0 left-0   z-30 ">
             <nav className="text-white relative crick-Container">
-                <div className='flex justify-between items-center bg-gradient-to-r from-c-violet-400 via-c-violet-700 to-c-violet-900 py-2 px-2 rounded-full' >
+                <div className='flex justify-between items-center bg-gradient-to-r from-c-violet-400 via-c-violet-700 to-c-violet-900 py-1.5 px-2 rounded-full' >
                     <div>
                         <Link href={'/'}>
                             <Logo />
@@ -57,11 +46,19 @@ const DefaultNavbar = () => {
                             <DefaultNavMenuList />
                         </div>
                     </div>
-                    <div className="flex  items-center gap-2 md:gap-[10px] cursor-pointer xl:gap-5 justify-end   ">
-                        dfd
+                    <div className="flex  items-center gap-2 md:gap-[10px] cursor-pointer xl:gap-5 justify-end">
+                        {/* <DefaultNavbarDropdown /> */}
                         <div className="lg:hidden pl-2 ">
-                            HamBurger
                             {/* <DefaultHambuergerMenu /> */}
+                        </div>
+                        <div className="hidden lg:block p-[2.5px] bg-gradient-to-tr from-cyan-400 via-c-violet-200 to-c-violet-300  rounded-full">
+                          <Link href={'/login'}>
+                          <Button
+                                className=""
+                                variant="roundedBtn"
+                                label="Sign Up"
+                            />
+                          </Link>
                         </div>
                     </div>
                 </div>
