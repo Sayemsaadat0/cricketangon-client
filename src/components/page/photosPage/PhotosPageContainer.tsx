@@ -1,6 +1,7 @@
 "use client";
 import { photosDummydata } from '@/data/dummy.data';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { FC } from 'react';
 import Masonry from 'react-masonry-css';
 
@@ -10,7 +11,7 @@ type MasonaryPhotoType = {
 
 const MasonaryPhoto: FC<MasonaryPhotoType> = ({ breakpointColumnsObj }) => {
     const handleContextMenu = (e: React.MouseEvent<HTMLImageElement>) => {
-        e.preventDefault(); 
+        e.preventDefault();
     };
 
     return (
@@ -29,7 +30,7 @@ const MasonaryPhoto: FC<MasonaryPhotoType> = ({ breakpointColumnsObj }) => {
                             height={400}
                             layout="responsive"
                             className="rounded-[20px] object-cover"
-                            onContextMenu={handleContextMenu} // Disables right-click context menu
+                            onContextMenu={handleContextMenu}
                         />
                     </div>
                 ))}
@@ -47,7 +48,22 @@ const PhotosPageContainer = () => {
         500: 1,
     };
     return (
-        <div>
+        <div className='space-y-2'>
+            <div className='flex items-center gap-1'>
+                <div>
+                    <Link className='text-gray-500' href={'/'}>
+                        Home
+                    </Link> /
+                </div>
+                <div>
+                    <Link className='font-bold' href={'/photoes'}>
+                        Photos
+                    </Link>
+                </div>
+            </div> 
+            <div className='text-xl text-c-violet-600 font-semibold'>
+                Photos
+            </div>
             <MasonaryPhoto breakpointColumnsObj={breakpointColumnsObj} />
         </div>
     );
