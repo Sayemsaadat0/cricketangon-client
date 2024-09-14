@@ -5,7 +5,7 @@ const Logo = () => {
     return (
         <div className=''>
             <Image
-                className=""
+                className="w-[180px] md:w-[220px]"
                 src="/Logo.png"
                 alt="Logo"
                 width={220}

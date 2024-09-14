@@ -5,6 +5,7 @@ import Logo from '../logo/Logo'
 import { usePathname } from 'next/navigation';
 import { DefaultNavMenuData } from './NavMenudata';
 import Button from '../button/Button';
+import Image from 'next/image';
 // import DefaultNavbarDropdown from './DefaultNavbarDropdown';
 
 // List Items
@@ -35,8 +36,8 @@ const DefaultNavbar = () => {
     return (
         <div className="w-full  fixed top-0 left-0   z-30 ">
             <nav className="text-white relative crick-Container">
-                <div className='flex justify-between items-center bg-gradient-to-r from-c-violet-400 via-c-violet-700 to-c-violet-900 py-1.5 px-2 rounded-full' >
-                    <div>
+                <div className='flex justify-between items-center bg-gradient-to-r from-c-violet-400 via-c-violet-700 to-c-violet-900 py-1.5 px-2 rounded-[20px]' >
+                    <div className=''>
                         <Link href={'/'}>
                             <Logo />
                         </Link>
@@ -52,13 +53,13 @@ const DefaultNavbar = () => {
                             {/* <DefaultHambuergerMenu /> */}
                         </div>
                         <div className="hidden lg:block p-[2.5px] bg-gradient-to-tr from-cyan-400 via-c-violet-200 to-c-violet-300  rounded-full">
-                          <Link href={'/login'}>
-                          <Button
-                                className=""
-                                variant="roundedBtn"
-                                label="Sign Up"
-                            />
-                          </Link>
+                            <Link href={'/signup'}>
+                                <Button
+                                    className=""
+                                    variant="roundedBtn"
+                                    label="Sign Up"
+                                />
+                            </Link>
                         </div>
                     </div>
                 </div>

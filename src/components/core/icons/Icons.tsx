@@ -7,6 +7,7 @@ export const iconVariants = cva('', {
       '16': 'w-4 h-4',
       '24': 'w-6 h-6',
       '32': 'w-8 h-8',
+      'full': 'w-[100vw] h-[100vh]'
     },
   },
   defaultVariants: {
@@ -14,6 +15,6 @@ export const iconVariants = cva('', {
   },
 });
 
-interface SvgProps extends React.SVGProps<SVGSVGElement>, VariantProps<typeof iconVariants> {}
+interface SvgProps extends React.SVGProps<SVGSVGElement>, VariantProps<typeof iconVariants> { }
 
 export type IconType = SvgProps;
