@@ -53,11 +53,11 @@ const DefaultNavbar = () => {
                             {/* <DefaultHambuergerMenu /> */}
                         </div>
                         <div className="hidden lg:block p-[2.5px] bg-gradient-to-tr from-cyan-400 via-c-violet-200 to-c-violet-300  rounded-full">
-                            <Link href={'/signup'}>
+                            <Link href={'/login'}>
                                 <Button
                                     className=""
                                     variant="roundedBtn"
-                                    label="Sign Up"
+                                    label="Sign in"
                                 />
                             </Link>
                         </div>

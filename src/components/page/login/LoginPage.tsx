@@ -56,7 +56,8 @@ const LoginPage = () => {
                     <div className="text-red-500 text-sm">{errors.email}</div>
                 )}
                 <div>
-                    <TextInput
+                    <TextInput 
+                   
                         className="w-full "
                         id="password"
                         label="Password"
