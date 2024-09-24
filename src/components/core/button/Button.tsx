@@ -8,8 +8,8 @@ export const buttonVariants = cva('leading-none text-white transition-all disabl
         variant: {
             roundedBtn:
                 'rounded-[200px] text-xs px-[18px] py-[10px] md:text-[15px] bg-c-violet-500 hover:bg-c-violet-800 md:px-6 md:py-3 xl:px-8 xl:py-3.5 xl:text-[16px] ',
-            // dashboardbtn:
-            //     'rounded-[200px] text-xs px-[18px] py-[14px] md:text-[15px] bg-s6-Bg-4  md:px-6 md:py-[15px] xl:px-8 xl:py-4 xl:text-[16px] text-black',
+            roundedOutlineBtn:
+                'rounded-[200px] text-xs px-[18px] py-[10px] md:text-[15px] bg-white text-black  md:px-6 md:py-3 xl:px-8 xl:py-3.5 xl:text-[16px]',
             regulerBtn:
                 'rounded-[10px] bg-c-violet-500 hover:bg-c-violet-800 text-xs px-[18px] py-[10px] md:text-[15px] md:px-6 md:py-3 xl:px-8 xl:py-3.5 xl:text-[16px]',
             smallBtn:
