@@ -56,8 +56,8 @@ const LoginPage = () => {
                     <div className="text-red-500 text-sm">{errors.email}</div>
                 )}
                 <div>
-                    <TextInput 
-                   
+                    <TextInput
+
                         className="w-full "
                         id="password"
                         label="Password"
@@ -74,7 +74,7 @@ const LoginPage = () => {
                         <p>
                             ss Remember Me
                         </p>
-                        <p>Forget Password</p>
+                        <Link href={'/verify-email'} className='hover:underline transition-all duration-300 underline-offset-4 font-semibold text-c-white-800'>Forget Password</Link>
                     </div>
                 </div>
                 <div className='w-full flex justify-center'>

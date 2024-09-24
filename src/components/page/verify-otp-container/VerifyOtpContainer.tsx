@@ -8,12 +8,18 @@ import {
     InputOTPGroup,
     InputOTPSlot,
 } from "@/components/ui/input-otp";
+import useEmailStore from '@/store/useEmailStore';
+import { useRouter } from 'next/navigation';
 
 const validationSchema = Yup.object({
     otp: Yup.string().required('OTP is required').length(6, 'OTP must be exactly 6 digits'),
 });
 
 const VerifyOtpContainer = () => {
+    const { email } = useEmailStore();
+    const router = useRouter();
+
+
 
     const {
         values,
@@ -30,8 +36,9 @@ const VerifyOtpContainer = () => {
         validationSchema,
         onSubmit: async (data) => {
             try {
-                console.log('data', data);  
+                console.log('data', data);
                 resetForm();
+                router.push('/forget-password')
             } catch (err) {
                 console.log(err);
             }
@@ -46,7 +53,7 @@ const VerifyOtpContainer = () => {
     return (
         <div className='bg-white rounded-[12px] p-5 md:p-10 w-fit space-y-3'>
             <h3 className='text-xl font-semibold '>Enter the verification code</h3>
-            <p className=''>We Have Sent you a 6 digit otp code to your email</p>
+            <p className=''>We Have Sent you a 6 digit otp code to <br /> <span className='font-bold text-c-violet-600'>{email}</span></p>
             <form className="pt-2" autoComplete="off" onSubmit={handleSubmit}>
                 <p className='text-xs py-3 text-c-white-700'>Code</p>
                 <div>

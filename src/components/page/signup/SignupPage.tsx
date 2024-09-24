@@ -93,7 +93,7 @@ const SignupPage = () => {
                     label="Confirm Password"
                     value={values.confirm_password}
                     onChange={handleChange}
-                    type="confirm_password"
+                    type="password"
                     error={
                         Boolean(errors.confirm_password) &&
                         touched.confirm_password &&

@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import TextInput from '@/components/core/inputs/TextInput';
 import Button from '@/components/core/button/Button';
 import Link from 'next/link';
+import useEmailStore from '@/store/useEmailStore';
 
 // Validation schema
 const validationSchema = Yup.object({
@@ -13,6 +14,8 @@ const validationSchema = Yup.object({
 });
 
 const ForgetPasswordContainer = () => {
+    const { email } = useEmailStore();
+
     const {
         handleChange,
         values,
@@ -39,7 +42,7 @@ const ForgetPasswordContainer = () => {
 
     return (
         <div className='bg-white rounded-[12px] p-5 md:p-10 space-y-5'>
-            <h3 className='text-xl font-semibold text-center'>Reset Password</h3>
+            <h3 className='text-xl font-semibold text-center'>Reset Password {email}</h3>
             {/* <p className='text-center'></p> */}
             <form className="space-y-20" autoComplete="off" onSubmit={handleSubmit}>
                 <div className='space-y-6'>
@@ -62,7 +65,7 @@ const ForgetPasswordContainer = () => {
                         label="Confirm Password"
                         value={values.confirm_password}
                         onChange={handleChange}
-                        type="confirm_password"
+                        type="password"
                         error={
                             Boolean(errors.confirm_password) &&
                             touched.confirm_password &&
