@@ -1,28 +1,27 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import TextInput from '@/components/core/inputs/TextInput';
 import Button from '@/components/core/button/Button';
-import Link from 'next/link';
 import {
     InputOTP,
     InputOTPGroup,
     InputOTPSlot,
 } from "@/components/ui/input-otp";
 
-// Validation schema
 const validationSchema = Yup.object({
     otp: Yup.string().required('OTP is required').length(6, 'OTP must be exactly 6 digits'),
 });
 
 const VerifyOtpContainer = () => {
+
     const {
-        setFieldValue,
         values,
         touched,
         errors,
+        resetForm,
         handleSubmit,
+        setFieldValue,
         isSubmitting,
     } = useFormik({
         initialValues: {
@@ -31,25 +30,27 @@ const VerifyOtpContainer = () => {
         validationSchema,
         onSubmit: async (data) => {
             try {
-                console.log(data)
+                console.log('data', data);  
+                resetForm();
             } catch (err) {
-                console.log(err)
+                console.log(err);
             }
         },
     });
 
-    // Handle OTP input and set it using setFieldValue
     const handleOtpChange = (value: string) => {
         setFieldValue('otp', value);
     };
 
+
     return (
-        <div className='bg-white rounded-[12px] p-5 md:p-10 space-y-5'>
-            <h3 className='text-xl font-semibold text-center'>Email Confirmation</h3>
-            <p className='text-center'>Please enter your email for verification</p>
-            <form className="space-y-6" autoComplete="off" onSubmit={handleSubmit}>
+        <div className='bg-white rounded-[12px] p-5 md:p-10 w-fit space-y-3'>
+            <h3 className='text-xl font-semibold '>Enter the verification code</h3>
+            <p className=''>We Have Sent you a 6 digit otp code to your email</p>
+            <form className="pt-2" autoComplete="off" onSubmit={handleSubmit}>
+                <p className='text-xs py-3 text-c-white-700'>Code</p>
                 <div>
-                    <InputOTP maxLength={6} onChange={handleOtpChange}>
+                    <InputOTP maxLength={6} value={values?.otp} onChange={handleOtpChange}>
                         <InputOTPGroup>
                             <InputOTPSlot index={0} />
                             <InputOTPSlot index={1} />
@@ -60,12 +61,13 @@ const VerifyOtpContainer = () => {
                         </InputOTPGroup>
                     </InputOTP>
                     {touched.otp && errors.otp && <p className="text-red-500">{errors.otp}</p>}
+                    <p className='text-xs py-3 text-c-white-700'>Send code again in  1:45 s</p>
                 </div>
-                <div className='w-full flex justify-center'>
-                    <Button 
-                    type='submit'
+                <div className='w-full mt-5'>
+                    <Button
+                        type='submit'
                         disabled={isSubmitting}
-                        className="w-full md:w-[80%]"
+                        className="w-full"
                         variant={'regulerBtn'}
                         label="Send Verification Code"
                     />

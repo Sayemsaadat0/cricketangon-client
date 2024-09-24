@@ -40,13 +40,13 @@ const TextInput: React.FC<InputProps> = ({
                     autoComplete="off"
                     type="text"
                     id={id}
-                    className={`${isBgWhite ? "bg-white" : "bg-c-white-100"} ${error && 'border-red-500'} ${cn(inputVariants({ variant, className }))}`}
+                    className={`${isBgWhite ? "bg-white" : "bg-c-white-200"} ${error && 'border-red-500'} ${cn(inputVariants({ variant, className }))}`}
                     {...props}
                     placeholder={placeholder ? placeholder : ''}
                 />
                 <label
                     htmlFor={id}
-                    className={`absolute rounded-[15px] text-sm transform ${isBgWhite ? "bg-white peer-focus:bg-white placeholder-black" : "bg-c-white-100 peer-focus:bg-c-white-100 placeholder-c-white-200"} cursor-pointer
+                    className={`absolute rounded-[15px] text-sm transform ${isBgWhite ? "bg-white peer-focus:bg-white placeholder-black" : "bg-c-white-200 peer-focus:bg-c-white-200 placeholder-c-white-200"} cursor-pointer
           -translate-y-4 scale-75 px-4 top-1 z-10 origin-[0] duration-300 md:text-base  
           peer-focus:px-4 peer-focus:top-2 peer-focus:scale-75 
           peer-focus:-translate-y-5
