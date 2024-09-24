@@ -13,7 +13,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-
+import ArticleForm from './ArticleForm';
 
 const ArticleContainer: FC = () => {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -60,7 +60,7 @@ const ArticleContainer: FC = () => {
                 {articleCategoryData.map((i) => (
                     <div
                         key={Math.random()}
-                        className={`relative min-w-[100px]  rounded-[20px] group overflow-hidden cursor-pointer ${selectedCategory === i?.category ? 'ring-2 ring-violet-600' : ''
+                        className={`relative min-w-[100px] rounded-[20px] group overflow-hidden cursor-pointer ${selectedCategory === i?.category ? 'ring-2 ring-violet-600' : ''
                             }`}
                         onClick={() => handleCategoryClick(i?.category)}
                     >
@@ -83,26 +83,26 @@ const ArticleContainer: FC = () => {
                 <div className='flex items-center justify-between'>
                     <p className='md:text-2xl font-semibold text-c-violet-500'>Latest Article</p>
 
-                    {/* <div className="hidden lg:block p-[2.5px] bg-gradient-to-tr from-cyan-400 via-c-violet-200 to-c-violet-300  rounded-full">
-                        <Button
-                            className=""
-                            variant="roundedOutlineBtn"
-                            label="Add Article"
-                        />
-                    </div> */}
                     <Dialog>
-                        <DialogTrigger>Open</DialogTrigger>
+                        <DialogTrigger>
+                            <div className="hidden lg:block p-[2.5px] bg-gradient-to-tr from-cyan-400 via-c-violet-200 to-c-violet-300  rounded-full">
+                                <Button
+                                    className=""
+                                    variant="roundedOutlineBtn"
+                                    label="Add Article"
+                                />
+                            </div>
+                        </DialogTrigger>
                         <DialogContent>
                             <DialogHeader>
-                                <DialogTitle>Are you absolutely sure?</DialogTitle>
+                                <DialogTitle>Add New Article</DialogTitle>
                                 <DialogDescription>
-                                    This action cannot be undone. This will permanently delete your account
-                                    and remove your data from our servers.
+                                    Fill out the form below to add a new article.
                                 </DialogDescription>
                             </DialogHeader>
+                            <ArticleForm isLoading={false} handleFormSubmit={() => undefined} />
                         </DialogContent>
                     </Dialog>
-
                 </div>
                 <div>
                     <Masonry
@@ -138,3 +138,14 @@ const ArticleContainer: FC = () => {
 };
 
 export default ArticleContainer;
+
+
+
+
+{/* <div className="hidden lg:block p-[2.5px] bg-gradient-to-tr from-cyan-400 via-c-violet-200 to-c-violet-300  rounded-full">
+                        <Button
+                            className=""
+                            variant="roundedOutlineBtn"
+                            label="Add Article"
+                        />
+                    </div> */}
