@@ -20,7 +20,8 @@
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background-image: url('/download.gif');
+  /* background-image: url('/download.gif'); */
+  background-image: url('https://i.ibb.co.com/L5mPSTT/Untitled-design-2.gif');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
