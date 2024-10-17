@@ -174,7 +174,7 @@ const HomeContainer = () => {
                         {/* <div className="group-hover:block hidden mb-4">
                             <Button label="Create team" />
                         </div> */}
-                        {/* Image Container */}
+                        
                         <div className="w-full h-60 relative overflow-hidden aspect-[1/1] group-hover:h-72 transition-all duration-300">
                             <Image
                                 className="object-cover w-full h-full rounded-[10px]"
