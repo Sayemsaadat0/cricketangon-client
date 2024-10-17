@@ -3,57 +3,79 @@
 @tailwind utilities;
 
 
+.auth_bg {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-image: url('/AuthBG.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 
+.crick-Container {
+  overflow: hidden; /* This hides any overflow */
+}
 
 
+.home_bg {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  /* background-image: url('/download.gif'); */
+  background-image: url('https://i.ibb.co.com/cDjgW39/Untitled-design-2.gif');
+  /* background-image: url('https://i.ibb.co.com/L5mPSTT/Untitled-design-2.gif'); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 
 .bounce-effect {
-  transition: height 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transition: all 0.6s cubic-bezier(0.20, 2.0, .20, 0.7);
+  /* transition: height 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); */
 }
 
 
-/* 
-.div1,
-.div2 {
-  transition: height 0.3s ease, transform 0.3s ease;
-  position: relative;
+
+/* masonary */
+.my-masonry-grid {
+  display: -webkit-box;
+  /* Not needed if autoprefixing */
+  display: -ms-flexbox;
+  /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -30px;
+  /* gutter size offset */
+  width: auto;
 }
 
-.div1:hover {
-  height: 24rem;
+.my-masonry-grid_column {
+  padding-left: 30px;
+  /* gutter size */
+  background-clip: padding-box;
 }
 
-.div1:hover~.div2 {
-  height: 12rem;
+/* Style your items */
+.my-masonry-grid_column>div {
+  /* change div to reference your elements you put in <Masonry> */
+  background: transparent;
+  margin-bottom: 30px;
 }
 
-.div2:hover { 
-  height: 24rem;
-  transform: translate(-6rem);
+
+/* scrollbar */
+.customScrollbar::-webkit-scrollbar {
+  height: 6px;
 }
 
-.div2:hover~.div1 {
-  height: 12rem !important;
-} */
-
-/* .relative:hover .div3 {
-  height: 24rem; 
+.customScrollbar::-webkit-scrollbar-thumb {
+  background: #811aaa;
 }
 
-.relative:hover .div4 {
-  height: 12rem; 
-}
 
-.relative .div4:hover {
-  height: 24rem; 
-}
 
-.relative .div3:hover {
-  height: 12rem; 
-}
- */
 .crick-Container {
   max-width: 1512px;
   margin-left: auto;
