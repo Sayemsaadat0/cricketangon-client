@@ -27,7 +27,7 @@ const DashboardAside: FC = () => {
         <div className="h-screen p-5 bg-oc-primary-1-900 max-w-[280px] px-10 flex flex-col justify-between">
             <div className="space-y-20">
                 <div className="flex items-center gap-3">
-                    <Logo />
+                    <Logo isAdmin />
                 </div>
                 <div className="text-oc-white-50">
                     <div className="space-y-3">

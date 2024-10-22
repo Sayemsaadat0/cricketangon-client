@@ -34,7 +34,7 @@ export const DefaultNavMenuList = () => {
 // Default Component
 const DefaultNavbar = () => {
     return (
-        <div className="w-full  fixed top-0 left-0   z-30 ">
+        <div className="w-full mt-2 fixed top-0 left-0   z-30 ">
             <nav className="text-white relative crick-Container">
                 <div className='flex justify-between items-center bg-gradient-to-r from-c-violet-400 via-c-violet-700 to-c-violet-900 py-1.5 px-2 rounded-[20px]' >
                     <div className=''>
