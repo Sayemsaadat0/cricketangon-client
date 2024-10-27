@@ -88,4 +88,3 @@ const HomeMiddleCard = () => {
 
 export default HomeMiddleCard;
 
-
