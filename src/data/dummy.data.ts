@@ -162,3 +162,11 @@ export const articleCategoryData = [
         category: "Category3"
     },
 ]
+
+
+
+export const profileUserData = {
+    username: "Sabbir Ahmed Khan Bahadur",
+    email: 'sabbirkhaymurgi@gmail.com',
+    thumbnail: 'https://i.pinimg.com/564x/63/a1/da/63a1da14ae6041095d7f4a33231b21c1.jpg'
+}
