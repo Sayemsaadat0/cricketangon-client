@@ -151,7 +151,7 @@ export const articlesData = [
 export const articleCategoryData = [
     {
         image: "https://i.pinimg.com/564x/58/86/90/588690526543d33c57d89d55aad259e3.jpg",
-        category: "Category1 "
+        category: "Category1"
     },
     {
         image: "https://i.pinimg.com/564x/f0/0d/fc/f00dfc803bf9fe8cbaf94b499581c2aa.jpg",

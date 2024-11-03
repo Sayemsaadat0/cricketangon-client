@@ -5,14 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { FC, useState } from 'react';
 import Masonry from 'react-masonry-css';
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog"
 import ArticleForm from './ArticleForm';
 
 const ArticleContainer: FC = () => {
@@ -36,6 +28,7 @@ const ArticleContainer: FC = () => {
         700: 2,
         500: 1,
     };
+
 
     return (
         <div className='space-y-2'>
@@ -78,32 +71,14 @@ const ArticleContainer: FC = () => {
                 ))}
             </div>
 
-            {/* Article Cards */}
+            {/* Article Form */}
             <div className='space-y-5'>
                 <div className='flex items-center justify-between'>
                     <p className='md:text-2xl font-semibold text-c-violet-500'>Latest Article</p>
-
-                    <Dialog>
-                        <DialogTrigger>
-                            <div className="hidden lg:block p-[2.5px] bg-gradient-to-tr from-cyan-400 via-c-violet-200 to-c-violet-300  rounded-full">
-                                <Button
-                                    className=""
-                                    variant="roundedOutlineBtn"
-                                    label="Add Article"
-                                />
-                            </div>
-                        </DialogTrigger>
-                        <DialogContent>
-                            <DialogHeader>
-                                <DialogTitle>Add New Article</DialogTitle>
-                                <DialogDescription>
-                                    Fill out the form below to add a new article.
-                                </DialogDescription>
-                            </DialogHeader>
-                            <ArticleForm isLoading={false} handleFormSubmit={() => undefined} />
-                        </DialogContent>
-                    </Dialog>
+                    <ArticleForm handleFormSubmit={() => undefined} />
                 </div>
+
+                {/*  */}
                 <div>
                     <Masonry
                         breakpointCols={breakpointColumnsObj}

@@ -29,9 +29,7 @@
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  /* background-image: url('/download.gif'); */
   background-image: url('https://i.ibb.co.com/cDjgW39/Untitled-design-2.gif');
-  /* background-image: url('https://i.ibb.co.com/L5mPSTT/Untitled-design-2.gif'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -40,7 +38,6 @@
 
 .bounce-effect {
   transition: all 0.6s cubic-bezier(0.20, 2.0, .20, 0.7);
-  /* transition: height 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); */
 }
 
 
@@ -48,30 +45,23 @@
 /* masonary */
 .my-masonry-grid {
   display: -webkit-box;
-  /* Not needed if autoprefixing */
   display: -ms-flexbox;
-  /* Not needed if autoprefixing */
   display: flex;
   margin-left: -30px;
-  /* gutter size offset */
   width: auto;
 }
 
 .my-masonry-grid_column {
   padding-left: 30px;
-  /* gutter size */
   background-clip: padding-box;
 }
 
-/* Style your items */
 .my-masonry-grid_column>div {
-  /* change div to reference your elements you put in <Masonry> */
   background: transparent;
   margin-bottom: 30px;
 }
 
 
-/* scrollbar */
 .customScrollbar::-webkit-scrollbar {
   height: 6px;
 }

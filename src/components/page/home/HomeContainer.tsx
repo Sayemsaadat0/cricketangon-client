@@ -82,11 +82,11 @@ const HomeContainer = () => {
                     </div>
                 </div>
             </div>
-            <div className='h-full w-fit row-span-2 lg:max-h-[415px] lg:max-w-[300px]'>
-                <div className='flex-1 h-full w-fit bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] rounded-[20px] group hover:bg-c-violet-600 duration-300'>
+            <div className='h-full  w-full row-span-2 lg:max-h-[415px] lg:max-w-[300px]'>
+                <div className='flex-1 h-full w-full bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] rounded-[20px] group hover:bg-c-violet-600 duration-300'>
                     <div className='h-full group-hover:scale-105 duration-300'>
                         <Image
-                            className="object-cover h-full rounded-[20px]"
+                            className="object-cover w-full h-full rounded-[20px]"
                             src={'https://i.pinimg.com/736x/4c/f0/b6/4cf0b616841122653b77e2a253c69723.jpg'}
                             alt="fantasy"
                             width={394}
@@ -97,8 +97,8 @@ const HomeContainer = () => {
             </div>
 
             <div className='w-full'>
-                <div className=' bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] p-5 rounded-[20px]  duration-300 group hover:bg-c-violet-600 flex flex-col md:flex-row  md:items-center justify-between  w-full gap-10 '>
-                    <div className='w-full h-full md:shrink-0 md:inline-block md:max-w-[148px] md:max-h-[148px] group-hover:scale-105 duration-300 aspect-square '>
+                <div className=' bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] p-5 rounded-[20px]  duration-300 group hover:bg-c-violet-600 flex flex-col lg:flex-row  md:items-center justify-between  w-full gap-10 '>
+                    <div className='w-full h-full md:shrink-0 md:inline-block lg:max-w-[148px] md:max-h-[148px] group-hover:scale-105 duration-300 aspect-square '>
                         <Image
                             className="object-cover w-full h-full rounded-[20px]"
                             src={'https://i.pinimg.com/736x/eb/11/5e/eb115e0535fa1a65a92ab738ef6b1333.jpg'}
