@@ -14,7 +14,7 @@ interface MenuItem {
 const DashboardAside: FC = () => {
     const pathname = usePathname();
 
-    // Simplified menu items without subRoutes
+    // 
     const menuItems: MenuItem[] = [
         {
             path: "/admin/overview",
