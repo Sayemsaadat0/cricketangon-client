@@ -17,7 +17,7 @@ const DashboardAside: FC = () => {
     // Simplified menu items without subRoutes
     const menuItems: MenuItem[] = [
         {
-            path: "/admin",
+            path: "/admin/overview",
             label: "Dashboard",
             icon: <DashboardIcon size={'24'} />,
         },
@@ -60,7 +60,7 @@ const DashboardAside: FC = () => {
                             <Link
                                 key={index}
                                 href={item.path}
-                                className={`flex gap-2 items-center w-full py-2 transition-all px-2 rounded-[6px] ${pathname.startsWith(item.path) ? " bg-c-violet-50 " : "hover:bg-c-violet-50 hover:text-black  text-c-violet-50 "}`}
+                                className={`flex gap-2 items-center w-full py-2 transition-all px-2 rounded-[6px] ${pathname === item.path ? " bg-c-violet-50 " : "hover:bg-c-violet-50 hover:text-black  text-c-violet-50 "}`}
                             >
                                 {item.icon}
                                 {item.label}
