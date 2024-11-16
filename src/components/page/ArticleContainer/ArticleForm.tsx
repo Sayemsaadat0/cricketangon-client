@@ -9,6 +9,8 @@ import { toast } from '@/hooks/use-toast';
 import ImgUploadField from '@/components/core/inputs/ImgUploadField';
 import { ArticleAddEditFormValidation } from '@/lib/validations/article.validate';
 import { articleCategoryData } from '@/data/dummy.data';
+import { TextAreaInput } from '@/components/core/inputs/TextAreaInput';
+import EditIcon from '@/components/core/icons/dashboard/EditIcon';
 
 
 
@@ -26,9 +28,9 @@ const ArticleForm: FC<ArticleFormType> = ({ instance, handleFormSubmit }) => {
         {
             initialValues: {
                 author_name: instance?.author_name || "",
-                article_title: instance?.article_title || "",
-                article_category: instance?.article_category || "",
-                thumbnail: instance?.thumbnail || "",
+                title: instance?.title || "",
+                category: instance?.category || "",
+                image: instance?.image || "",
                 description: instance?.description || "",
             },
 
@@ -38,12 +40,12 @@ const ArticleForm: FC<ArticleFormType> = ({ instance, handleFormSubmit }) => {
                     let form_data = new FormData();
 
                     form_data.append("author_name", data.author_name);
-                    form_data.append("article_title", data.article_title);
-                    form_data.append("article_category", data.article_category);
+                    form_data.append("title", data.title);
+                    form_data.append("category", data.category);
                     form_data.append("description", data.description);
 
-                    if (data?.thumbnail?.name) {
-                        form_data.append("thumbnail", data.thumbnail);
+                    if (data?.image?.name) {
+                        form_data.append("image", data.image);
                     }
                     await handleFormSubmit(form_data);
                     resetForm();
@@ -75,18 +77,23 @@ const ArticleForm: FC<ArticleFormType> = ({ instance, handleFormSubmit }) => {
     console.log(values)
 
     return (
-        <div className='bg-white rounded-[12px] p-5 md:p-10 space-y-5'>
+        <div className=' rounded-[12px]'>
             <Dialog open={open} onOpenChange={() => setOpen(!open)}>
-                <div onClick={() => setOpen(!open)}>
-                    <div className="hidden lg:block p-[2.5px] bg-gradient-to-tr from-cyan-400 via-c-violet-200 to-c-violet-300  rounded-full">
-                        <Button
-                            className=""
-                            variant="roundedOutlineBtn"
-                            label="Add Article"
-                        />
+                {
+                    instance ? <div onClick={() => setOpen(!open)} className="cursor-pointer flex gap-2 p-2  w-full items-center">
+                        <EditIcon /> <span>Edit</span>
+                    </div> : <div onClick={() => setOpen(!open)}>
+                        <div className="hidden lg:block p-[2.5px] bg-gradient-to-tr from-cyan-400 via-c-violet-200 to-c-violet-300  rounded-full">
+                            <Button
+                                className=""
+                                variant="roundedOutlineBtn"
+                                label="Add Article"
+                            />
+                        </div>
                     </div>
-                </div>
-                <DialogContent>
+                }
+
+                <DialogContent className='max-h-[80%] overflow-auto'>
                     <DialogHeader>
                         <DialogTitle>Add New Article</DialogTitle>
                         <DialogDescription></DialogDescription>
@@ -109,40 +116,26 @@ const ArticleForm: FC<ArticleFormType> = ({ instance, handleFormSubmit }) => {
 
                         <TextInput
                             className="w-full"
-                            id="article_title"
+                            id="title"
                             label="Article Title"
-                            value={values.article_title}
+                            value={values.title}
                             onChange={handleChange}
                             type="text"
                             error={
-                                Boolean(errors.article_title) &&
-                                touched.article_title &&
-                                errors.article_title
+                                Boolean(errors.title) &&
+                                touched.title &&
+                                errors.title
                             }
                         />
 
-                        {/* 
-                        <TextInput
-                            className="w-full "
-                            id="article_category"
-                            label="Select Category"
-                            value={values.article_category}
-                            onChange={handleChange}
-                            type="text"
-                            error={
-                                Boolean(errors.article_category) &&
-                                touched.article_category &&
-                                errors.article_category
-                            }
-                        /> */}
 
                         <div>
                             <select
-                                id="article_category"
-                                name="article_category"
-                                value={values.article_category}
+                                id="category"
+                                name="category"
+                                value={values.category}
                                 onChange={handleChange}
-                                className="py-2.5 px-3 md:px-[30px] md:py-[18px] border border-oc-primary-1-500 no-arrow w-full  rounded-[10px] outline-none bg-inherit text-[14px] bg-white m-0 placeholder-text-oc-white-800 text-oc-primary-1-900"
+                                className="py-2 px-3 md:px-[30px] md:py-[14px] border border-c-white-600 no-arrow w-full  rounded-[10px] outline-none bg-inherit text-[14px] bg-white m-0 placeholder-text-oc-white-800 text-oc-primary-1-900"
                             >
                                 <option className="" value="" disabled>
                                     Select Category
@@ -157,9 +150,9 @@ const ArticleForm: FC<ArticleFormType> = ({ instance, handleFormSubmit }) => {
                                     </option>
                                 ))}
                             </select>
-                            {Boolean(errors.article_category) && touched.article_category && (
+                            {Boolean(errors.category) && touched.category && (
                                 <div className="text-red-500 text-sm">
-                                    {typeof errors.article_category === "string" && errors?.article_category}
+                                    {typeof errors.category === "string" && errors?.category}
                                 </div>
                             )}
                         </div>
@@ -167,18 +160,18 @@ const ArticleForm: FC<ArticleFormType> = ({ instance, handleFormSubmit }) => {
                         <ImgUploadField
                             width={150}
                             height={150}
-                            error={Boolean(errors.thumbnail) && touched.thumbnail && errors.thumbnail}
-                            setValue={(x: any) => setFieldValue('thumbnail', x)}
-                            value={values.thumbnail}
+                            error={Boolean(errors.image) && touched.image && errors.image}
+                            setValue={(x: any) => setFieldValue('image', x)}
+                            value={values.image}
                         />
 
-                        <TextInput
+                        <TextAreaInput
                             className="w-full "
                             id="description"
                             label="Description"
                             value={values.description}
                             onChange={handleChange}
-                            type="text"
+
                             error={
                                 Boolean(errors.description) &&
                                 touched.description &&

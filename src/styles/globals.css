@@ -119,6 +119,14 @@
   grid-row-start: 5;
 }
       
+/*  */
+/* table action */
+.tableAction:nth-last-child(1) {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
 
 @media screen and (max-width: 1280px) {
   .crick-Container {

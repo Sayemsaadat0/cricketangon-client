@@ -27,6 +27,11 @@ const DashboardAside: FC = () => {
             icon: <DashboardIcon size={'24'} />,
         },
         {
+            path: "/admin/article/request",
+            label: "Article Request",
+            icon: <DashboardIcon size={'24'} />,
+        },
+        {
             path: "/admin/stats",
             label: "Stats",
             icon: <DashboardIcon size={'24'} />,
