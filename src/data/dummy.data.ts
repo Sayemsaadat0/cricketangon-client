@@ -192,5 +192,41 @@ export const articleCategoryData = [
 export const profileUserData = {
     username: "Sabbir Ahmed Khan Bahadur",
     email: 'sabbirkhaymurgi@gmail.com',
-    thumbnail: 'https://i.pinimg.com/564x/63/a1/da/63a1da14ae6041095d7f4a33231b21c1.jpg'
+    thumbnail: 'https://i.pinimg.com/564x/63/a1/da/63a1da14ae6041095d7f4a33231b21c1.jpg',
+    role: 'user'
 }
+
+export const usersData = [
+    {
+        username: "Sabbir Ahmed Khan Bahadur",
+        email: 'sabbirkhaymurgi@gmail.com',
+        thumbnail: 'https://i.pinimg.com/564x/63/a1/da/63a1da14ae6041095d7f4a33231b21c1.jpg',
+        role: 'user'
+    },
+    {
+        username: "Admin Bahadur",
+        email: 'sabbirkhaymurgi@gmail.com',
+        thumbnail: 'https://i.pinimg.com/564x/63/a1/da/63a1da14ae6041095d7f4a33231b21c1.jpg',
+        role: 'admin'
+    }
+]
+
+
+
+
+export const playersData = [
+    {
+        player_name: "Virat Kohli",
+        player_image: "https://i.pinimg.com/564x/63/a1/da/63a1da14ae6041095d7f4a33231b21c1.jpg",
+        country: "India",
+        player_role: "BATSMAN",
+        activeYear: "2020 / 20 / 20 - 20 / 20 / 2020"
+    },
+    {
+        player_name: "Virat Kohli",
+        player_image: "https://i.pinimg.com/564x/63/a1/da/63a1da14ae6041095d7f4a33231b21c1.jpg",
+        country: "West indies",
+        player_role: "BOWLER",
+        activeYear: "2020 / 20 / 20 - 20 / 20 / 2020"
+    },
+]
