@@ -1,15 +1,15 @@
-"use client";
+"use client";;
 import DeleteAction from '@/components/core/DeleteAction'
 import MenuIcon from '@/components/core/icons/publicIcon/MenuIcon'
 import DashboardTable, { DashboardTableColumn } from '@/components/core/table/DashboardTable'
-import ArticleForm from '@/components/page/ArticleContainer/ArticleForm'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { articlesData } from '@/data/dummy.data'
 import { ArticleType } from '@/model/article.type'
 import Image from 'next/image'
 import { FC } from 'react';
+import StatsForm from './StatsForm';
 
-const ArticleManagement = () => {
+const StatsManagement = () => {
 
     const TableColumn: DashboardTableColumn[] = [
         {
@@ -91,7 +91,7 @@ const ArticleManagement = () => {
                 <DropdownMenuContent className="mr-20 w-[180px]">
                     <div>
                         <div className="hover:bg-c-violet-50">
-                          <ArticleForm instance={data} handleFormSubmit={()=>undefined}/>
+                          <StatsForm instance={data} handleFormSubmit={()=>undefined}/>
                         </div>
                         <div className="hover:bg-c-violet-50 w-full p-2 ">
                             <DeleteAction
@@ -112,10 +112,10 @@ const ArticleManagement = () => {
                 <div className="relative">
                     <div className="absolute z-20 left-2 -top-2 w-7 h-7 lg:w-10 lg:h-10 rounded-full bg-c-violet-100 blur-sm"></div>
                     <div className="absolute z-20 -left-4 w-7 h-7 lg:w-10 lg:h-10 rounded-full bg-cyan-200 blur-sm  "></div>
-                    <p className="text-4xl font-semibold z-30 relative">{'Article List'}</p>
+                    <p className="text-4xl font-semibold z-30 relative">{'Stats List'}</p>
                 </div>
                 <div >
-                    <ArticleForm handleFormSubmit={() => undefined} />
+                    <StatsForm handleFormSubmit={() => undefined} />
                 </div>
             </div>
             {/* Table */}
@@ -124,4 +124,4 @@ const ArticleManagement = () => {
     )
 }
 
-export default ArticleManagement
+export default StatsManagement
