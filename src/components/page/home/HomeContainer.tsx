@@ -8,21 +8,24 @@ const HomeContainer = () => {
 
         <div className='crick-Container  w-full h-full  text-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 py-28 gap-5 justify-items-center'>
             <div className='row-span-2'>
-                <div className='w-full lg:max-w-[300px]  bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] p-3 rounded-[20px] group hover:bg-c-violet-600 duration-300'>
-                    <div className='p-3 '>
-                        <h3 className='text-[32px] text-left '>Fantacy Cricket </h3>
-                        <p>Create your dream team, score points based on real matches, and compete globally.Join now to turn your cricket knowledge into victory!</p>
+                <Link href={'./stats'}>
+                    <div className='w-full lg:max-w-[300px]  bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] p-3 rounded-[20px] group hover:bg-c-violet-600 duration-300'>
+                        <div className='p-3 '>
+                            <h3 className='text-[32px] text-left '>Fantacy Cricket </h3>
+                            <p>Create your dream team, score points based on real matches, and compete globally.Join now to turn your cricket knowledge into victory!</p>
+                        </div>
+                        <div className=' group-hover:scale-105 duration-300  '>
+                            <Image
+                                className="object-cover w-full h-full rounded-[20px]"
+                                src={'/2.png'}
+                                alt="fantasy"
+                                width={310}
+                                height={268}
+                            />
+                        </div>
                     </div>
-                    <div className=' group-hover:scale-105 duration-300  '>
-                        <Image
-                            className="object-cover w-full h-full rounded-[20px]"
-                            src={'/2.png'}
-                            alt="fantasy"
-                            width={310}
-                            height={268}
-                        />
-                    </div>
-                </div>
+                </Link>
+
             </div>
             <div className='row-span-3'>
                 <div className=' w-full bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] rounded-[20px] space-y-6 group hover:bg-c-violet-600 duration-300'>

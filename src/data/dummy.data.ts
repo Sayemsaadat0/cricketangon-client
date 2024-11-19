@@ -25,6 +25,7 @@ export const photosDummydata = [
 
 export const articlesData = [
     {
+        id: '1',
         image: "https://placehold.co/600x400/png",
         author_name: "Sample Author 1",
         title: "Sample Title 1",
@@ -32,6 +33,7 @@ export const articlesData = [
         category: "Category1"
     },
     {
+        id: '1',
         image: "https://placehold.co/400x600/png",
         title: "Sample Title 2",
         author_name: "Sample Author 1",
@@ -39,6 +41,7 @@ export const articlesData = [
         category: "Category1"
     },
     {
+        id: '1',
         image: "https://placehold.co/300x300/png",
         title: "Sample Title 3",
         author_name: "Sample Author 1",
@@ -46,6 +49,7 @@ export const articlesData = [
         category: "Category1"
     },
     {
+        id: '1',
         image: "https://placehold.co/500x700/png",
         title: "Sample Title 4",
         author_name: "Sample Author 1",
@@ -53,6 +57,7 @@ export const articlesData = [
         category: "Category1"
     },
     {
+        id: '1',
         image: "https://placehold.co/700x500/png",
         title: "Sample Title 5",
         author_name: "Sample Author 1",
@@ -60,6 +65,7 @@ export const articlesData = [
         category: "Category1"
     },
     {
+        id: '1',
         image: "https://placehold.co/400x300/png",
         title: "Sample Title 6",
         author_name: "Sample Author 1",
@@ -67,6 +73,7 @@ export const articlesData = [
         category: "Category2"
     },
     {
+        id: '1',
         image: "https://placehold.co/600x500/png",
         title: "Sample Title 7",
         author_name: "Sample Author 1",
@@ -74,6 +81,7 @@ export const articlesData = [
         category: "Category2"
     },
     {
+        id: '1',
         image: "https://placehold.co/600x600/png",
         title: "Sample Title 8",
         author_name: "Sample Author 1",
@@ -81,6 +89,7 @@ export const articlesData = [
         category: "Category2"
     },
     {
+        id: '1',
         image: "https://placehold.co/350x350/png",
         author_name: "Sample Author 1",
         title: "Sample Title 9",
@@ -88,6 +97,7 @@ export const articlesData = [
         category: "Category2"
     },
     {
+        id: '1',
         image: "https://placehold.co/450x600/png",
         title: "Sample Title 10",
         author_name: "Sample Author 1",
@@ -95,6 +105,7 @@ export const articlesData = [
         category: "Category2"
     },
     {
+        id: '1',
         image: "https://placehold.co/550x450/png",
         author_name: "Sample Author 1",
         title: "Sample Title 11",
@@ -102,6 +113,7 @@ export const articlesData = [
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/650x400/png",
         title: "Sample Title 12",
         description: "This is a description for sample image 12.",
@@ -109,6 +121,7 @@ export const articlesData = [
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/400x500/png",
         author_name: "Sample Author 1",
         title: "Sample Title 13",
@@ -116,6 +129,7 @@ export const articlesData = [
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/300x600/png",
         title: "Sample Title 14",
         author_name: "Sample Author 1",
@@ -123,6 +137,7 @@ export const articlesData = [
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/500x400/png",
         title: "Sample Title 15",
         description: "This is a description for sample image 15.",
@@ -130,6 +145,7 @@ export const articlesData = [
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/400x400/png",
         title: "Sample Title 16",
         author_name: "Sample Author 1",
@@ -137,6 +153,7 @@ export const articlesData = [
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/550x350/png",
         title: "Sample Title 17",
         author_name: "Sample Author 1",
@@ -145,6 +162,7 @@ export const articlesData = [
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/350x500/png",
         title: "Sample Title 18",
         author_name: "Sample Author 1",
@@ -153,6 +171,7 @@ export const articlesData = [
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/500x500/png",
         title: "Sample Title 19",
         description: "This is a description for sample image 19.",
@@ -161,6 +180,7 @@ export const articlesData = [
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/400x550/png",
         title: "Sample Title 20",
         author_name: "Sample Author 1",
