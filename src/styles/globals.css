@@ -14,8 +14,14 @@
 }
 
 
+
 .crick-Container {
-  overflow: hidden; /* This hides any overflow */
+  max-width: 1512px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 117px;
+  padding-right: 117px;
+  overflow: hidden; 
 }
 
 
@@ -23,9 +29,7 @@
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  /* background-image: url('/download.gif'); */
   background-image: url('https://i.ibb.co.com/cDjgW39/Untitled-design-2.gif');
-  /* background-image: url('https://i.ibb.co.com/L5mPSTT/Untitled-design-2.gif'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -34,7 +38,6 @@
 
 .bounce-effect {
   transition: all 0.6s cubic-bezier(0.20, 2.0, .20, 0.7);
-  /* transition: height 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); */
 }
 
 
@@ -42,30 +45,23 @@
 /* masonary */
 .my-masonry-grid {
   display: -webkit-box;
-  /* Not needed if autoprefixing */
   display: -ms-flexbox;
-  /* Not needed if autoprefixing */
   display: flex;
   margin-left: -30px;
-  /* gutter size offset */
   width: auto;
 }
 
 .my-masonry-grid_column {
   padding-left: 30px;
-  /* gutter size */
   background-clip: padding-box;
 }
 
-/* Style your items */
 .my-masonry-grid_column>div {
-  /* change div to reference your elements you put in <Masonry> */
   background: transparent;
   margin-bottom: 30px;
 }
 
 
-/* scrollbar */
 .customScrollbar::-webkit-scrollbar {
   height: 6px;
 }
@@ -76,13 +72,61 @@
 
 
 
-.crick-Container {
-  max-width: 1512px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 117px;
-  padding-right: 117px;
+.parent {
+  display: grid;
+  width: 100vw;
+  height: auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  gap: 10px;
 }
+  
+.div1 {
+  grid-row: span 4 / span 4;
+}
+
+.div3 {
+  grid-row: span 5 / span 5;
+}
+
+.div6 {
+  grid-row: span 2 / span 2;
+  grid-column-start: 2;
+  grid-row-start: 6;
+}
+
+.div7 {
+  grid-row: span 2 / span 2;
+  grid-column-start: 3;
+  grid-row-start: 1;
+}
+
+.div8 {
+  grid-row: span 2 / span 2;
+  grid-column-start: 3;
+  grid-row-start: 3;
+}
+
+.div9 {
+  grid-row: span 3 / span 3;
+  grid-column-start: 3;
+  grid-row-start: 5;
+}
+
+.div10 {
+  grid-row: span 3 / span 3;
+  grid-column-start: 1;
+  grid-row-start: 5;
+}
+      
+/*  */
+/* table action */
+.tableAction:nth-last-child(1) {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
 
 @media screen and (max-width: 1280px) {
   .crick-Container {

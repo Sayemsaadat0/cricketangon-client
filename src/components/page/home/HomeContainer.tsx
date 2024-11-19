@@ -1,246 +1,134 @@
-// 'use client'
-// import Button from '@/components/core/button/Button';
-// import Image from 'next/image';
-// import React, { useEffect } from 'react';
-
-// const HomeContainer = () => {
-
-//     useEffect(() => {
-//         const div1 = document.querySelector('.div1') as HTMLElement;
-//         const div2 = document.querySelector('.div2') as HTMLElement;
-//         const image1 = div1.querySelector('img') as HTMLElement; // Select the image in div1
-//         const image2 = div2.querySelector('img') as HTMLElement; // Select the image in div2
-
-//         const increaseSize = (element: HTMLElement, otherElement: HTMLElement, otherImage: HTMLElement) => {
-//             element.style.height = '55%';
-//             otherElement.style.height = '15%';
-//             otherImage.style.display = 'none'; // Hide the other image
-//         };
-
-//         const resetSize = () => {
-//             div1.style.height = '35%';
-//             div2.style.height = '35%';
-//             image1.style.display = 'block'; // Show image in div1
-//             image2.style.display = 'block'; // Show image in div2
-//         };
-
-//         div1.addEventListener('mouseenter', () => increaseSize(div1, div2, image2));
-//         div1.addEventListener('mouseleave', resetSize);
-
-//         div2.addEventListener('mouseenter', () => increaseSize(div2, div1, image1));
-//         div2.addEventListener('mouseleave', resetSize);
-
-//         // Cleanup event listeners on component unmount
-//         return () => {
-//             div1.removeEventListener('mouseenter', () => increaseSize(div1, div2, image2));
-//             div1.removeEventListener('mouseleave', resetSize);
-//             div2.removeEventListener('mouseenter', () => increaseSize(div2, div1, image1));
-//             div2.removeEventListener('mouseleave', resetSize);
-//         };
-//     }, []);
-
-//     return (
-//         <div className="crick-Container overflow-y-hidden flex items-center justify-center  w-full mt-20">
-//             <section className="flex justify-between gap-10 w-full">
-//                 <div className="space-y-10 ">
-//                     {/* First Card */}
-//                     <div className="w-60 group rounded-[10px] row-span-2 bg-amber-400 div1 transition-all duration-300 bounce-effect flex flex-col justify-between items-center overflow-hidden">
-//                         <div className="text-center p-5">
-//                             {/* Title and Description */}
-//                             <p className="text-3xl whitespace-nowrap">Fantasy Cricket</p>
-//                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est dolor nesciunt incidunt.</p>
-//                         </div>
-//                         <div className="group-hover:block hidden mb-4">
-//                             <Button label="Create team" />
-//                         </div>
-//                         {/* Image Container */}
-//                         <div className="w-full h-60 relative  group-hover:h-72 overflow-hidden aspect-[1/1]  p-4 group-hover:p-0 transition-all duration-300">
-//                             <Image
-//                                 className="object-cover w-full h-full rounded-[10px]"
-//                                 src={'https://placehold.co/150x150/000000/FFFFFF/png'}
-//                                 alt="fantasy"
-//                                 width={150}
-//                                 height={150}
-//                             />
-//                             {/* group-hover:aspect-[2/3]  */}
-//                         </div>
-//                     </div>
-
-//                     {/* Second Card */}
-//                     <div className="w-60 group rounded-[10px] row-span-2 bg-amber-400 div2 transition-all duration-300 bounce-effect flex flex-col justify-between items-center overflow-hidden">
-//                         <div className="text-center p-5">
-//                             <p className="text-3xl whitespace-nowrap">Fantasy Cricket</p>
-//                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est dolor nesciunt incidunt. !</p>
-//                         </div>
-//                         <div className="group-hover:block hidden mb-4">
-//                             <Button label="Create team" />
-//                         </div>
-//                         {/* Image Container */}
-//                         <div className="w-full h-60 group-hover:h-72 relative overflow-hidden aspect-[1/1] p-4 group-hover:p-0  transition-all duration-300">
-//                             <Image
-//                                 className="object-cover w-full h-full rounded-[10px]"
-//                                 src={'https://placehold.co/150x150/000000/FFFFFF/png'}
-//                                 alt="fantasy"
-//                                 width={150}
-//                                 height={150}
-//                             />
-//                             {/* group-hover:aspect-[2/3] */}
-//                         </div>
-//                     </div>
-//                 </div>
-//             </section>
-//         </div>
-//     );
-// }
-
-// export default HomeContainer;
-
-
-
-
-
-'use client'
-import Button from '@/components/core/button/Button';
-import Image from 'next/image';
-import React, { useEffect } from 'react';
+import React from 'react'
+import Image from 'next/image'
+import Button from '@/components/core/button/Button'
+import Link from 'next/link'
 
 const HomeContainer = () => {
-
-    useEffect(() => {
-        const div1 = document.querySelector('.div1') as HTMLElement;
-        const div2 = document.querySelector('.div2') as HTMLElement;
-        const image1 = div1.querySelector('img') as HTMLElement; 
-        const image2 = div2.querySelector('img') as HTMLElement; 
-
-        const increaseSize = (element: HTMLElement, otherElement: HTMLElement, otherImage: HTMLElement) => {
-            element.style.height = '60%'; // Increase the height of the hovered element
-            otherElement.style.height = '20%'; // Decrease the height of the other element
-            otherImage.style.display = 'none'; // Hide the other image
-        };
-
-        const resetSize = () => {
-            div1.style.height = '45%'; // Reset to default height
-            div2.style.height = '45%'; // Reset to default height
-            image1.style.display = 'block'; // Show image in div1
-            image2.style.display = 'block'; // Show image in div2
-        };
-
-        div1.addEventListener('mouseenter', () => increaseSize(div1, div2, image2));
-        div1.addEventListener('mouseleave', resetSize);
-
-        div2.addEventListener('mouseenter', () => increaseSize(div2, div1, image1));
-        div2.addEventListener('mouseleave', resetSize);
-
-        // Cleanup event listeners on component unmount
-        return () => {
-            div1.removeEventListener('mouseenter', () => increaseSize(div1, div2, image2));
-            div1.removeEventListener('mouseleave', resetSize);
-            div2.removeEventListener('mouseenter', () => increaseSize(div2, div1, image1));
-            div2.removeEventListener('mouseleave', resetSize);
-        };
-    }, []);
-
     return (
-        <div className="crick-Container  flex items-center justify-center w-full ">
-            <section className="flex justify-between gap-10 w-full">
-                <div className="mt-20">
-                    {/* First Card */}
-                    <div className="w-60 relative group rounded-[10px] bg-amber-400 div1 transition-all duration-300 bounce-effect flex flex-col justify-between items-center overflow-hidden ">
-                        <div className="text-center p-5">
-                            <p className="text-3xl whitespace-nowrap">Fantasy Cricket</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est dolor nesciunt incidunt.</p>
+
+        <div className='crick-Container  w-full h-full  text-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 py-28 gap-5 justify-items-center'>
+            <div className='row-span-2'>
+                <Link href={'./stats'}>
+                    <div className='w-full lg:max-w-[300px]  bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] p-3 rounded-[20px] group hover:bg-c-violet-600 duration-300'>
+                        <div className='p-3 '>
+                            <h3 className='text-[32px] text-left '>Fantacy Cricket </h3>
+                            <p>Create your dream team, score points based on real matches, and compete globally.Join now to turn your cricket knowledge into victory!</p>
                         </div>
-                        {/* <div className="group-hover:block hidden mb-4">
-                            <Button label="Create team" />
-                        </div> */}
-                        {/* Image Container */}
-                        <div className="w-full h-60 relative overflow-hidden aspect-[1/1] group-hover:h-72 transition-all duration-300">
+                        <div className=' group-hover:scale-105 duration-300  '>
                             <Image
-                                className="object-cover w-full h-full rounded-[10px]"
-                                src={'https://placehold.co/150x150/000000/FFFFFF/png'}
+                                className="object-cover w-full h-full rounded-[20px]"
+                                src={'/2.png'}
                                 alt="fantasy"
-                                width={150}
-                                height={150}
+                                width={310}
+                                height={268}
                             />
                         </div>
                     </div>
+                </Link>
 
-                    {/* Second Card */}
-                    <div className="w-60 relative mt-10 group rounded-[10px] bg-amber-400 div2 transition-all duration-300 bounce-effect flex flex-col justify-between items-center overflow-hidden">
-                        <div className="text-center p-5">
-                            <p className="text-3xl whitespace-nowrap">Fantasy Cricket</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est dolor nesciunt incidunt. !</p>
-                        </div>
-                        {/* <div className="group-hover:block hidden mb-4">
-                            <Button label="Create team" />
-                        </div> */}
-                        
-                        <div className="w-full h-60 relative overflow-hidden aspect-[1/1] group-hover:h-72 transition-all duration-300">
-                            <Image
-                                className="object-cover w-full h-full rounded-[10px]"
-                                src={'https://placehold.co/150x150/000000/FFFFFF/png'}
-                                alt="fantasy"
-                                width={150}
-                                height={150}
-                            />
+            </div>
+            <div className='row-span-3'>
+                <div className=' w-full bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] rounded-[20px] space-y-6 group hover:bg-c-violet-600 duration-300'>
+                    <div className='w-full  group-hover:scale-105 duration-300  '>
+                        <Image
+                            className="object-cover min-h-[620px] w-full rounded-[20px]"
+                            src={'/taskin.jpeg'}
+                            alt="fantasy"
+                            width={394}
+                            height={620}
+                        />
+                    </div>
+                </div>
+            </div>
+            <div className='w-full row-span-1 lg:max-w-[300px]'>
+                <div className='bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] rounded-[20px] space-y-6 duration-300 group hover:bg-c-violet-600 flex items-center'>
+                    <div className='w-full h-full max-h-[170px] rounded-[20px] overflow-hidden'>
+                        <Image
+                            className="object-cover w-full h-full rounded-[20px]"
+                            src={'https://i.pinimg.com/564x/44/ed/15/44ed15ef9654d7f0e44baee1d60e0e61.jpg'}
+                            alt="fantasy"
+                            width={350}
+                            height={200}
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div className='w-full row-span-1 lg:max-w-[300px]'>
+                <div className='bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] rounded-[20px] space-y-6 duration-300 group hover:bg-c-violet-600 flex items-center'>
+                    <div className='w-full h-full max-h-[170px] rounded-[20px] overflow-hidden'>
+                        <Image
+                            className="object-cover w-full h-full rounded-[20px]"
+                            src={'https://i.pinimg.com/564x/fc/aa/37/fcaa370f0d0778369b5b26c72609ccd8.jpg'}
+                            alt="fantasy"
+                            width={350}
+                            height={200}
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div className='row-span-2 '>
+                <div className='w-full lg:max-w-[300px]  bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] p-3 rounded-[20px] group hover:bg-c-violet-600 duration-300'>
+                    <div className=' p-3 '>
+                        <h3 className='xl:text-[32px] text-left '>Pick your own XI </h3>
+                        <p className='leading-7'>You’ve got the best players in the world available to you – who gets in your World Best XI?</p>
+                    </div>
+                    <div className='w-full h-full lg:max-w-[350px] group-hover:scale-105 duration-300 '>
+                        <Image
+                            className="object-cover w-full h-full rounded-[20px]"
+                            src={'/pick.png'}
+                            alt="fantasy"
+                            width={150}
+                            height={150}
+                        />
+                    </div>
+                </div>
+            </div>
+            <div className='h-full  w-full row-span-2 lg:max-h-[415px] lg:max-w-[300px]'>
+                <div className='flex-1 h-full w-full bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] rounded-[20px] group hover:bg-c-violet-600 duration-300'>
+                    <div className='h-full group-hover:scale-105 duration-300'>
+                        <Image
+                            className="object-cover w-full h-full rounded-[20px]"
+                            src={'https://i.pinimg.com/736x/4c/f0/b6/4cf0b616841122653b77e2a253c69723.jpg'}
+                            alt="fantasy"
+                            width={394}
+                            height={620}
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div className='w-full'>
+                <div className=' bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] p-5 rounded-[20px]  duration-300 group hover:bg-c-violet-600 flex flex-col lg:flex-row  md:items-center justify-between  w-full gap-10 '>
+                    <div className='w-full h-full md:shrink-0 md:inline-block lg:max-w-[148px] md:max-h-[148px] group-hover:scale-105 duration-300 aspect-square '>
+                        <Image
+                            className="object-cover w-full h-full rounded-[20px]"
+                            src={'https://i.pinimg.com/736x/eb/11/5e/eb115e0535fa1a65a92ab738ef6b1333.jpg'}
+                            alt="fantasy"
+                            width={148}
+                            height={148}
+                        />
+                    </div>
+
+                    <div className='w-full flex  flex-col justify-center items-center gap-2'>
+                        <h3 className='text-[32px] text-left '>Shop Now</h3>
+                        <div className=" p-[1.5px] bg-gradient-to-tr from-cyan-400 via-c-violet-200 to-c-violet-300  rounded-full w-fit">
+                            <Link href={'/login'}>
+                                <Button
+                                    className=""
+                                    variant="roundedBtn"
+                                    label="Sign in"
+                                />
+                            </Link>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
-    );
+
+    )
 }
 
-export default HomeContainer;
+export default HomeContainer
 
-
-
-
-
-{/* <div className="w-60 h-72  bg-cyan-400 div2 transition-all duration-300 bounce-effect"></div> */ }
-
-
-/*
-                {/* <div className="space-y-10">
-                    <div className="w-60 h-96 row-span-2 bg-purple-400"></div>
-                    <div className="w-60 h-48 bg-yellow-400"></div>
-                </div>
-                <div className="space-y-10">
-                    <div className="w-60 h-44 bg-cyan-500"></div>
-                    <div className="w-60 h-44 bg-blue-600"></div>
-                    <div className="w-60 h-44 bg-rose-500"></div>
-                </div>
-*/
-
-
-// useEffect(() => {
-//     const div1 = document.querySelector('.div1') as HTMLElement;
-//     const div2 = document.querySelector('.div2') as HTMLElement;
-
-//     div1.addEventListener('mouseenter', () => {
-//         div1.style.height = '384px ';
-//         div2.style.height = '192px';
-//     });
-
-//     div1.addEventListener('mouseleave', () => {
-//         div1.style.height = '288px';
-//         div2.style.height = '288px ';
-//     });
-
-
-//     div2.addEventListener('mouseenter', () => {
-//         div2.style.height = '384px ';
-//         div1.style.height = '192px';
-//     });
-
-//     div2.addEventListener('mouseleave', () => {
-//         div2.style.height = '288px';
-//         div1.style.height = '288px';
-//     });
-//     return () => {
-//         div1.removeEventListener('mouseenter', () => { });
-//         div1.removeEventListener('mouseleave', () => { });
-//         div2.removeEventListener('mouseenter', () => { });
-//         div2.removeEventListener('mouseleave', () => { });
-//     };
-// }, []);
