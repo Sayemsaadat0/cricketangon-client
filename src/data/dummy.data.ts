@@ -250,3 +250,78 @@ export const playersData = [
         activeYear: "2020 / 20 / 20 - 20 / 20 / 2020"
     },
 ]
+
+
+export const playersDummy = [
+    {
+      id: "p1",
+      player_name: "Virat Kohli",
+      avatar: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      cover_image: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      country: "India",
+    },
+    {
+      id: "p2",
+      player_name: "Steve Smith",
+      avatar: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      cover_image: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      country: "Australia",
+    },
+    {
+      id: "p3",
+      player_name: "Kane Williamson",
+      avatar: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      cover_image: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      country: "New Zealand",
+    },
+    {
+      id: "p4",
+      player_name: "Joe Root",
+      avatar: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      cover_image: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      country: "England",
+    },
+    {
+      id: "p5",
+      player_name: "Babar Azam",
+      avatar: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      cover_image: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      country: "Pakistan",
+    },
+    {
+      id: "p6",
+      player_name: "Rashid Khan",
+      avatar: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      cover_image: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      country: "Afghanistan",
+    },
+    {
+      id: "p7",
+      player_name: "David Warner",
+      avatar: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      cover_image: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      country: "Australia",
+    },
+    {
+      id: "p8",
+      player_name: "Quinton de Kock",
+      avatar: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      cover_image: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      country: "South Africa",
+    },
+    {
+      id: "p9",
+      player_name: "Shakib Al Hasan",
+      avatar: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      cover_image: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      country: "Bangladesh",
+    },
+    {
+      id: "p10",
+      player_name: "Trent Boult",
+      avatar: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      cover_image: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      country: "New Zealand",
+    },
+  ];
+  

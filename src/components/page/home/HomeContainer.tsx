@@ -69,24 +69,26 @@ const HomeContainer = () => {
             </div>
 
             <div className='row-span-2 '>
-                <div className='w-full lg:max-w-[300px]  bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] p-3 rounded-[20px] group hover:bg-c-violet-600 duration-300'>
-                    <div className=' p-3 '>
-                        <h3 className='xl:text-[32px] text-left '>Pick your own XI </h3>
-                        <p className='leading-7'>You’ve got the best players in the world available to you – who gets in your World Best XI?</p>
+                <Link href={'/own-11'}>
+                    <div className='w-full lg:max-w-[300px]  bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] p-3 rounded-[20px] group hover:bg-c-violet-600 duration-300'>
+                        <div className=' p-3 '>
+                            <h3 className='xl:text-[32px] text-left '>Pick your own XI </h3>
+                            <p className='leading-7'>You’ve got the best players in the world available to you – who gets in your World Best XI?</p>
+                        </div>
+                        <div className='w-full h-full lg:max-w-[350px] group-hover:scale-105 duration-300 '>
+                            <Image
+                                className="object-cover w-full h-full rounded-[20px]"
+                                src={'/pick.png'}
+                                alt="fantasy"
+                                width={150}
+                                height={150}
+                            />
+                        </div>
                     </div>
-                    <div className='w-full h-full lg:max-w-[350px] group-hover:scale-105 duration-300 '>
-                        <Image
-                            className="object-cover w-full h-full rounded-[20px]"
-                            src={'/pick.png'}
-                            alt="fantasy"
-                            width={150}
-                            height={150}
-                        />
-                    </div>
-                </div>
+                </Link>
             </div>
             <div className='h-full  w-full row-span-2 lg:max-h-[415px] lg:max-w-[300px]'>
-                <Link  href={'/stats'} className='flex-1 h-full w-full  rounded-[20px] group duration-300'>
+                <Link href={'/stats'} className='flex-1 h-full w-full  rounded-[20px] group duration-300'>
                     <div className='h-full group-hover:scale-105 duration-300'>
                         <Image
                             className="object-cover w-full h-full rounded-[20px]"
