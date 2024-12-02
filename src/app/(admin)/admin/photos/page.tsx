@@ -1,8 +1,11 @@
 import React from 'react'
+import PhotosManagement from './_components/PhotosManagement'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <PhotosManagement />
+    </div>
   )
 }
 

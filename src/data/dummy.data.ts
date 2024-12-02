@@ -25,122 +25,166 @@ export const photosDummydata = [
 
 export const articlesData = [
     {
+        id: '1',
         image: "https://placehold.co/600x400/png",
+        author_name: "Sample Author 1",
         title: "Sample Title 1",
         description: "This is a description for sample image 1.",
         category: "Category1"
     },
     {
+        id: '1',
         image: "https://placehold.co/400x600/png",
         title: "Sample Title 2",
+        author_name: "Sample Author 1",
         description: "This is a description for sample image 2.",
         category: "Category1"
     },
     {
+        id: '1',
         image: "https://placehold.co/300x300/png",
         title: "Sample Title 3",
+        author_name: "Sample Author 1",
         description: "This is a description for sample image 3.",
         category: "Category1"
     },
     {
+        id: '1',
         image: "https://placehold.co/500x700/png",
         title: "Sample Title 4",
+        author_name: "Sample Author 1",
         description: "This is a description for sample image 4.",
         category: "Category1"
     },
     {
+        id: '1',
         image: "https://placehold.co/700x500/png",
         title: "Sample Title 5",
+        author_name: "Sample Author 1",
         description: "This is a description for sample image 5.",
         category: "Category1"
     },
     {
+        id: '1',
         image: "https://placehold.co/400x300/png",
         title: "Sample Title 6",
+        author_name: "Sample Author 1",
         description: "This is a description for sample image 6.",
         category: "Category2"
     },
     {
+        id: '1',
         image: "https://placehold.co/600x500/png",
         title: "Sample Title 7",
+        author_name: "Sample Author 1",
         description: "This is a description for sample image 7.",
         category: "Category2"
     },
     {
+        id: '1',
         image: "https://placehold.co/600x600/png",
         title: "Sample Title 8",
+        author_name: "Sample Author 1",
         description: "This is a description for sample image 8.",
         category: "Category2"
     },
     {
+        id: '1',
         image: "https://placehold.co/350x350/png",
+        author_name: "Sample Author 1",
         title: "Sample Title 9",
         description: "This is a description for sample image 9.",
         category: "Category2"
     },
     {
+        id: '1',
         image: "https://placehold.co/450x600/png",
         title: "Sample Title 10",
+        author_name: "Sample Author 1",
         description: "This is a description for sample image 10.",
         category: "Category2"
     },
     {
+        id: '1',
         image: "https://placehold.co/550x450/png",
+        author_name: "Sample Author 1",
         title: "Sample Title 11",
         description: "This is a description for sample image 11.",
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/650x400/png",
         title: "Sample Title 12",
         description: "This is a description for sample image 12.",
+        author_name: "Sample Author 1",
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/400x500/png",
+        author_name: "Sample Author 1",
         title: "Sample Title 13",
         description: "This is a description for sample image 13.",
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/300x600/png",
         title: "Sample Title 14",
+        author_name: "Sample Author 1",
         description: "This is a description for sample image 14.",
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/500x400/png",
         title: "Sample Title 15",
         description: "This is a description for sample image 15.",
+        author_name: "Sample Author 1",
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/400x400/png",
         title: "Sample Title 16",
+        author_name: "Sample Author 1",
         description: "This is a description for sample image 16.",
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/550x350/png",
         title: "Sample Title 17",
+        author_name: "Sample Author 1",
+
         description: "This is a description for sample image 17.",
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/350x500/png",
         title: "Sample Title 18",
+        author_name: "Sample Author 1",
+
         description: "This is a description for sample image 18.",
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/500x500/png",
         title: "Sample Title 19",
         description: "This is a description for sample image 19.",
+        author_name: "Sample Author 1",
+
         category: "Category3"
     },
     {
+        id: '1',
         image: "https://placehold.co/400x550/png",
         title: "Sample Title 20",
+        author_name: "Sample Author 1",
+
         description: "This is a description for sample image 20.",
         category: "Category3"
     }
@@ -168,5 +212,41 @@ export const articleCategoryData = [
 export const profileUserData = {
     username: "Sabbir Ahmed Khan Bahadur",
     email: 'sabbirkhaymurgi@gmail.com',
-    thumbnail: 'https://i.pinimg.com/564x/63/a1/da/63a1da14ae6041095d7f4a33231b21c1.jpg'
+    thumbnail: 'https://i.pinimg.com/564x/63/a1/da/63a1da14ae6041095d7f4a33231b21c1.jpg',
+    role: 'user'
 }
+
+export const usersData = [
+    {
+        username: "Sabbir Ahmed Khan Bahadur",
+        email: 'sabbirkhaymurgi@gmail.com',
+        thumbnail: 'https://i.pinimg.com/564x/63/a1/da/63a1da14ae6041095d7f4a33231b21c1.jpg',
+        role: 'user'
+    },
+    {
+        username: "Admin Bahadur",
+        email: 'sabbirkhaymurgi@gmail.com',
+        thumbnail: 'https://i.pinimg.com/564x/63/a1/da/63a1da14ae6041095d7f4a33231b21c1.jpg',
+        role: 'admin'
+    }
+]
+
+
+
+
+export const playersData = [
+    {
+        player_name: "Virat Kohli",
+        player_image: "https://i.pinimg.com/564x/63/a1/da/63a1da14ae6041095d7f4a33231b21c1.jpg",
+        country: "India",
+        player_role: "BATSMAN",
+        activeYear: "2020 / 20 / 20 - 20 / 20 / 2020"
+    },
+    {
+        player_name: "Virat Kohli",
+        player_image: "https://i.pinimg.com/564x/63/a1/da/63a1da14ae6041095d7f4a33231b21c1.jpg",
+        country: "West indies",
+        player_role: "BOWLER",
+        activeYear: "2020 / 20 / 20 - 20 / 20 / 2020"
+    },
+]

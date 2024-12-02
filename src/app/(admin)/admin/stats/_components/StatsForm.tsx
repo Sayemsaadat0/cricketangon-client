@@ -15,13 +15,13 @@ import EditIcon from '@/components/core/icons/dashboard/EditIcon';
 
 
 
-type ArticleFormType = {
+type StatsFormType = {
     handleFormSubmit: Function,
     instance?: any
 }
 
 
-const ArticleForm: FC<ArticleFormType> = ({ instance, handleFormSubmit }) => {
+const StatsForm: FC<StatsFormType> = ({ instance, handleFormSubmit }) => {
     const [open, setOpen] = useState(false)
     // setFieldValue,
     const { handleChange, values, touched, errors, handleSubmit, isSubmitting, resetForm, setFieldValue } = useFormik(
@@ -38,7 +38,6 @@ const ArticleForm: FC<ArticleFormType> = ({ instance, handleFormSubmit }) => {
             onSubmit: async (data: any) => {
                 try {
                     let form_data = new FormData();
-
                     form_data.append("author_name", data.author_name);
                     form_data.append("title", data.title);
                     form_data.append("category", data.category);
@@ -87,7 +86,7 @@ const ArticleForm: FC<ArticleFormType> = ({ instance, handleFormSubmit }) => {
                             <Button
                                 className=""
                                 variant="roundedOutlineBtn"
-                                label="Add Article"
+                                label="Create Stats"
                             />
                         </div>
                     </div>
@@ -95,7 +94,7 @@ const ArticleForm: FC<ArticleFormType> = ({ instance, handleFormSubmit }) => {
 
                 <DialogContent className='max-h-[80%] overflow-auto'>
                     <DialogHeader>
-                        <DialogTitle>Add New Article</DialogTitle>
+                        <DialogTitle>Add New Stats</DialogTitle>
                         <DialogDescription></DialogDescription>
                     </DialogHeader>
 
@@ -195,5 +194,5 @@ const ArticleForm: FC<ArticleFormType> = ({ instance, handleFormSubmit }) => {
     );
 };
 
-export default ArticleForm;
+export default StatsForm;
 

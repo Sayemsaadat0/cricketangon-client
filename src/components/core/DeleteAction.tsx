@@ -36,7 +36,7 @@ const DeleteAction: React.FC<DeleteActionProps> = ({ handleDeleteSubmit, isLoadi
             <AlertDialog open={open} onOpenChange={() => setOpen(!open)}>
                 <div onClick={() => setOpen(!open)} className="cursor-pointer text-red-500 ">
                     {
-                        isOnlyIcon ? <div className='border p-2 hover:bg-red-100 rounded-full border-red-500 mt-1'>
+                        isOnlyIcon ? <div className='border p-2.5 hover:bg-red-100 rounded-full border-red-500 '>
                             <Deleteicon />
                         </div> : <div className='flex items-center gap-2  '><Deleteicon /> Delete</div>
                     }
@@ -44,7 +44,7 @@ const DeleteAction: React.FC<DeleteActionProps> = ({ handleDeleteSubmit, isLoadi
                 </div>
                 <AlertDialogContent className="py-10">
                     <div>
-                        <div className="text-oc-primary-2-500 flex justify-center pb-3">
+                        <div className="text-red-500 flex justify-center pb-3">
                             <Deleteicon size={'80'} />
                             <p></p>
                         </div>
@@ -57,7 +57,7 @@ const DeleteAction: React.FC<DeleteActionProps> = ({ handleDeleteSubmit, isLoadi
                     </div>
                     <div className="flex justify-center gap-8">
                         <Button
-                            className="bg-oc-primary-2-500 "
+                            className="bg-red-500 hover:bg-red-400"
                             disabled={isLoading}
                             label={`${isLoading ? 'Deleting' : 'Confirm'}`}
                             onClick={handleDelete}

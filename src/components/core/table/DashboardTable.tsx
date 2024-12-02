@@ -17,10 +17,10 @@ const DashboardTable: FC<DashboardTableProps> = ({ columns, data, isLoading }) =
     <div className="overflow-x-auto max-w-full border rounded-[10px] overflow-hidden">
       <div className="w-full">
         <table className="w-full text-left">
-          <thead className="sticky z-10 top-0 w-full h-fit bg-oc-primary-1-50">
+          <thead className="sticky z-10 top-0 w-full h-fit bg-gradient-to-r from-c-violet-300 via-c-violet-500 to-c-violet-600 text-c-white-200">
             <tr className=''>
               {columns.map((column, index) => (
-                <th key={index} scope="col" className="px-3 text-oc-primary-1-500 text-w-paragraph-regular-20 py-3 tableAction  ">
+                <th key={index} scope="col" className="px-3 py-3 tableAction  ">
                   {column.title}
                 </th>
               ))}
@@ -32,7 +32,7 @@ const DashboardTable: FC<DashboardTableProps> = ({ columns, data, isLoading }) =
               data.map((row, rowIndex) => (
                 <tr key={rowIndex} className='border-b '>
                   {columns.map((column, colIndex) => (
-                    <td key={colIndex} className="px-3  text-w-paragraph-regular-20 tableAction py-3  break-words ">
+                    <td key={colIndex} className="px-3   tableAction py-3  break-words ">
                       {column.row(row, rowIndex)}
                     </td>
                   ))}

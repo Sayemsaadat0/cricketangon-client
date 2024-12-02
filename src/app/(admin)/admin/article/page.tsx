@@ -1,8 +1,11 @@
 import React from 'react'
+import ArticleManagement from './_components/ArticleManagement'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <ArticleManagement />
+    </div>
   )
 }
 
