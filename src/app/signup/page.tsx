@@ -1,5 +1,4 @@
 import AuthBgIcon from '@/components/core/icons/all_Icons/AuthBgIcon'
-import LoginPage from '@/components/page/login/LoginPage'
 import SignupPage from '@/components/page/signup/SignupPage'
 import React from 'react'
 

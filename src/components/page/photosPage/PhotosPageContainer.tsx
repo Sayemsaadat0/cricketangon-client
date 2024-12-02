@@ -2,20 +2,73 @@
 import { photosDummydata } from '@/data/dummy.data';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import Masonry from 'react-masonry-css';
 
-type MasonaryPhotoType = {
+
+
+
+
+
+
+// Moments
+type MomentsGalaryType = {
     breakpointColumnsObj: any;
 };
 
-const MasonaryPhoto: FC<MasonaryPhotoType> = ({ breakpointColumnsObj }) => {
+const MomentsGalary: FC<MomentsGalaryType> = ({ breakpointColumnsObj }) => {
     const handleContextMenu = (e: React.MouseEvent<HTMLImageElement>) => {
         e.preventDefault();
     };
 
     return (
-        <div>
+        <div className='space-y-3'>
+            <div className='text-xl text-c-violet-600 font-semibold'>
+                Cricketangon Special Moments
+            </div>
+            <Masonry
+                breakpointCols={breakpointColumnsObj}
+                className="my-masonry-grid"
+                columnClassName="my-masonry-grid_column"
+            >
+                {photosDummydata.map((image) => (
+                    <div key={Math.random()} className="relative">
+                        <Image
+                            src={image}
+                            alt={`Placeholder`}
+                            width={390}
+                            height={400}
+                            layout="responsive"
+                            className="rounded-[20px] object-cover"
+                            onContextMenu={handleContextMenu}
+                        />
+                    </div>
+                ))}
+            </Masonry>
+        </div>
+    );
+};
+
+
+
+
+
+
+// General
+type GeneralPhotoGalaryType = {
+    breakpointColumnsObj: any;
+};
+
+const GeneralPhotoGalary: FC<GeneralPhotoGalaryType> = ({ breakpointColumnsObj }) => {
+    const handleContextMenu = (e: React.MouseEvent<HTMLImageElement>) => {
+        e.preventDefault();
+    };
+
+    return (
+        <div className='space-y-3'>
+            <div className='text-xl text-c-violet-600 font-semibold'>
+                General
+            </div>
             <Masonry
                 breakpointCols={breakpointColumnsObj}
                 className="my-masonry-grid"
@@ -47,6 +100,9 @@ const PhotosPageContainer = () => {
         700: 2,
         500: 1,
     };
+
+    const [activeTab, setActiveTab] = useState('general')
+
     return (
         <div className='space-y-2'>
             <div className='flex items-center gap-1'>
@@ -60,11 +116,33 @@ const PhotosPageContainer = () => {
                         Photos
                     </Link>
                 </div>
-            </div> 
+            </div>
             <div className='text-xl text-c-violet-600 font-semibold'>
                 Photos
             </div>
-            <MasonaryPhoto breakpointColumnsObj={breakpointColumnsObj} />
+
+            {/* className='block lg:hidden' */}
+            <div className='block lg:hidden'>
+                <div  className='space-x-3'>
+                    <button className={`${activeTab === 'general' ? 'text-white bg-purple-600 px-3 py-1 rounded-full' : 'text-gray-500 bg-gray-200 px-2 py-1 rounded-full'}`} onClick={() => setActiveTab('general')}>General</button>
+                    <button className={`${activeTab === 'moments' ? 'text-white bg-purple-600 px-3 py-1 rounded-full' : 'text-gray-500 bg-gray-300 px-2 py-1 rounded-full'}`}  onClick={() => setActiveTab('moments')}>Moments</button>
+                </div>
+
+                {
+                    activeTab === 'general' && <div>
+                        <GeneralPhotoGalary breakpointColumnsObj={breakpointColumnsObj} />
+                    </div>
+                }
+                {
+                    activeTab === 'moments' && <div>
+                        <MomentsGalary breakpointColumnsObj={breakpointColumnsObj} />
+                    </div>
+                }
+            </div>
+            <div className='flex gap-10'>
+                <GeneralPhotoGalary breakpointColumnsObj={breakpointColumnsObj} />
+                <MomentsGalary breakpointColumnsObj={breakpointColumnsObj} />
+            </div>
         </div>
     );
 };
