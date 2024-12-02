@@ -86,7 +86,8 @@ const ArticleContainer: FC = () => {
                         columnClassName="my-masonry-grid_column"
                     >
                         {filteredArticles.map((i) => (
-                            <Link  href={'/article/fdasdsad'} key={Math.random()} className="relative overflow-hidden rounded-[20px] group">
+                          <div key={Math.random()} className='relative overflow-hidden rounded-[20px] group'>
+                              <Link  href={'/article/fdasdsad'}  className=" ">
                                 <div className='relative overflow-hidden'>
                                     <Image
                                         src={i?.image || 'https://i.pinimg.com/564x/cd/a8/3c/cda83c0eee224d460c926479f224ec3e.jpg'}
@@ -104,6 +105,7 @@ const ArticleContainer: FC = () => {
                                     <p className='text-c-white-700'>{i?.description}</p>
                                 </div>
                             </Link>
+                          </div>
                         ))}
                     </Masonry>
                 </div>

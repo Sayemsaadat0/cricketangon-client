@@ -8,7 +8,7 @@ const HomeContainer = () => {
 
         <div className='crick-Container  w-full h-full  text-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 py-28 gap-5 justify-items-center'>
             <div className='row-span-2'>
-                <Link href={'./stats'}>
+                <Link href={'/'}>
                     <div className='w-full lg:max-w-[300px]  bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] p-3 rounded-[20px] group hover:bg-c-violet-600 duration-300'>
                         <div className='p-3 '>
                             <h3 className='text-[32px] text-left '>Fantacy Cricket </h3>
@@ -41,25 +41,25 @@ const HomeContainer = () => {
                 </div>
             </div>
             <div className='w-full row-span-1 lg:max-w-[300px]'>
-                <div className='bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] rounded-[20px] space-y-6 duration-300 group hover:bg-c-violet-600 flex items-center'>
+                <Link href={'/photos'} className='rounded-[20px] space-y-6 duration-300 group flex items-center'>
                     <div className='w-full h-full max-h-[170px] rounded-[20px] overflow-hidden'>
                         <Image
                             className="object-cover w-full h-full rounded-[20px]"
-                            src={'https://i.pinimg.com/564x/44/ed/15/44ed15ef9654d7f0e44baee1d60e0e61.jpg'}
+                            src={'https://i.pinimg.com/736x/67/1b/f4/671bf4d5900aa9dc4e4f4fd0622c9233.jpg'}
                             alt="fantasy"
                             width={350}
                             height={200}
                         />
                     </div>
-                </div>
+                </Link>
             </div>
 
             <div className='w-full row-span-1 lg:max-w-[300px]'>
-                <div className='bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] rounded-[20px] space-y-6 duration-300 group hover:bg-c-violet-600 flex items-center'>
-                    <div className='w-full h-full max-h-[170px] rounded-[20px] overflow-hidden'>
+                <div className='space-y-6 duration-300 group  flex items-center'>
+                    <div className='w-full h-full  overflow-hidden'>
                         <Image
-                            className="object-cover w-full h-full rounded-[20px]"
-                            src={'https://i.pinimg.com/564x/fc/aa/37/fcaa370f0d0778369b5b26c72609ccd8.jpg'}
+                            className="object-cover w-full h-full "
+                            src={'/score.png'}
                             alt="fantasy"
                             width={350}
                             height={200}
@@ -86,17 +86,17 @@ const HomeContainer = () => {
                 </div>
             </div>
             <div className='h-full  w-full row-span-2 lg:max-h-[415px] lg:max-w-[300px]'>
-                <div className='flex-1 h-full w-full bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] rounded-[20px] group hover:bg-c-violet-600 duration-300'>
+                <Link  href={'/stats'} className='flex-1 h-full w-full  rounded-[20px] group duration-300'>
                     <div className='h-full group-hover:scale-105 duration-300'>
                         <Image
                             className="object-cover w-full h-full rounded-[20px]"
-                            src={'https://i.pinimg.com/736x/4c/f0/b6/4cf0b616841122653b77e2a253c69723.jpg'}
+                            src={'/stats.png'}
                             alt="fantasy"
                             width={394}
                             height={620}
                         />
                     </div>
-                </div>
+                </Link>
             </div>
 
             <div className='w-full'>

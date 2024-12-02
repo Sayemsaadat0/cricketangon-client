@@ -37,7 +37,7 @@ const DefaultNavbar = () => {
     return (
         <div className={`${pathname === '/' && 'mt-2'} w-full  fixed top-0 left-0   z-30`}>
             <nav className="text-white relative crick-Container">
-                <div className={`flex justify-between items-center bg-gradient-to-r from-c-violet-400 via-c-violet-700 to-c-violet-900 py-1.5 px-2 rounded-[20px] ${pathname !== '/' && 'rounded-b-none'}`} >
+                <div className={`flex justify-between items-center bg-gradient-to-r from-c-violet-400 via-c-violet-700 to-c-violet-900 py-1.5 px-2 rounded-[20px] ${pathname !== '/' && 'md:rounded-b-none'}`} >
                     <div className=''>
                         <Logo />
                     </div>
