@@ -257,7 +257,7 @@ export const playersDummy = [
       id: "p1",
       player_name: "Virat Kohli",
       avatar: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
-      cover_image: "https://i.pinimg.com/736x/8d/76/44/8d7644c50386337d2d1161efd8b3b1b5.jpg",
+      cover_image: "https://i.pinimg.com/736x/cc/4c/a6/cc4ca67d7af40e276f4549c106e0a31c.jpg",
       country: "India",
     },
     {
