@@ -19,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={urbanist.className}>
-        <TanStackQueryProvider>{children}</TanStackQueryProvider>
+        <>
+          <TanStackQueryProvider>{children}</TanStackQueryProvider>
+        </>
       </body>
     </html>
   );
