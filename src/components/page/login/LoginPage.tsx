@@ -67,7 +67,6 @@ const LoginPage = () => {
       }
     },
   });
-  console.log(id);
   return (
     <div className="bg-white rounded-[12px] p-5 md:p-10 space-y-5">
       <h3 className="text-xl font-semibold text-center">Sign in to Account</h3>

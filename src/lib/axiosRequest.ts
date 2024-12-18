@@ -9,7 +9,7 @@ const axiousResuest = async (options: AxiosRequestConfig) => {
 
   const onError = (err: AxiosError) => {
     // console.log(555, err.request.response)
-    throw err.response?.data;
+    return err.response?.data;
   };
 
   return axios(options).then(onSuucess).catch(onError);

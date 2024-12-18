@@ -51,7 +51,15 @@ const SignupPage = () => {
       }
       try {
         const result = await handleSignupFn(data);
-        // return console.log(result)
+        console.log(result?.message);
+        if (result?.success === false) {
+          alert(result?.message);
+          toast({
+            variant: "destructive",
+            description: result?.message,
+          });
+        }
+        // console.log(result);
         if (result?.success === true) {
           router.push("/login");
           toast({
@@ -120,6 +128,7 @@ const SignupPage = () => {
         />
         <div className="w-full flex justify-center">
           <Button
+            type="submit"
             disabled={isSubmitting}
             className="w-full md:w-[80%]"
             variant={"regulerBtn"}
@@ -133,7 +142,6 @@ const SignupPage = () => {
           Sign in
         </Link>
       </div>
- 
     </div>
   );
 };

@@ -9,16 +9,14 @@ import Cookies from "js-cookie";
 import useStoreLoginUserId from "@/store/useStoreLoginUserId";
 import useEmailStore from "@/store/useEmailStore";
 
-// Define the structure of the decoded token
 interface DecodedToken {
   name: string;
   email: string;
   role: string;
   id: number;
-  exp: number; // You can add other fields if necessary
+  exp: number;
 }
 
-// Response structure from the login API
 interface LoginResponse {
   data: any;
   success: boolean;
@@ -27,14 +25,15 @@ interface LoginResponse {
 
 export const useSignup = () => {
   const queryClient = useQueryClient();
-
   return useMutation({
-    mutationFn: async (body: any) =>
-      await axiousResuest({
+    mutationFn: async (body: any) => {
+      const response = await axiousResuest({
         url: `/users`,
         method: "post",
         data: body,
-      }),
+      });
+      return response;
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
     },
@@ -73,9 +72,6 @@ export const useLogin = () => {
     },
   });
 };
-
-
-
 
 // not working
 // export const useSendOtpToEmail = () => {
