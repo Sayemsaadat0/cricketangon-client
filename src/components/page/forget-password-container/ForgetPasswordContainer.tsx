@@ -4,10 +4,11 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import TextInput from "@/components/core/inputs/TextInput";
 import Button from "@/components/core/button/Button";
-import Link from "next/link";
+// import Link from "next/link";
 import useEmailStore from "@/store/useEmailStore";
 import { useForgetPassword } from "@/hooks/auth.hook";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+// import { useRouter } from "next/router";
 
 // Validation schema
 const validationSchema = Yup.object({
@@ -41,9 +42,6 @@ const ForgetPasswordContainer = () => {
         }
       },
     });
-
-  console.log(values);
-  console.log(errors);
 
   return (
     <div className="bg-white rounded-[12px] p-5 md:p-10 space-y-5">

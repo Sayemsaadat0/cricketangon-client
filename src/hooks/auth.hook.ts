@@ -7,16 +7,15 @@ import { jwtDecode } from "jwt-decode";
 import Cookies from "js-cookie";
 
 import useStoreLoginUserId from "@/store/useStoreLoginUserId";
-import useEmailStore from "@/store/useEmailStore";
+import { useAuth } from "@/context/AuthContext";
 
-// Define the structure of the decoded token
-interface DecodedToken {
+type DecodedToken = {
   name: string;
   email: string;
+  image: string; // Add this property if available in the token
   role: string;
   id: number;
-  exp: number; // You can add other fields if necessary
-}
+};
 
 // Response structure from the login API
 interface LoginResponse {
@@ -44,6 +43,7 @@ export const useSignup = () => {
 export const useLogin = () => {
   const queryClient = useQueryClient();
   const { setId } = useStoreLoginUserId();
+  const { login } = useAuth();
 
   return useMutation<LoginResponse, Error, any>({
     mutationFn: async (body: any) => {
@@ -58,10 +58,10 @@ export const useLogin = () => {
     onSuccess: (data) => {
       if (data?.accessToken) {
         try {
-          const decodedToken: DecodedToken = jwtDecode(data.accessToken);
-          console.log(decodedToken);
-          setId(decodedToken?.id);
-          Cookies.set("role", decodedToken?.role);
+          const decodedData: DecodedToken = jwtDecode(data.accessToken);
+          login(decodedData);
+          Cookies.set("authUser", JSON.stringify(decodedData));
+
           queryClient.invalidateQueries({ queryKey: ["users"] });
         } catch (error) {
           console.error("Error decoding token:", error);
@@ -73,9 +73,6 @@ export const useLogin = () => {
     },
   });
 };
-
-
-
 
 // not working
 // export const useSendOtpToEmail = () => {

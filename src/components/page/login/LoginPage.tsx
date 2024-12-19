@@ -9,8 +9,8 @@ import Link from "next/link";
 import { useLogin } from "@/hooks/auth.hook";
 // import { useStoreUser } from "@/stores/useStoreUser";
 // import { useRouter } from "next";
-import { useStoreUser } from "@/store/useStoreUser";
-import { useRouter } from "next/navigation";
+// import { useStoreUser } from "@/store/useStoreUser";
+// import { useRouter } from "next/navigation";
 import useStoreLoginUserId from "@/store/useStoreLoginUserId";
 
 // Validation schema
@@ -22,7 +22,7 @@ const validationSchema = Yup.object({
 const LoginPage = () => {
   const { mutateAsync } = useLogin(); // Handles API request
   // const setUser = useStoreUser((state) => state.setUser); // Zustand store
-  const router = useRouter();
+  // const router = useRouter();
   const { id } = useStoreLoginUserId();
   const {
     handleChange,
@@ -32,7 +32,7 @@ const LoginPage = () => {
     handleSubmit,
     isSubmitting,
     setSubmitting,
-    resetForm,
+    // resetForm,
   } = useFormik({
     initialValues: {
       email: "",
@@ -42,24 +42,16 @@ const LoginPage = () => {
     onSubmit: async (data) => {
       try {
         const result = await mutateAsync(data);
-        // return console?.log(result);
 
         if (result?.success) {
           Cookies.set("accessToken", result?.data?.accessToken, {
-            expires: 7, // Cookie expiry in days
-            // secure: process.env.NODE_ENV === "production", // Secure only in production
-            sameSite: "Strict", // Protect from CSRF
+            expires: 7,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "Strict",
           });
-
           if (Cookies?.get("role") !== "admin") {
-            
           }
-
-          // resetForm();
         }
-
-        // Optionally navigate the user
-        // router.push("/dashboard");
       } catch (err: any) {
         console.error(err);
       } finally {

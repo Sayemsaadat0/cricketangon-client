@@ -5,10 +5,7 @@ import Logo from '../logo/Logo'
 import { usePathname } from 'next/navigation';
 import { DefaultNavMenuData } from './NavMenudata';
 import Button from '../button/Button';
-import Image from 'next/image';
-// import DefaultNavbarDropdown from './DefaultNavbarDropdown';
-
-// List Items
+// import Image from 'next/image';
 export const DefaultNavMenuList = () => {
     const pathname = usePathname();
     return (
