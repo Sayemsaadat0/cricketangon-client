@@ -1,5 +1,4 @@
-import { VariantProps, cva } from 'class-variance-authority';
-import React from 'react';
+import { cva } from 'class-variance-authority';
 
 export const iconVariants = cva('', {
   variants: {
@@ -19,6 +18,6 @@ export const iconVariants = cva('', {
   },
 });
 
-interface SvgProps extends React.SVGProps<SVGSVGElement>, VariantProps<typeof iconVariants> { }
+// interface SvgProps extends React.SVGProps<SVGSVGElement>, VariantProps<typeof iconVariants> { }
 
-export type IconType = SvgProps;
+export type IconType = any;

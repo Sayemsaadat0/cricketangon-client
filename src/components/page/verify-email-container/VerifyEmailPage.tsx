@@ -28,7 +28,7 @@ const VerifyEmailPage = () => {
           setEmail(data?.email);
 
           
-          const response = await axios.post("/auth/forgot-password", {
+          const response = await axios.post("http://localhost:5000/api/v1/auth/verify-email", {
             email: data.email,
           });
 

@@ -4,26 +4,24 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import TextInput from "@/components/core/inputs/TextInput";
 import Button from "@/components/core/button/Button";
-import Cookies from "js-cookie";
 import Link from "next/link";
 import { useLogin } from "@/hooks/auth.hook";
-// import { useStoreUser } from "@/stores/useStoreUser";
-// import { useRouter } from "next";
-// import { useStoreUser } from "@/store/useStoreUser";
-// import { useRouter } from "next/navigation";
-import useStoreLoginUserId from "@/store/useStoreLoginUserId";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
-// Validation schema
+
+
+
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string().required("Password is required"),
 });
 
 const LoginPage = () => {
-  const { mutateAsync } = useLogin(); // Handles API request
-  // const setUser = useStoreUser((state) => state.setUser); // Zustand store
-  // const router = useRouter();
-  const { id } = useStoreLoginUserId();
+  const { mutateAsync } = useLogin();
+  const router = useRouter();
+  const { user } = useAuth();
+  const searchParams = useSearchParams(); 
   const {
     handleChange,
     values,
@@ -32,7 +30,6 @@ const LoginPage = () => {
     handleSubmit,
     isSubmitting,
     setSubmitting,
-    // resetForm,
   } = useFormik({
     initialValues: {
       email: "",
@@ -42,14 +39,12 @@ const LoginPage = () => {
     onSubmit: async (data) => {
       try {
         const result = await mutateAsync(data);
-
-        if (result?.success) {
-          Cookies.set("accessToken", result?.data?.accessToken, {
-            expires: 7,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "Strict",
-          });
-          if (Cookies?.get("role") !== "admin") {
+        if (result) {
+          if (user?.role === "admin") {
+            router.push("/admin/overview"); 
+          } else {
+            const redirectPath = searchParams.get("redirect") || "/"; 
+            router.push(redirectPath); 
           }
         }
       } catch (err: any) {
@@ -59,7 +54,6 @@ const LoginPage = () => {
       }
     },
   });
-  console.log(id);
   return (
     <div className="bg-white rounded-[12px] p-5 md:p-10 space-y-5">
       <h3 className="text-xl font-semibold text-center">Sign in to Account</h3>
@@ -81,9 +75,6 @@ const LoginPage = () => {
           type="text"
           error={touched.email && errors.email}
         />
-        {touched.email && errors.email && (
-          <div className="text-red-500 text-sm">{errors.email}</div>
-        )}
         <div>
           <TextInput
             className="w-full "
@@ -94,12 +85,7 @@ const LoginPage = () => {
             type="password"
             error={touched.password && errors.password}
           />
-          {touched.password && errors.password && (
-            <div className="text-red-500 text-sm">{errors.password}</div>
-          )}
-
-          <div className="flex justify-between mt-2">
-            <p>Remember Me</p>
+          <div className="flex justify-end mt-2">
             <Link
               href={"/verify-email"}
               className="hover:underline transition-all duration-300 underline-offset-4 font-semibold text-c-white-800"
