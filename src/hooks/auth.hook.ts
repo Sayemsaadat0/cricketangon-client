@@ -6,7 +6,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { jwtDecode } from "jwt-decode";
 import Cookies from "js-cookie";
 
-import useStoreLoginUserId from "@/store/useStoreLoginUserId";
+// import useStoreLoginUserId from "@/store/useStoreLoginUserId";
 import { useAuth } from "@/context/AuthContext";
 
 type DecodedToken = {
@@ -42,7 +42,7 @@ export const useSignup = () => {
 
 export const useLogin = () => {
   const queryClient = useQueryClient();
-  const { setId } = useStoreLoginUserId();
+  // const { setId } = useStoreLoginUserId();
   const { login } = useAuth();
 
   return useMutation<LoginResponse, Error, any>({

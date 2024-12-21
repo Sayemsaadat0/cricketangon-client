@@ -158,8 +158,8 @@ const ArticleForm: FC<ArticleFormType> = ({ instance, handleFormSubmit }) => {
                         </div>
 
                         <ImgUploadField
-                            width={150}
-                            height={150}
+                            // width={150}
+                            // height={150}
                             error={Boolean(errors.image) && touched.image && errors.image}
                             setValue={(x: any) => setFieldValue('image', x)}
                             value={values.image}
