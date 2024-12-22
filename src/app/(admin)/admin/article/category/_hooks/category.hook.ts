@@ -1,9 +1,18 @@
 "use client";
 
 import axiousResuest from "@/lib/axiosRequest";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-
+export const useGetCategory = () => {
+  return useQuery({
+    queryKey: ["category_list"],
+    queryFn: () =>
+      axiousResuest({
+        url: `/category`,
+        method: "get",
+      }),
+  });
+};
 
 export const useCreateCategory = () => {
   const queryClient = useQueryClient();
