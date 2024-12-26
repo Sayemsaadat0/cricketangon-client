@@ -11,6 +11,7 @@ import { ArticleAddEditFormValidation } from '@/lib/validations/article.validate
 import { articleCategoryData } from '@/data/dummy.data';
 import { TextAreaInput } from '@/components/core/inputs/TextAreaInput';
 import EditIcon from '@/components/core/icons/dashboard/EditIcon';
+import { useGetCategory } from '@/app/(admin)/admin/article/category/_hooks/category.hook';
 
 
 
@@ -27,7 +28,7 @@ const ArticleForm: FC<ArticleFormType> = ({ instance, handleFormSubmit }) => {
     const { handleChange, values, touched, errors, handleSubmit, isSubmitting, resetForm, setFieldValue } = useFormik(
         {
             initialValues: {
-                author_name: instance?.author_name || "",
+                author_name: instance?.authorName || "",
                 title: instance?.title || "",
                 category: instance?.category || "",
                 image: instance?.image || "",
@@ -39,7 +40,7 @@ const ArticleForm: FC<ArticleFormType> = ({ instance, handleFormSubmit }) => {
                 try {
                     let form_data = new FormData();
 
-                    form_data.append("author_name", data.author_name);
+                    form_data.append("author_name", data.authorName);
                     form_data.append("title", data.title);
                     form_data.append("category", data.category);
                     form_data.append("description", data.description);
@@ -75,6 +76,8 @@ const ArticleForm: FC<ArticleFormType> = ({ instance, handleFormSubmit }) => {
     );
 
     console.log(values)
+    const { data: categoryData } = useGetCategory();
+    // console.log(categoryData?.data?.data);
 
     return (
         <div className=' rounded-[12px]'>
@@ -140,13 +143,13 @@ const ArticleForm: FC<ArticleFormType> = ({ instance, handleFormSubmit }) => {
                                 <option className="" value="" disabled>
                                     Select Category
                                 </option>
-                                {articleCategoryData.map((c: any) => (
+                                {categoryData && categoryData?.data?.data.map((c: any) => (
                                     <option
                                         className="text-oc-white-900"
                                         key={c.id}
-                                        value={c.category}
+                                        value={c.id}
                                     >
-                                        {c.category}
+                                        {c.name}
                                     </option>
                                 ))}
                             </select>

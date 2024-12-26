@@ -39,6 +39,8 @@ const LoginPage = () => {
     onSubmit: async (data) => {
       try {
         const result = await mutateAsync(data);
+
+        console.log('result', result)
         if (result) {
           if (user?.role === "admin") {
             router.push("/admin/overview"); 

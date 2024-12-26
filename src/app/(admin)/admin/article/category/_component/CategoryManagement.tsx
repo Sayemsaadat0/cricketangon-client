@@ -14,7 +14,7 @@ import { ArticleType, categoryType } from "@/model/article.type";
 import Image from "next/image";
 import { FC } from "react";
 import CategoryForm from "./CategoryForm";
-import { useGetCategory } from "../_hooks/category.hook";
+import { useDeleteCategory, useGetCategory } from "../_hooks/category.hook";
 
 const CategoryManagement = () => {
   const TableColumn: DashboardTableColumn[] = [
@@ -60,8 +60,9 @@ const CategoryManagement = () => {
   type tableActionType = {
     data: ArticleType;
   };
-  const TableAction: FC<tableActionType> = ({ data }) => (
-    <div>
+  const TableAction: FC<tableActionType> = ({ data }) => {
+    const {mutateAsync} = useDeleteCategory(data?.id || "")
+    return <div>
       <DropdownMenu>
         <DropdownMenuTrigger className="text-2xl font-bold">
           <MenuIcon />
@@ -73,15 +74,16 @@ const CategoryManagement = () => {
             </div>
             <div className="hover:bg-c-violet-50 w-full p-2 ">
               <DeleteAction
-                handleDeleteSubmit={() => undefined}
-                isLoading={false}
+                handleDeleteSubmit={mutateAsync}
+                // isLoading={isDeleteing}
               />
             </div>
           </div>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
-  );
+  
+  };
 
   const { data } = useGetCategory();
   console.log(data?.data?.data);

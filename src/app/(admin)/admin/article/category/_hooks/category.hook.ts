@@ -28,3 +28,18 @@ export const useCreateCategory = () => {
     },
   });
 };
+
+export const useDeleteCategory = (id: string) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (body: any) =>
+      await axiousResuest({
+        url: `/category/${id}/`,
+        method: "delete",
+        data: body,
+      }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["category_list"] });
+    },
+  });
+};

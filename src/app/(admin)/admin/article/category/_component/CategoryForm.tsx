@@ -53,22 +53,24 @@ const CategoryForm: FC<CategoryFormType> = ({ instance }) => {
           form_data.append("image", data.image);
         }
 
-        console.log(data);
-        const result = await mutateAsync(form_data);
-        return console.log(result);
-        resetForm();
-        setOpen(!open);
+        // console.log(data);
+        // return console.log(result);
         if (instance) {
           toast({
             variant: "default",
             description: "Data Edited Successfully!",
           });
         } else {
+          const result = await mutateAsync(form_data);
+          console.log(result)
           toast({
             variant: "default",
             description: "Congratulations! New Added Successfully.",
           });
         }
+        
+        resetForm();
+        setOpen(!open);
       } catch (err: any) {
         for (const key of err.errors) {
           console.log(key);
