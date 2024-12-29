@@ -3,71 +3,73 @@
 import axiosRequest from "@/lib/axiosRequest";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-// Fetch all articles
-export const useGetArticles = () => {
+// Fetch all photos
+export const useGetPhotos = () => {
   return useQuery({
-    queryKey: ["article_list"],
+    queryKey: ["photo_list"],
     queryFn: () =>
       axiosRequest({
-        url: `/article`,
-        method: "get",
-      }),
-  });
-};
-export const useGetSingleArticle = (id: string) => {
-  return useQuery({
-    queryKey: ["article_list"],
-    queryFn: () =>
-      axiosRequest({
-        url: `/article/${id}`,
+        url: `/photo`,
         method: "get",
       }),
   });
 };
 
-// Create a new article
-export const useCreateArticle = () => {
+// Fetch a single photo by ID
+export const useGetSinglePhoto = (id: string) => {
+  return useQuery({
+    queryKey: ["photo", id],
+    queryFn: () =>
+      axiosRequest({
+        url: `/photo/${id}`,
+        method: "get",
+      }),
+  });
+};
+
+// Create a new photo
+export const useCreatePhoto = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (body: any) =>
       await axiosRequest({
-        url: `/article`,
+        url: `/photo`,
         method: "post",
         data: body,
       }),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["article_list"] });
+      queryClient.invalidateQueries({ queryKey: ["photo_list"] });
     },
   });
 };
 
-// Update an article
-export const useUpdateArticle = (id: string) => {
+// Update a photo
+export const useUpdatePhoto = (id: string) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (body: any) =>
       await axiosRequest({
-        url: `/article/${id}`,
+        url: `/photo/${id}`,
         method: "patch",
         data: body,
       }),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["article_list"] });
+      queryClient.invalidateQueries({ queryKey: ["photo_list"] });
     },
   });
 };
 
-// Delete an article
-export const useDeleteArticle = (id: string) => {
+// Delete a photo
+export const useDeletePhoto = (id: string) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async () =>
       await axiosRequest({
-        url: `/article/${id}`,
+        url: `/photo/${id}`,
         method: "delete",
       }),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["article_list"] });
+      queryClient.invalidateQueries({ queryKey: ["photo_list"] });
     },
   });
 };

@@ -14,6 +14,16 @@ export const useGetArticles = () => {
       }),
   });
 };
+export const useGetSingleArticle = (id: string) => {
+  return useQuery({
+    queryKey: ["article_list"],
+    queryFn: () =>
+      axiosRequest({
+        url: `/article/${id}`,
+        method: "get",
+      }),
+  });
+};
 
 // Create a new article
 export const useCreateArticle = () => {
@@ -38,23 +48,8 @@ export const useUpdateArticle = (id: string) => {
     mutationFn: async (body: any) =>
       await axiosRequest({
         url: `/article/${id}`,
-        method: "put",
+        method: "patch",
         data: body,
-      }),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["article_list"] });
-    },
-  });
-};
-
-// Confirm an article (publish or approve)
-export const useConfirmArticle = (id: string) => {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: async () =>
-      await axiosRequest({
-        url: `/article/confirm/${id}`,
-        method: "PATCH",
       }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["article_list"] });
@@ -68,7 +63,7 @@ export const useDeleteArticle = (id: string) => {
   return useMutation({
     mutationFn: async () =>
       await axiosRequest({
-        url: `/articles/${id}`,
+        url: `/article/${id}`,
         method: "delete",
       }),
     onSuccess: () => {
