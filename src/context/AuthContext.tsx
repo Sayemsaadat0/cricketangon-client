@@ -13,7 +13,7 @@ type User = {
   email: string;
   image: string;
   role: string;
-  id?: any
+  id?: any;
 };
 
 type AuthContextType = {
@@ -29,22 +29,21 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
-
   useEffect(() => {
     const storedUser = Cookies.get("authUser");
     if (storedUser) {
-      setUser(JSON.parse(storedUser)); 
+      setUser(JSON.parse(storedUser));
     }
   }, []);
 
   const login = (user: User) => {
     setUser(user);
-    Cookies.set("authUser", JSON.stringify(user), { expires: 7 }); 
+    Cookies.set("authUser", JSON.stringify(user), { expires: 7 });
   };
 
   const logout = () => {
     setUser(null);
-    Cookies.remove("authUser"); 
+    Cookies.remove("authUser");
   };
 
   return (
