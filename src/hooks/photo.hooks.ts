@@ -9,7 +9,7 @@ export const useGetPhotos = () => {
     queryKey: ["photo_list"],
     queryFn: () =>
       axiosRequest({
-        url: `/photo`,
+        url: `/photos`,
         method: "get",
       }),
   });
@@ -18,10 +18,10 @@ export const useGetPhotos = () => {
 // Fetch a single photo by ID
 export const useGetSinglePhoto = (id: string) => {
   return useQuery({
-    queryKey: ["photo", id],
+    queryKey: ["photos", id],
     queryFn: () =>
       axiosRequest({
-        url: `/photo/${id}`,
+        url: `/photos/${id}`,
         method: "get",
       }),
   });
@@ -33,7 +33,7 @@ export const useCreatePhoto = () => {
   return useMutation({
     mutationFn: async (body: any) =>
       await axiosRequest({
-        url: `/photo`,
+        url: `/photos`,
         method: "post",
         data: body,
       }),
@@ -49,7 +49,7 @@ export const useUpdatePhoto = (id: string) => {
   return useMutation({
     mutationFn: async (body: any) =>
       await axiosRequest({
-        url: `/photo/${id}`,
+        url: `/photos/${id}`,
         method: "patch",
         data: body,
       }),
@@ -65,7 +65,7 @@ export const useDeletePhoto = (id: string) => {
   return useMutation({
     mutationFn: async () =>
       await axiosRequest({
-        url: `/photo/${id}`,
+        url: `/photos/${id}`,
         method: "delete",
       }),
     onSuccess: () => {

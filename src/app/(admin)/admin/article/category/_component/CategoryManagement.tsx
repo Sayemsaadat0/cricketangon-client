@@ -61,28 +61,29 @@ const CategoryManagement = () => {
     data: ArticleType;
   };
   const TableAction: FC<tableActionType> = ({ data }) => {
-    const {mutateAsync} = useDeleteCategory(data?.id || "")
-    return <div>
-      <DropdownMenu>
-        <DropdownMenuTrigger className="text-2xl font-bold">
-          <MenuIcon />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="mr-20 w-[180px]">
-          <div>
-            <div className="hover:bg-c-violet-50">
-              <ArticleForm instance={data} handleFormSubmit={() => undefined} />
+    const { mutateAsync } = useDeleteCategory(data?.id || "");
+    return (
+      <div>
+        <DropdownMenu>
+          <DropdownMenuTrigger className="text-2xl font-bold">
+            <MenuIcon />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="mr-20 w-[180px]">
+            <div>
+              <div className="hover:bg-c-violet-50">
+                <ArticleForm instance={data} />
+              </div>
+              <div className="hover:bg-c-violet-50 w-full p-2 ">
+                <DeleteAction
+                  handleDeleteSubmit={mutateAsync}
+                  // isLoading={isDeleteing}
+                />
+              </div>
             </div>
-            <div className="hover:bg-c-violet-50 w-full p-2 ">
-              <DeleteAction
-                handleDeleteSubmit={mutateAsync}
-                // isLoading={isDeleteing}
-              />
-            </div>
-          </div>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
-  
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+    );
   };
 
   const { data } = useGetCategory();
