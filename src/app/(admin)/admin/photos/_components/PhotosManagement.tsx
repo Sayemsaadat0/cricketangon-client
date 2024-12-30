@@ -12,8 +12,6 @@ import EditIcon from "@/components/core/icons/dashboard/EditIcon";
 import { useGetPhotos } from "@/hooks/photo.hooks";
 
 const PhotosManagement = () => {
-  const { data, isLoading } = useGetPhotos();
-
   const TableColumn: DashboardTableColumn[] = [
     {
       title: "Title",
@@ -45,7 +43,7 @@ const PhotosManagement = () => {
       dataKey: "date",
       row: () => (
         <div className="text-w-small-regular-16 min-w-[100px] max-w-[300px]">
-          <p className="line-clamp-2">10/10/10</p>
+          <p className="line-clamp-2">{data?.created_at}</p>
         </div>
       ),
     },
@@ -81,6 +79,7 @@ const PhotosManagement = () => {
     </div>
   );
 
+  const { data, isLoading } = useGetPhotos();
   return (
     <div className="space-y-10">
       {/* Headings */}

@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { articlesData } from "@/data/dummy.data";
+import { useGetArticles } from "@/hooks/article.hooks";
 import { ArticleType } from "@/model/article.type";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,7 +30,9 @@ const ArticleManagement = () => {
               <Image
                 className="object-cover rounded-[10px] w-full h-full"
                 src={
-                  data.image || "https://placehold.co/100x100/e2e2db/red/png"
+                  data?.image
+                    ? `${process.env.NEXT_PUBLIC_IMAGE_URL}${data.image}`
+                    : "https://placehold.co/100x100/e2e2db/red/png"
                 }
                 alt={data.title || ""}
                 width={50}
@@ -100,7 +103,7 @@ const ArticleManagement = () => {
         <DropdownMenuContent className="mr-20 w-[180px]">
           <div>
             <div className="hover:bg-c-violet-50">
-              <ArticleForm instance={data} handleFormSubmit={() => undefined} />
+              <ArticleForm instance={data} />
             </div>
             <div className="hover:bg-c-violet-50 w-full p-2 ">
               <DeleteAction
@@ -114,6 +117,7 @@ const ArticleManagement = () => {
     </div>
   );
 
+  const { data, isLoading } = useGetArticles();
   return (
     <div className="space-y-10">
       {/* Headings */}
@@ -133,14 +137,14 @@ const ArticleManagement = () => {
               label="Category"
             />
           </Link>
-          <ArticleForm handleFormSubmit={() => undefined} />
+          <ArticleForm />
         </div>
       </div>
       {/* Table */}
       <DashboardTable
         columns={TableColumn}
-        isLoading={false}
-        data={articlesData || []}
+        isLoading={isLoading}
+        data={data?.data?.data || []}
       />
     </div>
   );
