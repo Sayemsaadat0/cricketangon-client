@@ -45,7 +45,7 @@ const ImgUploadField: React.FC<ImgUploadFieldProps> = ({ setValue, error, value 
 
   return (
     <div
-      className={`border-2 border-dashed border-oc-primary-1-600 dark:border-oc-black-400 rounded-[15px] min-w-[250px] min-h-[250px] max-w-[300px]`}
+      className={`border-2 border-dashed   rounded-[15px]  min-h-[250px] w-full`}
     >
       <label className="relative cursor-pointer" htmlFor="dropzone-file">
         <div className="flex items-center justify-center max-w-[500px] object-cover mx-auto">

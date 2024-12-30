@@ -13,8 +13,6 @@ import {
 } from "@/components/ui/dialog";
 import { toast } from "@/hooks/use-toast";
 import ImgUploadField from "@/components/core/inputs/ImgUploadField";
-import { ArticleAddEditFormValidation } from "@/lib/validations/article.validate";
-import { articleCategoryData } from "@/data/dummy.data";
 import { TextAreaInput } from "@/components/core/inputs/TextAreaInput";
 import EditIcon from "@/components/core/icons/dashboard/EditIcon";
 import { useGetCategory } from "@/app/(admin)/admin/article/category/_hooks/category.hook";
@@ -28,8 +26,6 @@ type ArticleFormType = {
 const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
   const [open, setOpen] = useState(false);
   const { user } = useAuth();
-  // console.log(user?.id)
-  // setFieldValue,
   const { data: categoryData } = useGetCategory();
   const { mutateAsync } = useCreateArticle();
   const {
@@ -46,7 +42,12 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
       authorName: instance?.authorName || "",
       title: instance?.title || "",
       categoryId: instance?.categoryId || 0,
-      image: instance?.image || "",
+      image: instance?.image
+        ? instance.image.startsWith("http")
+          ? instance.image
+          : `${process.env.NEXT_PUBLIC_IMAGE_URL}${instance.image}`
+        : "",
+
       description: instance?.description || "",
       userId: user?.id,
     },
@@ -57,11 +58,16 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
         const formData = new FormData();
         formData.append("authorName", data.authorName);
         formData.append("title", data.title);
-        formData.append("categoryId", String(data.categoryId));
+        formData.append("categoryId", data.categoryId);
         formData.append("description", data.description);
         formData.append("userId", String(user?.id || ""));
         if (data.image instanceof File) {
           formData.append("image", data.image);
+        } else if (data.image) {
+          const imageUrl = data.image.startsWith("http")
+            ? data.image.replace(process.env.NEXT_PUBLIC_IMAGE_URL, "")
+            : data.image;
+          formData.append("image", imageUrl);
         }
 
         if (instance) {
@@ -85,7 +91,7 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
       }
     },
   });
-  // console.log(values)
+  console.log(values)
   return (
     <div className=" rounded-[12px]">
       <Dialog open={open} onOpenChange={() => setOpen(!open)}>
@@ -100,15 +106,14 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
           <div onClick={() => setOpen(!open)}>
             <div className="hidden lg:block p-[2.5px] bg-gradient-to-tr from-cyan-400 via-c-violet-200 to-c-violet-300  rounded-full">
               <Button
-                className=""
-                variant="roundedOutlineBtn"
+                className="bg-c-violet-500 text"
                 label="Add Article"
               />
             </div>
           </div>
         )}
 
-        <DialogContent className="max-h-[80%] overflow-auto">
+        <DialogContent className="max-h-[80%] customScrollbar overflow-auto">
           <DialogHeader>
             <DialogTitle>Add New Article</DialogTitle>
             <DialogDescription></DialogDescription>
@@ -147,9 +152,9 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
               <select
                 id="categoryId"
                 name="categoryId"
-                value={values.category}
+                value={values.categoryId}  // Use categoryId here
                 onChange={(e) =>
-                  setFieldValue("categoryId", Number(e.target.value))
+                  setFieldValue("categoryId", Number(e.target.value)) // Correct categoryId
                 }
                 className="py-2 px-3 md:px-[30px] md:py-[14px] border border-c-white-600 no-arrow w-full  rounded-[10px] outline-none bg-inherit text-[14px] bg-white m-0 placeholder-text-oc-white-800 text-oc-primary-1-900"
               >
@@ -163,6 +168,7 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
                     </option>
                   ))}
               </select>
+
               {Boolean(errors.category) && touched.category && (
                 <div className="text-red-500 text-sm">
                   {typeof errors.category === "string" && errors?.category}

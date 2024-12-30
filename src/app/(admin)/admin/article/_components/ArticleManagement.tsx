@@ -12,11 +12,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { articlesData } from "@/data/dummy.data";
-import { useGetArticles } from "@/hooks/article.hooks";
 import { ArticleType } from "@/model/article.type";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
+import { useDeleteArticle, useGetArticles } from "../_hook/article.hook";
 
 const ArticleManagement = () => {
   const TableColumn: DashboardTableColumn[] = [
@@ -94,8 +94,9 @@ const ArticleManagement = () => {
   type tableActionType = {
     data: ArticleType;
   };
-  const TableAction: FC<tableActionType> = ({ data }) => (
-    <div>
+  const TableAction: FC<tableActionType> = ({ data }) => {
+    const { mutateAsync, isPending } = useDeleteArticle(data?.id || "")
+    return <div>
       <DropdownMenu>
         <DropdownMenuTrigger className="text-2xl font-bold">
           <MenuIcon />
@@ -107,15 +108,15 @@ const ArticleManagement = () => {
             </div>
             <div className="hover:bg-c-violet-50 w-full p-2 ">
               <DeleteAction
-                handleDeleteSubmit={() => undefined}
-                isLoading={false}
+                handleDeleteSubmit={mutateAsync}
+                isLoading={isPending}
               />
             </div>
           </div>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
-  );
+  };
 
   const { data, isLoading } = useGetArticles();
   return (
@@ -132,8 +133,8 @@ const ArticleManagement = () => {
         <div className="flex items-center gap-5">
           <Link href={"/admin/article/category"}>
             <Button
-              className=""
-              //   variant="roundedOutlineBtn"
+              className="font-bold "
+              variant="roundedOutlineBtn"
               label="Category"
             />
           </Link>

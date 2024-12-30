@@ -1,6 +1,5 @@
 "use client";
-import Button from "@/components/core/button/Button";
-import { articleCategoryData, articlesData } from "@/data/dummy.data";
+import {  articlesData } from "@/data/dummy.data";
 import Image from "next/image";
 import Link from "next/link";
 import React, { FC, useState } from "react";
@@ -148,12 +147,3 @@ const ArticleContainer: FC = () => {
 
 export default ArticleContainer;
 
-{
-  /* <div className="hidden lg:block p-[2.5px] bg-gradient-to-tr from-cyan-400 via-c-violet-200 to-c-violet-300  rounded-full">
-                        <Button
-                            className=""
-                            variant="roundedOutlineBtn"
-                            label="Add Article"
-                        />
-                    </div> */
-}

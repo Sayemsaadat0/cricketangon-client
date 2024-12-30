@@ -29,9 +29,8 @@ export const DefaultNavMenuList = () => {
         return (
           <div key={Math.random()}>
             <Link
-              className={`${
-                pathname === i.url && "text-c-violet-200 font-bold"
-              }`}
+              className={`${pathname === i.url && "text-c-violet-200 font-bold"
+                }`}
               href={i.url}
             >
               <p className="text-16-regular">{i.title}</p>
@@ -56,15 +55,13 @@ const DefaultNavbar = () => {
   };
   return (
     <div
-      className={`${
-        pathname === "/" && "mt-2"
-      } w-full  fixed top-0 left-0   z-30`}
+      className={`${pathname === "/" && "mt-2"
+        } w-full  fixed top-0 left-0   z-30`}
     >
       <nav className="text-white relative crick-Container">
         <div
-          className={`flex justify-between items-center bg-gradient-to-r from-c-violet-400 via-c-violet-700 to-c-violet-900 py-1.5 px-2 rounded-[20px] ${
-            pathname === "/article/:slug" && "md:rounded-b-none"
-          }`}
+          className={`flex justify-between items-center bg-gradient-to-r from-c-violet-400 via-c-violet-700 to-c-violet-900 py-1.5 px-2 rounded-[20px] ${pathname === "/article/:slug" && "md:rounded-b-none"
+            }`}
         >
           <div className="">
             <Logo />
@@ -89,34 +86,33 @@ const DefaultNavbar = () => {
               <div className="flex  items-center gap-3">
                 <DropdownMenu>
                   <DropdownMenuTrigger>
-                    {" "}
                     <Image
                       className="rounded-full"
                       src={user?.image || "/not.png"}
                       width={40}
                       height={40}
-                      alt={user?.image}
+                      alt={user?.image || ''}
                     />
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent  className="">
-                    {/* <div > */}
-                    <Link
-                      className="py-2 px-2  hover:bg-c-violet-200 "
+                  <DropdownMenuContent className="">
+
+                    <Link className="block p-2 hover:bg-c-violet-200"
                       href={`/profile/${user?.id}`}
                     >
                       Profile
                     </Link>
-                    {/* </div> */}
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>Logout</DropdownMenuItem>
+                    <div onClick={handleLogout} className="block cursor-pointer p-2 hover:bg-c-violet-200"
+                    >
+                      Logout
+                    </div>
                   </DropdownMenuContent>
                 </DropdownMenu>
 
-                <Button
+                {/* <Button
                   onClick={logout}
-                  variant={"roundedOutlineBtn"}
+                  // variant={"roundedOutlineBtn"}
                   label="Logout"
-                />
+                /> */}
               </div>
             )}
           </div>
