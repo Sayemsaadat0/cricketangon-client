@@ -28,6 +28,7 @@ type ArticleFormType = {
 const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
   const [open, setOpen] = useState(false);
   const { user } = useAuth();
+  console.log(user?.id)
   // setFieldValue,
   const { data: categoryData } = useGetCategory();
   console.log(categoryData);
@@ -46,7 +47,7 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
     initialValues: {
       authorName: instance?.authorName || "",
       title: instance?.title || "",
-      category: instance?.category || 0,
+      categoryId: instance?.categoryId || 0,
       image: instance?.image || "",
       description: instance?.description || "",
       userId: user?.id,
@@ -54,24 +55,36 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
 
     // validationSchema: ArticleAddEditFormValidation,
     onSubmit: async (data: any) => {
+    //  return  console.log("Form Data on Submit:", data); // Debugging log
+     console.log(user?.id)
       try {
-        let newData = {
-          authorName: data?.authorName,
-          title: data?.title,
-          categoryId: data?.category,
-          description: data?.description,
-          userId: user?.id,
-          image: data?.image,
-        };
+        const Formdata = {
+        ...data,
+        userId: user?.id,
+      };
+      let newData = {
+        authorName: data?.authorName || "",
+        title: data?.title || "",
+        categoryId: data?.categoryId || 0,
+        description: data?.description || 0,
+        userId: user?.id,
+        image: data?.image || "",
+      };
+
+      if (instance) {
+        console.log("Editing Article:", Formdata);
+      } else {
+        await mutateAsync(Formdata); // Ensure userId is included in the payload
+      }
 
 
+        console.log(newData)
 
-        if (instance) {
-          console.log('Hello WOrldr')
-        } else {
-          const result = await mutateAsync(newData); // Check if this works
-          console.log("Form submission triggered:", newData); // Debugging log
-        }
+        // if (instance) {
+        //   console.log('Hello WOrldr')
+        // } else {
+        //   await mutateAsync(data); 
+        // }
         // resetForm();
         // setOpen(false);
 
@@ -86,12 +99,7 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
       }
     },
   });
-
-  console.log(values);
-  console.log(categoryData?.data?.data);
-
-  console.log(errors)
-
+console.log(values)
   return (
     <div className=" rounded-[12px]">
       <Dialog open={open} onOpenChange={() => setOpen(!open)}>
@@ -151,10 +159,10 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
 
             <div>
               <select
-                id="category"
-                name="category"
+                id="categoryId"
+                name="categoryId"
                 value={values.category}
-                onChange={(e) => setFieldValue("category", Number(e.target.value))}
+                onChange={(e) => setFieldValue("categoryId", Number(e.target.value))}
                 className="py-2 px-3 md:px-[30px] md:py-[14px] border border-c-white-600 no-arrow w-full  rounded-[10px] outline-none bg-inherit text-[14px] bg-white m-0 placeholder-text-oc-white-800 text-oc-primary-1-900"
               >
                 <option className="" value="" disabled>
