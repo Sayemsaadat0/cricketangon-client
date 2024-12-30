@@ -54,46 +54,38 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
     // validationSchema: ArticleAddEditFormValidation,
     onSubmit: async (data: any) => {
       try {
-     
-      const formData = new FormData();
-      formData.append("authorName", data.authorName);
-      formData.append("title", data.title);
-      formData.append("categoryId", String(data.categoryId));
-      formData.append("description", data.description);
-      formData.append("userId", String(user?.id || ""));
-      if (data.image instanceof File) {
-        formData.append("image", data.image);
-      }
+        const formData = new FormData();
+        formData.append("authorName", data.authorName);
+        formData.append("title", data.title);
+        formData.append("categoryId", String(data.categoryId));
+        formData.append("description", data.description);
+        formData.append("userId", String(user?.id || ""));
+        if (data.image instanceof File) {
+          formData.append("image", data.image);
+        }
 
-      if (instance) {
-        console.log("Editing Article:", formData);
-      } else {
-       const result= await mutateAsync(formData); 
-       console.log(result)
-      }
-
-
-
-        // if (instance) {
-        //   console.log('Hello WOrldr')
-        // } else {
-        //   await mutateAsync(data); 
-        // }
-        // resetForm();
-        // setOpen(false);
-
-        toast({
-          variant: "default",
-          description: instance
-            ? "Data Edited Successfully!"
-            : "Congratulations! New Added Successfully.",
-        });
+        if (instance) {
+          console.log("Editing Article:", formData);
+        } else {
+          const result = await mutateAsync(formData);
+          console.log(result);
+          if (result.success) {
+            toast({
+              variant: "default",
+              description: instance
+                ? "Data Edited Successfully!"
+                : "Congratulations! New Added Successfully.",
+            });
+          }
+          resetForm();
+          setOpen(false);
+        }
       } catch (error) {
-        console.error("Form submission error:", error)
+        console.error("Form submission error:", error);
       }
     },
   });
-// console.log(values)
+  // console.log(values)
   return (
     <div className=" rounded-[12px]">
       <Dialog open={open} onOpenChange={() => setOpen(!open)}>
@@ -156,7 +148,9 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
                 id="categoryId"
                 name="categoryId"
                 value={values.category}
-                onChange={(e) => setFieldValue("categoryId", Number(e.target.value))}
+                onChange={(e) =>
+                  setFieldValue("categoryId", Number(e.target.value))
+                }
                 className="py-2 px-3 md:px-[30px] md:py-[14px] border border-c-white-600 no-arrow w-full  rounded-[10px] outline-none bg-inherit text-[14px] bg-white m-0 placeholder-text-oc-white-800 text-oc-primary-1-900"
               >
                 <option className="" value="" disabled>
