@@ -6,16 +6,16 @@ import { useQueryClient } from "@tanstack/react-query";
 import { jwtDecode } from "jwt-decode";
 import Cookies from "js-cookie";
 
-import useStoreLoginUserId from "@/store/useStoreLoginUserId";
-import useEmailStore from "@/store/useEmailStore";
+// import useStoreLoginUserId from "@/store/useStoreLoginUserId";
+import { useAuth } from "@/context/AuthContext";
 
-interface DecodedToken {
+type DecodedToken = {
   name: string;
   email: string;
+  image: string; // Add this property if available in the token
   role: string;
   id: number;
-  exp: number;
-}
+};
 
 interface LoginResponse {
   data: any;
@@ -42,7 +42,8 @@ export const useSignup = () => {
 
 export const useLogin = () => {
   const queryClient = useQueryClient();
-  const { setId } = useStoreLoginUserId();
+  // const { setId } = useStoreLoginUserId();
+  const { login } = useAuth();
 
   return useMutation<LoginResponse, Error, any>({
     mutationFn: async (body: any) => {
@@ -57,10 +58,10 @@ export const useLogin = () => {
     onSuccess: (data) => {
       if (data?.accessToken) {
         try {
-          const decodedToken: DecodedToken = jwtDecode(data.accessToken);
-          console.log(decodedToken);
-          setId(decodedToken?.id);
-          Cookies.set("role", decodedToken?.role);
+          const decodedData: DecodedToken = jwtDecode(data.accessToken);
+          login(decodedData);
+          Cookies.set("authUser", JSON.stringify(decodedData));
+
           queryClient.invalidateQueries({ queryKey: ["users"] });
         } catch (error) {
           console.error("Error decoding token:", error);

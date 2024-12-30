@@ -1,11 +1,19 @@
 "use client";
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
+import Cookies from "js-cookie";
 
 type User = {
   name: string;
   email: string;
   image: string;
   role: string;
+  id?: any;
 };
 
 type AuthContextType = {
@@ -14,13 +22,29 @@ type AuthContextType = {
   logout: () => void;
 };
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>(
+  undefined
+);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-//   console.log(user);
-  const login = (user: User) => setUser(user);
-  const logout = () => setUser(null);
+
+  useEffect(() => {
+    const storedUser = Cookies.get("authUser");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const login = (user: User) => {
+    setUser(user);
+    Cookies.set("authUser", JSON.stringify(user), { expires: 7 });
+  };
+
+  const logout = () => {
+    setUser(null);
+    Cookies.remove("authUser");
+  };
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>

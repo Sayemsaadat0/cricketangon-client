@@ -31,6 +31,7 @@
     "nextjs-toploader": "^3.7.15",
     "react": "^18",
     "react-dom": "^18",
+    "react-dropdown-select": "^4.11.4",
     "react-masonry-css": "^1.0.16",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
