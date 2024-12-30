@@ -14,7 +14,6 @@ import { useGetPhotos } from "@/hooks/photo.hooks";
 const PhotosManagement = () => {
   const { data, isLoading } = useGetPhotos();
 
-  console.log(data?.data?.data);
   const TableColumn: DashboardTableColumn[] = [
     {
       title: "Title",
