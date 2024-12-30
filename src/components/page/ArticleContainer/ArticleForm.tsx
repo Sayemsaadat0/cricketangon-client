@@ -49,6 +49,7 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
       category: instance?.category || 0,
       image: instance?.image || "",
       description: instance?.description || "",
+      userId: user?.id,
     },
 
     // validationSchema: ArticleAddEditFormValidation,
@@ -63,11 +64,16 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
           image: data?.image,
         };
 
-        console.log("Form submission triggered:", newData); // Debugging log
 
-        await mutateAsync(newData); // Check if this works
-        resetForm();
-        setOpen(false);
+
+        if (instance) {
+          console.log('Hello WOrldr')
+        } else {
+          const result = await mutateAsync(newData); // Check if this works
+          console.log("Form submission triggered:", newData); // Debugging log
+        }
+        // resetForm();
+        // setOpen(false);
 
         toast({
           variant: "default",
@@ -81,8 +87,10 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
     },
   });
 
-  //   console.log(values);
-  // console.log(categoryData?.data?.data);
+  console.log(values);
+  console.log(categoryData?.data?.data);
+
+  console.log(errors)
 
   return (
     <div className=" rounded-[12px]">
@@ -146,7 +154,7 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
                 id="category"
                 name="category"
                 value={values.category}
-                onChange={handleChange}
+                onChange={(e) => setFieldValue("category", Number(e.target.value))}
                 className="py-2 px-3 md:px-[30px] md:py-[14px] border border-c-white-600 no-arrow w-full  rounded-[10px] outline-none bg-inherit text-[14px] bg-white m-0 placeholder-text-oc-white-800 text-oc-primary-1-900"
               >
                 <option className="" value="" disabled>
