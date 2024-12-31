@@ -42,6 +42,7 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
       authorName: instance?.authorName || "",
       title: instance?.title || "",
       categoryId: instance?.categoryId || 0,
+  
       image: instance?.image
         ? instance.image.startsWith("http")
           ? instance.image
@@ -61,6 +62,7 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
         formData.append("categoryId", data.categoryId);
         formData.append("description", data.description);
         formData.append("userId", String(user?.id || ""));
+     
         if (data.image instanceof File) {
           formData.append("image", data.image);
         } else if (data.image) {
@@ -71,10 +73,10 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
         }
 
         if (instance) {
-          console.log("Editing Article:", formData);
+          // console.log("Editing Article:", formData);
         } else {
           const result = await mutateAsync(formData);
-          console.log(result);
+          // console.log(result);
           if (result.success) {
             toast({
               variant: "default",

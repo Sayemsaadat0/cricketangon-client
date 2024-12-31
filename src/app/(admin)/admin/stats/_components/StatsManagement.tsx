@@ -19,6 +19,8 @@ import { useGetStats } from "@/hooks/stats.hook";
 const StatsManagement = () => {
   const { data, isLoading } = useGetStats();
 
+  console.log(data)
+
   const TableColumn: DashboardTableColumn[] = [
     {
       title: "Title",
@@ -30,7 +32,9 @@ const StatsManagement = () => {
               <Image
                 className="object-cover rounded-[10px] w-full h-full"
                 src={
-                  data.image || "https://placehold.co/100x100/e2e2db/red/png"
+                  data?.image
+                    ? `${process.env.NEXT_PUBLIC_IMAGE_URL}${data.image}`
+                    : "https://placehold.co/100x100/e2e2db/red/png"
                 }
                 alt={data.title || ""}
                 width={50}
@@ -41,6 +45,7 @@ const StatsManagement = () => {
             <p className="line-clamp-2 text-w-paragraph-regular-20">
               {data.title}
             </p>
+            
           </div>
         </div>
       ),

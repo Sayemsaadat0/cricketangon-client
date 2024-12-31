@@ -13,9 +13,9 @@ import {
 } from "@/components/ui/dialog";
 import { toast } from "@/hooks/use-toast";
 import ImgUploadField from "@/components/core/inputs/ImgUploadField";
-import { ArticleAddEditFormValidation } from "@/lib/validations/article.validate";
-import { articleCategoryData } from "@/data/dummy.data";
-import { TextAreaInput } from "@/components/core/inputs/TextAreaInput";
+// import { ArticleAddEditFormValidation } from "@/lib/validations/article.validate";
+// import { articleCategoryData } from "@/data/dummy.data";
+// import { TextAreaInput } from "@/components/core/inputs/TextAreaInput";
 import EditIcon from "@/components/core/icons/dashboard/EditIcon";
 import { useCreatePhoto } from "@/hooks/photo.hooks";
 
@@ -38,42 +38,42 @@ const PhotosForm: FC<PhotosFormType> = ({ instance }) => {
     setFieldValue,
   } = useFormik({
     initialValues: {
-      image: instance?.image || "",
+      image: instance?.image
+        ? instance.image.startsWith("http")
+          ? instance.image
+          : `${process.env.NEXT_PUBLIC_IMAGE_URL}${instance.image}`
+        : "",
+      category: instance?.category || "regular",
     },
 
-    // validationSchema: ArticleAddEditFormValidation,
     onSubmit: async (data: any) => {
       try {
-        // Debugging: Check the form data
-        console.log("Form data before submission:", data);
+        let formData = new FormData();
+        formData.append("category", "regular");
 
-        let form_data = new FormData();
-        if (data?.image?.name) {
-          form_data.append("image", data.image);
+        if (data.image instanceof File) {
+          formData.append("image", data.image);
+        } else if (data.image) {
+          const imageUrl = data.image.startsWith("http")
+            ? data.image.replace(process.env.NEXT_PUBLIC_IMAGE_URL, "")
+            : data.image;
+          formData.append("image", imageUrl);
         }
-        form_data.append("category", "regular");
-
-        // Debugging: Check the form data before sending it
-        console.log("Form data being submitted:", form_data);
 
         if (instance) {
-          // Handling the case when it's an edit
-          resetForm();
-          setOpen(!open);
           toast({
             variant: "default",
             description: "Data Edited Successfully!",
           });
         } else {
-          // Handling the case when it's a new submit
-          await mutateAsync(form_data);
+          const result = await mutateAsync(formData);
           toast({
             variant: "default",
             description: "Congratulations! New Added Successfully.",
           });
-          resetForm();
-          setOpen(!open);
         }
+        resetForm();
+        setOpen(!open);
       } catch (err: any) {
         console.error("Error during submission:", err);
         if (err.errors) {

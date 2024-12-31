@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { toast } from "@/hooks/use-toast";
 import ImgUploadField from "@/components/core/inputs/ImgUploadField";
-import { ArticleAddEditFormValidation } from "@/lib/validations/article.validate";
+// import { ArticleAddEditFormValidation } from "@/lib/validations/article.validate";
 import { articleCategoryData } from "@/data/dummy.data";
 import { TextAreaInput } from "@/components/core/inputs/TextAreaInput";
 import EditIcon from "@/components/core/icons/dashboard/EditIcon";
@@ -41,9 +41,12 @@ const StatsForm: FC<StatsFormType> = ({ instance, handleFormSubmit }) => {
     initialValues: {
       author_name: instance?.author_name || "",
       title: instance?.title || "",
-      category: instance?.category || "",
-      image: instance?.image || "",
-      description: instance?.description || "",
+      // category: instance?.category || "",
+      image: instance?.image
+        ? instance.image.startsWith("http")
+          ? instance.image
+          : `${process.env.NEXT_PUBLIC_IMAGE_URL}${instance.image}`
+        : "", description: instance?.description || "",
     },
 
     // validationSchema: ArticleAddEditFormValidation,
@@ -56,9 +59,15 @@ const StatsForm: FC<StatsFormType> = ({ instance, handleFormSubmit }) => {
         form_data.append("title", data.title);
         form_data.append("description", data.description);
 
-        if (data?.image?.name) {
+        if (data.image instanceof File) {
           form_data.append("image", data.image);
+        } else if (data.image) {
+          const imageUrl = data.image.startsWith("http")
+            ? data.image.replace(process.env.NEXT_PUBLIC_IMAGE_URL, "")
+            : data.image;
+          form_data.append("image", imageUrl);
         }
+
         if (instance) {
           console.log("object");
           toast({
@@ -146,7 +155,7 @@ const StatsForm: FC<StatsFormType> = ({ instance, handleFormSubmit }) => {
               error={Boolean(errors.title) && touched.title && errors.title}
             />
 
-            <div>
+            {/* <div>
               <select
                 id="category"
                 name="category"
@@ -172,7 +181,7 @@ const StatsForm: FC<StatsFormType> = ({ instance, handleFormSubmit }) => {
                   {typeof errors.category === "string" && errors?.category}
                 </div>
               )}
-            </div>
+            </div> */}
 
             <ImgUploadField
               error={Boolean(errors.image) && touched.image && errors.image}
