@@ -1,8 +1,10 @@
 import DashboardIcon from '@/components/core/icons/dashboard/DashboardIcon'
+import { ArticleType } from '@/model/article.type'
 import Image from 'next/legacy/image'
 import React from 'react'
 
-const ArticleDetailsContainer = () => {
+const ArticleDetailsContainer = ({ data }: {data :ArticleType}) => {
+    console.log(data)
     return (
         <div>
             <div className='space-y-10'>

@@ -3,6 +3,7 @@ export interface ArticleType {
   author_name?: string;
   title: string;
   description: string;
+  categoryId? : number;
   image: string;
   category?: string;
 }

@@ -1,33 +1,40 @@
 "use client";
-import {  articlesData } from "@/data/dummy.data";
+// import {  articlesData } from "@/data/dummy.data";
 import Image from "next/image";
 import Link from "next/link";
 import React, { FC, useState } from "react";
 import Masonry from "react-masonry-css";
 import ArticleForm from "./ArticleForm";
 import { useGetCategory } from "@/app/(admin)/admin/article/category/_hooks/category.hook";
-import { useCreateArticle } from "@/app/(admin)/admin/article/_hook/article.hook";
+import { useCreateArticle, useGetArticles } from "@/app/(admin)/admin/article/_hook/article.hook";
+import { ArticleType } from "@/model/article.type";
 
 const ArticleContainer: FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+
 
   const { data: categoryData, isLoading: isCategoryLoading } = useGetCategory();
   // console.log(categoryData?.data?.data);
+  const { data: articlesData, isLoading } = useGetArticles();
+  // return console.log(articlesData?.data?.data)
 
   const filteredArticles = selectedCategory
-    ? articlesData.filter((article) => article.category === selectedCategory)
-    : articlesData;
+    ? articlesData?.data?.data?.filter((article: ArticleType) => article?.categoryId === selectedCategory)
+    : articlesData?.data?.data;
 
   const handleContextMenu = (e: React.MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
   };
 
-  const handleCategoryClick = (category: string) => {
-    // console.log(category)
+  const handleCategoryClick = (category: number) => {
     setSelectedCategory((prevCategory) =>
       prevCategory === category ? null : category
     );
   };
+
+  /* 
+      
+  */
 
   const breakpointColumnsObj = {
     default: 3,
@@ -69,19 +76,17 @@ const ArticleContainer: FC = () => {
           categoryData?.data?.data.map((i: any) => (
             <div
               key={Math.random()}
-              className={`relative min-w-[100px] rounded-[20px] group overflow-hidden cursor-pointer ${
-                selectedCategory === i?.id ? "ring-2 ring-violet-600" : ""
-              }`}
+              className={`relative min-w-[100px] rounded-[20px] group overflow-hidden cursor-pointer ${selectedCategory === i?.id ? "ring-2 ring-violet-600" : ""
+                }`}
               onClick={() => handleCategoryClick(i?.id)}
             >
               <div
                 className="relative overflow-hidden w-40 h-16 rounded-[20px] bg-cover blur-[2px] bg-center"
                 style={{
-                  backgroundImage: `url(${
-                    i?.image
-                      ? `${process.env.NEXT_PUBLIC_IMAGE_URL}${i?.image}`
-                      : "https://placehold.co/100x100/e2e2db/red/png"
-                  })`,
+                  backgroundImage: `url(${i?.image
+                    ? `${process.env.NEXT_PUBLIC_IMAGE_URL}${i?.image}`
+                    : "https://placehold.co/100x100/e2e2db/red/png"
+                    })`,
                 }}
               ></div>
 
@@ -102,15 +107,13 @@ const ArticleContainer: FC = () => {
           </p>
           <ArticleForm />
         </div>
-
-        {/*  */}
         <div>
           <Masonry
             breakpointCols={breakpointColumnsObj}
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
           >
-            {filteredArticles.map((i) => (
+            {!isLoading && filteredArticles && filteredArticles?.map((i: ArticleType) => (
               <div
                 key={Math.random()}
                 className="relative overflow-hidden rounded-[20px] group"
@@ -119,7 +122,7 @@ const ArticleContainer: FC = () => {
                   <div className="relative overflow-hidden">
                     <Image
                       src={
-                        i?.image ||
+                        `${process.env.NEXT_PUBLIC_IMAGE_URL}${i.image}` ||
                         "https://i.pinimg.com/564x/cd/a8/3c/cda83c0eee224d460c926479f224ec3e.jpg"
                       }
                       alt={`Placeholder`}
@@ -140,6 +143,8 @@ const ArticleContainer: FC = () => {
             ))}
           </Masonry>
         </div>
+        {/*  */}
+
       </div>
     </div>
   );

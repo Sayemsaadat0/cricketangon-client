@@ -9,7 +9,6 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { articlesData } from "@/data/dummy.data";
 import { ArticleType } from "@/model/article.type";
 import Image from "next/image";
 import { FC } from "react";
@@ -50,17 +49,6 @@ const StatsManagement = () => {
         </div>
       ),
     },
-    // {
-    //   title: "Category",
-    //   dataKey: "category",
-    //   row: (data: ArticleType) => (
-    //     <div>
-    //       <p className="line-clamp-1 bg-oc-primary-4-100 w-fit px-2 rounded-full  text-black">
-    //         {data.category}
-    //       </p>
-    //     </div>
-    //   ),
-    // },
     {
       title: "Description",
       dataKey: "description",

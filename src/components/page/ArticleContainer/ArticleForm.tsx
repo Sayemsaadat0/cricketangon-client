@@ -202,7 +202,7 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
             <div className="w-full flex justify-center">
               <Button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !user?.id}
                 className="w-full"
                 variant={"regulerBtn"}
                 label={isSubmitting ? "Publishing.." : "Publish"}
