@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { notFound, useRouter } from "next/navigation";
 import { useAuth } from "./AuthContext";
 
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
@@ -9,7 +9,7 @@ const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (!loading && (!user || user.role !== "admin")) {
-      router.replace("/not-authorized");
+      notFound()
     }
   }, [user, loading, router]);
 
