@@ -93,7 +93,6 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
       }
     },
   });
-  console.log(values)
   return (
     <div className=" rounded-[12px]">
       <Dialog open={open} onOpenChange={() => setOpen(!open)}>

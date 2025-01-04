@@ -118,7 +118,7 @@ const ArticleContainer: FC = () => {
                 key={Math.random()}
                 className="relative overflow-hidden rounded-[20px] group"
               >
-                <Link href={"/article/fdasdsad"} className=" ">
+                <Link href={`/article/${i.id}`} className=" ">
                   <div className="relative overflow-hidden">
                     <Image
                       src={

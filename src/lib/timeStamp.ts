@@ -21,3 +21,16 @@ export function formatTimestamp(originalTimestamp: any) {
     return `${day} ${month} ${year}`;
   }
   
+
+
+
+  export function formatDateToReadable(dateString : any) {
+    const date = new Date(dateString);
+    
+    const day = date.getDate();
+    const month = date.toLocaleString("default", { month: "long" }); // Full month name
+    const year = date.getFullYear();
+  
+    return `${day} ${month} ${year}`;
+  }
+  
