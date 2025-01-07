@@ -9,13 +9,11 @@ interface Props {
 const page = async ({ params }: Props) => {
   const { slug } = params;
 
-  console.log(slug);
   try {
     const data = await axiosRequest({
       url: `/stats/${slug}/`,
       method: "get",
     });
-    console.log("Fetched data:", data);
 
     return (
       <div className="crick-Container relative  ">

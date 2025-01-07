@@ -11,7 +11,6 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { articlesData } from "@/data/dummy.data";
 import { ArticleType } from "@/model/article.type";
 import Image from "next/image";
 import Link from "next/link";
@@ -53,7 +52,7 @@ const ArticleManagement = () => {
       row: (data: ArticleType) => (
         <div>
           <p className="line-clamp-1 bg-oc-primary-4-100 w-fit px-2 rounded-full  text-black">
-            {data.category}
+            {data?.category}
           </p>
         </div>
       ),
@@ -64,7 +63,7 @@ const ArticleManagement = () => {
       row: (data: ArticleType) => (
         <div>
           <p className="line-clamp-2  w-fit px-1 rounded-full text-xl text-oc-primary-2-500 dark:text-oc-primary-2-300">
-            {data.description || "N/A"} Years
+            {data?.description || "N/A"}
           </p>
         </div>
       ),
@@ -75,7 +74,15 @@ const ArticleManagement = () => {
       dataKey: "date",
       row: () => (
         <div className="text-w-small-regular-16 min-w-[100px] max-w-[300px]">
-          <p className="line-clamp-2">10/10/10</p>
+          <p className="line-clamp-2">
+            {data.created_at
+              ? new Date(data.created_at).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })
+              : "N/A"}
+          </p>
         </div>
       ),
     },
@@ -95,30 +102,33 @@ const ArticleManagement = () => {
     data: ArticleType;
   };
   const TableAction: FC<tableActionType> = ({ data }) => {
-    const { mutateAsync, isPending } = useDeleteArticle(data?.id || "")
-    return <div>
-      <DropdownMenu>
-        <DropdownMenuTrigger className="text-2xl font-bold">
-          <MenuIcon />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="mr-20 w-[180px]">
-          <div>
-            <div className="hover:bg-c-violet-50">
-              <ArticleForm instance={data} />
+    const { mutateAsync, isPending } = useDeleteArticle(data?.id || "");
+    return (
+      <div>
+        <DropdownMenu>
+          <DropdownMenuTrigger className="text-2xl font-bold">
+            <MenuIcon />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="mr-20 w-[180px]">
+            <div>
+              <div className="hover:bg-c-violet-50">
+                <ArticleForm instance={data} />
+              </div>
+              <div className="hover:bg-c-violet-50 w-full p-2 ">
+                <DeleteAction
+                  handleDeleteSubmit={mutateAsync}
+                  isLoading={isPending}
+                />
+              </div>
             </div>
-            <div className="hover:bg-c-violet-50 w-full p-2 ">
-              <DeleteAction
-                handleDeleteSubmit={mutateAsync}
-                isLoading={isPending}
-              />
-            </div>
-          </div>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+    );
   };
 
   const { data, isLoading } = useGetArticles();
+
   return (
     <div className="space-y-10">
       {/* Headings */}

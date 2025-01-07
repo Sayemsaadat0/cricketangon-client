@@ -3,7 +3,6 @@ import { formatDateToReadable } from "@/lib/timeStamp";
 import Image from "next/legacy/image";
 
 const ArticleDetailsContainer = ({ data }: { data: any }) => {
-  console.log({ data });
   return (
     <div>
       <div className="space-y-10">
