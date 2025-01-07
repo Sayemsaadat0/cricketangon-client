@@ -3,13 +3,11 @@ import DeleteAction from "@/components/core/DeleteAction";
 import DashboardTable, {
   DashboardTableColumn,
 } from "@/components/core/table/DashboardTable";
-import { articlesData } from "@/data/dummy.data";
+import { useGetPhotos } from "@/hooks/photo.hooks";
 import { ArticleType } from "@/model/article.type";
 import Image from "next/image";
 import { FC } from "react";
 import PhotosForm from "./PhotosForm";
-import EditIcon from "@/components/core/icons/dashboard/EditIcon";
-import { useGetPhotos } from "@/hooks/photo.hooks";
 
 const PhotosManagement = () => {
   const TableColumn: DashboardTableColumn[] = [
@@ -41,9 +39,13 @@ const PhotosManagement = () => {
     {
       title: "Date",
       dataKey: "date",
-      row: () => (
+      row: (data: ArticleType) => (
         <div className="text-w-small-regular-16 min-w-[100px] max-w-[300px]">
-          <p className="line-clamp-2">{data?.created_at}</p>
+          <p className="line-clamp-2">
+            {data.created_at
+              ? new Date(data.created_at).toLocaleDateString()
+              : "N/A"}
+          </p>
         </div>
       ),
     },
@@ -80,6 +82,7 @@ const PhotosManagement = () => {
   );
 
   const { data, isLoading } = useGetPhotos();
+
   return (
     <div className="space-y-10">
       {/* Headings */}
@@ -87,7 +90,7 @@ const PhotosManagement = () => {
         <div className="relative">
           <div className="absolute z-20 left-2 -top-2 w-7 h-7 lg:w-10 lg:h-10 rounded-full bg-c-violet-100 blur-sm"></div>
           <div className="absolute z-20 -left-4 w-7 h-7 lg:w-10 lg:h-10 rounded-full bg-cyan-200 blur-sm  "></div>
-          <p className="text-4xl font-semibold z-30 relative">{"Stats List"}</p>
+          <p className="text-4xl font-semibold z-30 relative">{"Photo List"}</p>
         </div>
         <div>
           <PhotosForm />

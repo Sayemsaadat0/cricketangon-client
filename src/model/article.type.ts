@@ -3,9 +3,10 @@ export interface ArticleType {
   author_name?: string;
   title: string;
   description: string;
-  categoryId? : number;
+  categoryId?: number;
   image: string;
   category?: string;
+  created_at?: string;
 }
 
 export interface categoryType {

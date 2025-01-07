@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
