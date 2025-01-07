@@ -1,9 +1,9 @@
 "use client";
-import React, { FC, useState } from "react";
 import { useFormik } from "formik";
+import { FC, useState } from "react";
 // import * as Yup from 'yup';
-import TextInput from "@/components/core/inputs/TextInput";
 import Button from "@/components/core/button/Button";
+import ImgUploadField from "@/components/core/inputs/ImgUploadField";
 import {
   Dialog,
   DialogContent,
@@ -12,7 +12,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { toast } from "@/hooks/use-toast";
-import ImgUploadField from "@/components/core/inputs/ImgUploadField";
 // import { ArticleAddEditFormValidation } from "@/lib/validations/article.validate";
 // import { articleCategoryData } from "@/data/dummy.data";
 // import { TextAreaInput } from "@/components/core/inputs/TextAreaInput";
@@ -49,7 +48,7 @@ const PhotosForm: FC<PhotosFormType> = ({ instance }) => {
     onSubmit: async (data: any) => {
       try {
         let formData = new FormData();
-        formData.append("category", "regular");
+        formData.append("category", data.category);
 
         if (data.image instanceof File) {
           formData.append("image", data.image);
@@ -135,6 +134,28 @@ const PhotosForm: FC<PhotosFormType> = ({ instance }) => {
               setValue={(x: any) => setFieldValue("image", x)}
               value={values.image}
             />
+            {/* Category Select Field */}
+            <div className="flex flex-col space-y-2">
+              <label
+                htmlFor="category"
+                className="text-sm font-medium text-gray-700"
+              >
+                Category
+              </label>
+              <select
+                id="category"
+                name="category"
+                value={values.category}
+                onChange={handleChange}
+                className="border border-gray-300 rounded-[8px] p-2.5 "
+              >
+                <option value="regular">Regular</option>
+                <option value="moment">Moment</option>
+              </select>
+              {/* {errors.category && touched.category && (
+                <p className="text-sm text-red-500">{errors.category}</p>
+              )} */}
+            </div>
 
             <div className="w-full flex justify-center">
               <Button
