@@ -1,7 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface TImageSliderProps {
@@ -61,24 +60,6 @@ const ImageSlider = ({
           />
         ))}
       </div>
-
-      {/* Navigation Arrows */}
-      <button
-        onClick={() =>
-          setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
-        }
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full"
-        aria-label="Previous slide"
-      >
-        <ArrowLeft />
-      </button>
-      <button
-        onClick={() => setCurrentIndex((prev) => (prev + 1) % images.length)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full"
-        aria-label="Next slide"
-      >
-        <ArrowRight />
-      </button>
     </div>
   );
 };
