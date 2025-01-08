@@ -19,7 +19,7 @@ const HomeContainer = () => {
             </div>
             <div className=" group-hover:scale-105 duration-300  ">
               <ImageSlider
-                autoPlayInterval={3500}
+                autoPlayInterval={5000}
                 className="object-cover w-full h-full rounded-[20px]"
                 images={["/2.png", "/2.png", "/2.png"]}
               ></ImageSlider>
@@ -27,7 +27,7 @@ const HomeContainer = () => {
           </div>
         </Link>
       </div>
-      <div className="row-span-3">
+      <Link href={'/article'}  className="block row-span-3">
         <div className=" w-full bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] rounded-[20px] space-y-6 group hover:bg-c-violet-600 duration-300">
           <div className="w-full  group-hover:scale-105 duration-300  ">
             <ImageSlider
@@ -43,7 +43,7 @@ const HomeContainer = () => {
             /> */}
           </div>
         </div>
-      </div>
+      </Link>
       <div className="w-full row-span-1 lg:max-w-[300px]">
         <Link
           href={"/photos"}

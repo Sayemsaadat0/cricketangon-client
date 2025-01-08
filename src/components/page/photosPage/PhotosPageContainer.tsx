@@ -150,21 +150,19 @@ const PhotosPageContainer = () => {
         <div className="flex gap-2">
           <button
             onClick={() => setViewMode("masonry")}
-            className={`p-2 rounded-full ${
-              viewMode === "masonry"
+            className={`p-2 rounded-full ${viewMode === "masonry"
                 ? "bg-purple-600 text-white"
                 : "bg-gray-200 text-gray-600"
-            }`}
+              }`}
           >
             <LayoutGrid size={20} />
           </button>
           <button
             onClick={() => setViewMode("grid")}
-            className={`p-2 rounded-full ${
-              viewMode === "grid"
+            className={`p-2 rounded-full ${viewMode === "grid"
                 ? "bg-purple-600 text-white"
                 : "bg-gray-200 text-gray-600"
-            }`}
+              }`}
           >
             <Grid size={20} />
           </button>
@@ -176,21 +174,19 @@ const PhotosPageContainer = () => {
       <div className="block lg:hidden">
         <div className="space-x-3 mb-4">
           <button
-            className={`${
-              activeTab === "regular"
+            className={`${activeTab === "regular"
                 ? "text-white bg-purple-600 px-3 py-1 rounded-full"
                 : "text-gray-500 bg-gray-200 px-2 py-1 rounded-full"
-            }`}
+              }`}
             onClick={() => setActiveTab("regular")}
           >
             General
           </button>
           <button
-            className={`${
-              activeTab === "moment"
+            className={`${activeTab === "moment"
                 ? "text-white bg-purple-600 px-3 py-1 rounded-full"
                 : "text-gray-500 bg-gray-300 px-2 py-1 rounded-full"
-            }`}
+              }`}
             onClick={() => setActiveTab("moment")}
           >
             Moments
@@ -205,25 +201,30 @@ const PhotosPageContainer = () => {
             activeTab === "regular" ? "General" : "Cricketangon Special Moments"
           }
           viewMode={viewMode}
+
         />
       </div>
 
       {/* Desktop view showing both galleries */}
       <div className="hidden lg:flex gap-10">
-        <Gallery
-          data={photos}
-          category="regular"
-          breakpointColumnsObj={breakpointColumnsObj}
-          title="General"
-          viewMode={viewMode}
-        />
-        <Gallery
-          data={photos}
-          category="moment"
-          breakpointColumnsObj={breakpointColumnsObj}
-          title="Cricketangon Special Moments"
-          viewMode={viewMode}
-        />
+        <div className="w-full md:w-1/2">
+          <Gallery
+            data={photos}
+            category="regular"
+            breakpointColumnsObj={breakpointColumnsObj}
+            title="General"
+            viewMode={viewMode}
+          />
+        </div>
+        <div className="w-full md:w-1/2">
+          <Gallery
+            data={photos}
+            category="moment"
+            breakpointColumnsObj={breakpointColumnsObj}
+            title="Cricketangon Special Moments"
+            viewMode={viewMode}
+          />
+        </div>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import DeleteAction from "@/components/core/DeleteAction";
 import DashboardTable, {
   DashboardTableColumn,
 } from "@/components/core/table/DashboardTable";
-import { useGetPhotos } from "@/hooks/photo.hooks";
+import { useDeletePhoto, useGetPhotos } from "@/hooks/photo.hooks";
 import { ArticleType } from "@/model/article.type";
 import Image from "next/image";
 import { FC } from "react";
@@ -64,8 +64,9 @@ const PhotosManagement = () => {
   type tableActionType = {
     data: ArticleType;
   };
-  const TableAction: FC<tableActionType> = ({ data }) => (
-    <div>
+  const TableAction: FC<tableActionType> = ({ data }) => {
+    const { mutateAsync, isPending } = useDeletePhoto(data?.id || '')
+    return <div>
       <div className="flex w-fit gap-1">
         <div>
           <PhotosForm instance={data} />
@@ -73,14 +74,13 @@ const PhotosManagement = () => {
         <div className=" w-full ">
           <DeleteAction
             isOnlyIcon
-            handleDeleteSubmit={() => undefined}
-            isLoading={false}
+            handleDeleteSubmit={mutateAsync}
+            isLoading={isPending}
           />
         </div>
       </div>
     </div>
-  );
-
+  }
   const { data, isLoading } = useGetPhotos();
 
   return (
