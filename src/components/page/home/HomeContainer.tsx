@@ -19,8 +19,8 @@ const HomeContainer = () => {
             </div>
             <div className=" group-hover:scale-105 duration-300  ">
               <ImageSlider
-                autoPlayInterval={5000}
-                className="object-cover w-full h-full rounded-[20px]"
+             autoPlayInterval={10000}
+             className="object-cover w-full h-full rounded-[20px]"
                 images={["/2.png", "/2.png", "/2.png"]}
               ></ImageSlider>
             </div>
@@ -31,6 +31,7 @@ const HomeContainer = () => {
         <div className=" w-full bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] rounded-[20px] space-y-6 group hover:bg-c-violet-600 duration-300">
           <div className="w-full  group-hover:scale-105 duration-300  ">
             <ImageSlider
+             autoPlayInterval={10000}
               className="object-cover min-h-[620px] w-full rounded-[20px]"
               images={["/taskin.jpeg", "/taskin.jpeg", "/taskin.jpeg"]}
             ></ImageSlider>
@@ -51,8 +52,8 @@ const HomeContainer = () => {
         >
           <div className="w-full h-full max-h-[170px] rounded-[20px] overflow-hidden bg-gradient-to-t from-[#1B023B80] to-[#7E19A6]">
             <ImageSlider
-              autoPlayInterval={4000}
-              className="object-cover w-full h-full rounded-[20px]"
+             autoPlayInterval={10000}
+             className="object-cover w-full h-full rounded-[20px]"
               images={[
                 "https://i.pinimg.com/736x/67/1b/f4/671bf4d5900aa9dc4e4f4fd0622c9233.jpg",
                 "https://i.pinimg.com/736x/67/1b/f4/671bf4d5900aa9dc4e4f4fd0622c9233.jpg",
@@ -67,8 +68,9 @@ const HomeContainer = () => {
         <div className="space-y-6 duration-300 group  flex items-center">
           <div className="w-full h-full  overflow-hidden">
             <Image
-              className="object-cover w-full h-full "
-              src={"/score.png"}
+              className="object-cover w-full rounded-[20px] h-full "
+              src={"/coming.png"}
+              // src={"/score.png"}
               alt="fantasy"
               width={350}
               height={200}
@@ -89,8 +91,8 @@ const HomeContainer = () => {
             </div>
             <div className="w-full h-full lg:max-w-[350px] group-hover:scale-105 duration-300 ">
               <ImageSlider
-                autoPlayInterval={6000}
-                className="object-cover w-full h-full rounded-[20px]"
+             autoPlayInterval={10000}
+             className="object-cover w-full h-full rounded-[20px]"
                 images={["/pick.png", "/pick.png", "/pick.png"]}
               ></ImageSlider>
             </div>
@@ -104,8 +106,8 @@ const HomeContainer = () => {
         >
           <div className="h-full group-hover:scale-105 duration-300">
             <ImageSlider
-              autoPlayInterval={4000}
-              className="object-cover w-full h-full rounded-[20px]"
+             autoPlayInterval={10000}
+             className="object-cover w-full h-full rounded-[20px]"
               images={["/stats.png", "/stats.png", "/stats.png"]}
             ></ImageSlider>
           </div>
@@ -116,8 +118,8 @@ const HomeContainer = () => {
         <div className=" bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] p-5 rounded-[20px]  duration-300 group hover:bg-c-violet-600 flex flex-col lg:flex-row  md:items-center justify-between  w-full gap-10 ">
           <div className="w-full h-full md:shrink-0 md:inline-block lg:max-w-[148px] md:max-h-[148px] group-hover:scale-105 duration-300 aspect-square ">
             <ImageSlider
-              autoPlayInterval={4000}
-              className="object-cover w-full h-full rounded-[20px]"
+             autoPlayInterval={10000}
+             className="object-cover w-full h-full rounded-[20px]"
               images={[
                 "https://i.pinimg.com/736x/eb/11/5e/eb115e0535fa1a65a92ab738ef6b1333.jpg",
                 "https://i.pinimg.com/736x/eb/11/5e/eb115e0535fa1a65a92ab738ef6b1333.jpg",
@@ -128,9 +130,9 @@ const HomeContainer = () => {
 
           <div className="w-full flex  flex-col justify-center items-center gap-2">
             <h3 className="text-[32px] text-left ">Shop Now</h3>
-            <div className=" p-[1.5px] bg-gradient-to-tr from-cyan-400 via-c-violet-200 to-c-violet-300  rounded-full w-fit">
+            <div className=" p-[1.5px] w-full bg-gradient-to-tr from-cyan-400 via-c-violet-200 to-c-violet-300  rounded-full ">
               <Link href={"/login"}>
-                <Button className="" variant="roundedBtn" label="Sign in" />
+                <Button className="w-full" variant="roundedBtn" label="Sign in" />
               </Link>
             </div>
           </div>
