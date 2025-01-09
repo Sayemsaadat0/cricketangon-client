@@ -15,16 +15,16 @@ const SearchInput: FC<SearchInputProps> = ({ handleSearchSubmit }) => {
         }
     };
     return (
-        <div className="flex w-full min-w-40 border border-gray-300 rounded-[6px] overflow-hidden">
-            <div className="flex items-center rounded-xl relative ">
+        <div className="">
+            <div className="flex justify-between border border-c-white-700 overflow-hidden rounded-[10px]">
                 <input
                     onChange={handleSearch}
-                    className="py-2 px-2 focus:right-0 focus:outline-none"
+                    className="py-2 px-2 focus:right-0 focus:outline-none w-full"
                     id="Search"
                     placeholder="Search"
                 />
-                <div className='p-2 '>
-                    <SearchIcon  />
+                <div className='p-2 text-c-white-700'>
+                    <SearchIcon />
                 </div>
             </div>
         </div>

@@ -83,8 +83,8 @@ const ProfileForm: FC<profileType> = ({ instance, handleDataSubmit }) => {
         <div className='flex flex-col md:flex-row justify-center gap-10'>
           <div >
             <ImgUploadField
-              width={150}
-              height={150}
+              // width={150}
+              // height={150}
               error={Boolean(errors.thumbnail) && touched.thumbnail && errors.thumbnail}
               setValue={(x: any) => setFieldValue('thumbnail', x)}
               value={values.thumbnail}

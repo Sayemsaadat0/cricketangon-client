@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
-import '../styles/globals.css'
+import "../styles/globals.css";
+import TanStackQueryProvider from "@/provider/TanstacQueryProvide";
+import { AuthProvider } from "@/context/AuthContext";
 
 // const inter = Inter({ subsets: ["latin"] });
 const urbanist = Urbanist({ subsets: ["latin"] }); // Import Urbanist font
@@ -17,7 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={urbanist.className}>{children}</body>
+      <body className={urbanist.className}>
+        <AuthProvider>
+          <TanStackQueryProvider>{children}</TanStackQueryProvider>
+        </AuthProvider>
+      </body>
     </html>
   );
 }

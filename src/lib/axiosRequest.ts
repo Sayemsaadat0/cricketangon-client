@@ -1,6 +1,6 @@
-import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 
-axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const axiousResuest = async (options: AxiosRequestConfig) => {
   const onSuucess = (res: AxiosResponse) => {
@@ -9,7 +9,7 @@ const axiousResuest = async (options: AxiosRequestConfig) => {
 
   const onError = (err: AxiosError) => {
     // console.log(555, err.request.response)
-    throw err.response?.data;
+    return err.response?.data;
   };
 
   return axios(options).then(onSuucess).catch(onError);

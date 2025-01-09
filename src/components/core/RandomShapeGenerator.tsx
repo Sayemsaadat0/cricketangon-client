@@ -29,12 +29,12 @@ const RandomShapeGenerator = () => {
 
     return (
         <div className="">
-            <div
+            <div className="hidden md:block md:w-[85%] xl:w-[100%] h-[650px] mx-auto"
                 style={{
                     borderRadius: shape.borderRadius,
                     backgroundColor: color,
-                    width: "100%", 
-                    height: "650px", 
+                    // width: "100%", 
+                    // height: "650px", 
                 }}
             >
             </div>

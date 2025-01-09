@@ -9,7 +9,7 @@ export const buttonVariants = cva('leading-none text-white transition-all disabl
             roundedBtn:
                 'rounded-[200px] text-xs px-[18px] py-[10px] md:text-[15px] bg-c-violet-500 hover:bg-c-violet-800 md:px-6 md:py-3 xl:px-8 xl:py-3.5 xl:text-[16px] ',
             roundedOutlineBtn:
-                'rounded-[200px] border border-c-violet-500 text-c-violet-500 text-xs px-[18px] py-[10px] md:text-[15px] bg-white  hover:bg-c-violet-100  md:px-6 md:py-3 xl:px-8 xl:py-3.5 xl:text-[16px]',
+                'rounded-[200px] border-2 border-c-violet-500 text-c-violet-500 text-xs px-[18px] py-[10px] md:text-[15px] bg-none  hover:border-c-violet-100 text-c-violet-100  text-c-violet-500 md:px-6 md:py-3 xl:px-8 xl:py-3.5 xl:text-[16px]',
             regulerBtn:
                 'rounded-[10px] bg-c-violet-500 hover:bg-c-violet-800 text-xs px-[18px] py-[10px] md:text-[15px] md:px-6 md:py-3 xl:px-8 xl:py-3.5 xl:text-[16px]',
             smallBtn:
