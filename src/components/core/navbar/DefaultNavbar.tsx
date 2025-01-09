@@ -12,8 +12,11 @@ import { DefaultNavMenuData } from "./NavMenudata";
 
 import { useAuth } from "@/context/AuthContext";
 import Image from "next/image";
+import HamburgerMenu from "./HamburgerMenu";
+import { DefaultNavMenuList } from "./DefaultNavMenuList";
 
 // import Image from 'next/image';
+<<<<<<< HEAD
 export const DefaultNavMenuList = () => {
   const pathname = usePathname();
   return (
@@ -39,6 +42,9 @@ export const DefaultNavMenuList = () => {
     </div>
   );
 };
+=======
+
+>>>>>>> 8fd2315b906693ea7381cd2c2a96b8113fb2b24d
 
 // Default Component
 const DefaultNavbar = () => {
@@ -72,14 +78,15 @@ const DefaultNavbar = () => {
           </div>
           <div className="flex  items-center gap-2 md:gap-[10px] cursor-pointer xl:gap-5 justify-end">
             {/* <DefaultNavbarDropdown /> */}
-            <div className="lg:hidden pl-2 ">
-              {/* <DefaultHambuergerMenu /> */}
+            <div className="block lg:hidden">
+              <HamburgerMenu />
             </div>
             {user === null ? (
               <div className="hidden lg:block p-[2.5px] bg-gradient-to-tr from-cyan-400 via-c-violet-200 to-c-violet-300  rounded-full">
                 <Link href={"/login"}>
                   <Button className="" variant="roundedBtn" label="Sign in" />
                 </Link>
+               
               </div>
             ) : (
               <div className="flex  items-center gap-3">

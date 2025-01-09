@@ -11,7 +11,7 @@ const StatsSidebar = () => {
             <div className="relative overflow-hidden">
               <Image
                 src={
-                  "https://i.pinimg.com/736x/d8/17/e5/d817e55f8d9a0f8757d1e2033b199a0a.jpg"
+                  "/Block4.png"
                 }
                 alt={`Placeholder`}
                 width={390}
@@ -29,11 +29,11 @@ const StatsSidebar = () => {
         </div>
 
         <div className="relative overflow-hidden rounded-[20px] group max-w-[300px] max-h-[420px]">
-          <Link href={`/stats/pitch-map`}>
+          <Link href={`/stats/wagon-wheel`}>
             <div className="relative overflow-hidden">
               <Image
                 src={
-                  "https://i.pinimg.com/736x/d8/17/e5/d817e55f8d9a0f8757d1e2033b199a0a.jpg"
+                  "/Block5.png"
                 }
                 alt={`Placeholder`}
                 width={390}
@@ -44,7 +44,7 @@ const StatsSidebar = () => {
             </div>
             <div className="text-white transition-all duration-500 p-3 absolute w-full h-full  bottom-0 bg-gradient-to-t from-black/60 space-y-5 to-black/10 group-hover:bg-gradient-to-t group-hover:from-c-violet-900/80 group-hover:to-transparent">
               <p className="truncate text-2xl font-bold h-full flex items-end">
-                Pitch Map
+                Wagon Wheel
               </p>
             </div>
           </Link>
@@ -52,7 +52,7 @@ const StatsSidebar = () => {
       </div>
 
       {/* Small Device */}
-      <div className="block lg:hidden">
+      {/* <div className="block lg:hidden">
         <div className="flex gap-5 items-center ">
           <div className="relative min-w-[100px] rounded-[20px] group overflow-hidden">
             <Link href={"/stats/pitch-map"} className={` `}>
@@ -83,7 +83,7 @@ const StatsSidebar = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
