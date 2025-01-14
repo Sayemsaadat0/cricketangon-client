@@ -6,7 +6,7 @@ import TextInput from "@/components/core/inputs/TextInput";
 import { toast } from "@/hooks/use-toast";
 import { useUpdateUser } from "@/hooks/users.hooks";
 import { useFormik } from "formik";
-import { FC, useEffect } from "react";
+import { FC } from "react";
 
 type ProfileType = {
   instance?: {
@@ -66,16 +66,7 @@ const ProfileForm: FC<ProfileType> = ({ instance, handleDataSubmit }) => {
     },
   });
 
-  // Update form values when instance changes
-  useEffect(() => {
-    if (instance) {
-      formik.setValues({
-        name: instance.name || "",
-        email: instance.email || "",
-        image: instance.image || "",
-      });
-    }
-  }, [instance]);
+
 
   return (
     <div>
@@ -87,7 +78,7 @@ const ProfileForm: FC<ProfileType> = ({ instance, handleDataSubmit }) => {
         <div className="flex flex-col md:flex-row justify-center gap-10">
           <div>
             <ImgUploadField
-              error={Boolean(formik.errors.image && formik.touched.image)}
+              error={Boolean(errors.image && touched.image)}
               setValue={(x: any) => formik.setFieldValue("image", x)}
               value={formik.values.image}
             />

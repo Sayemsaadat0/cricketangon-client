@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useLogin } from "@/hooks/auth.hook";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import useStoreToken from "@/store/useStoreToken";
 
 
 
@@ -21,7 +22,8 @@ const LoginPage = () => {
   const { mutateAsync } = useLogin();
   const router = useRouter();
   const { user } = useAuth();
-  const searchParams = useSearchParams(); 
+  const { setToken } = useStoreToken();
+  const searchParams = useSearchParams();
   const {
     handleChange,
     values,
@@ -40,13 +42,14 @@ const LoginPage = () => {
       try {
         const result = await mutateAsync(data);
 
-        console.log('result', result)
+        // console.log('result', result)
         if (result) {
+          setToken(result?.accessToken)
           if (user?.role === "admin") {
-            router.push("/admin/overview"); 
+            router.push("/admin/overview");
           } else {
-            const redirectPath = searchParams.get("redirect") || "/"; 
-            router.push(redirectPath); 
+            const redirectPath = searchParams.get("redirect") || "/";
+            router.push(redirectPath);
           }
         }
       } catch (err: any) {

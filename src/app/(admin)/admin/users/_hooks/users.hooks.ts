@@ -11,6 +11,7 @@ export const useGetUsers = () => {
       axiosRequest({
         url: `/users`,
         method: "get",
+        
       }),
   });
 };
