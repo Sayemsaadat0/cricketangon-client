@@ -11,7 +11,6 @@ export const useGetUsers = () => {
       axiosRequest({
         url: `/users`,
         method: "get",
-        
       }),
   });
 };
@@ -57,6 +56,21 @@ export const useUpdateUser = (id: string) => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user_list"] });
       queryClient.invalidateQueries({ queryKey: ["users", id] });
+    },
+  });
+};
+
+export const useChangePassword = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (body: any) =>
+      await axiosRequest({
+        url: `/auth/change-password`,
+        method: "post",
+        data: body,
+      }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user_list"] });
     },
   });
 };

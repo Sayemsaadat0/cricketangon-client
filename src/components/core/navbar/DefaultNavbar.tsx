@@ -1,31 +1,29 @@
 "use client";
-import Link from "next/link";
-import React from "react";
-import Logo from "../logo/Logo";
-import { usePathname } from "next/navigation";
-import { DefaultNavMenuData } from "./NavMenudata";
-import Button from "../button/Button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Button from "../button/Button";
+import Logo from "../logo/Logo";
+import { DefaultNavMenuData } from "./NavMenudata";
 
 import { useAuth } from "@/context/AuthContext";
 import Image from "next/image";
 import HamburgerMenu from "./HamburgerMenu";
 import { DefaultNavMenuList } from "./DefaultNavMenuList";
+import useStoreToken from "@/store/useStoreToken";
 
 // import Image from 'next/image';
-
 
 // Default Component
 const DefaultNavbar = () => {
   const { user, logout } = useAuth();
-  // console.log(user);
+  const {token} = useStoreToken()
+  
+  console.log('user',token, user);
   const pathname = usePathname();
 
   const handleLogout = () => {
@@ -34,13 +32,15 @@ const DefaultNavbar = () => {
   };
   return (
     <div
-      className={`${pathname === "/" && "mt-2"
-        } w-full  fixed top-0 left-0   z-30`}
+      className={`${
+        pathname === "/" && "mt-2"
+      } w-full  fixed top-0 left-0   z-30`}
     >
       <nav className="text-white relative crick-Container">
         <div
-          className={`flex justify-between items-center bg-gradient-to-r from-c-violet-400 via-c-violet-700 to-c-violet-900 py-1.5 px-2 rounded-[20px] ${pathname === "/article/:slug" && "md:rounded-b-none"
-            }`}
+          className={`flex justify-between items-center bg-gradient-to-r from-c-violet-400 via-c-violet-700 to-c-violet-900 py-1.5 px-2 rounded-[20px] ${
+            pathname === "/article/:slug" && "md:rounded-b-none"
+          }`}
         >
           <div className="">
             <Logo />
@@ -71,17 +71,19 @@ const DefaultNavbar = () => {
                       src={user?.image || "/not.png"}
                       width={40}
                       height={40}
-                      alt={user?.image || ''}
+                      alt={user?.image || ""}
                     />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="">
-
-                    <Link className="block p-2 hover:bg-c-violet-200"
+                    <Link
+                      className="block p-2 hover:bg-c-violet-200"
                       href={`/profile/${user?.id}`}
                     >
                       Profile
                     </Link>
-                    <div onClick={handleLogout} className="block cursor-pointer p-2 hover:bg-c-violet-200"
+                    <div
+                      onClick={handleLogout}
+                      className="block cursor-pointer p-2 hover:bg-c-violet-200"
                     >
                       Logout
                     </div>
