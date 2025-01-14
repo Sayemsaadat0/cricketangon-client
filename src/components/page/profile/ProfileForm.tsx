@@ -78,7 +78,7 @@ const ProfileForm: FC<ProfileType> = ({ instance, handleDataSubmit }) => {
         <div className="flex flex-col md:flex-row justify-center gap-10">
           <div>
             <ImgUploadField
-              error={Boolean(errors.image && touched.image)}
+              // error={Boolean(errors.image && touched.image)}
               setValue={(x: any) => formik.setFieldValue("image", x)}
               value={formik.values.image}
             />
