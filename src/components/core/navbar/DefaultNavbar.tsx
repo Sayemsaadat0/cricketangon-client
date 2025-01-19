@@ -21,14 +21,13 @@ import useStoreToken from "@/store/useStoreToken";
 // Default Component
 const DefaultNavbar = () => {
   const { user, logout } = useAuth();
-  const {token} = useStoreToken()
+  // const {token} = useStoreToken()
   
-  console.log('user',token, user);
   const pathname = usePathname();
 
   const handleLogout = () => {
     logout();
-    console.log("User logged out successfully!");
+    // console.log("User logged out successfully!");
   };
   return (
     <div
