@@ -14,6 +14,7 @@ type DecodedToken = {
   email: string;
   image: string; // Add this property if available in the token
   role: string;
+  address: string;
   id: number;
 };
 

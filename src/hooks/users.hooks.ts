@@ -16,7 +16,7 @@ export const useGetUsers = () => {
 };
 
 // Fetch a single user by ID
-export const useGetSingleUser = (id: string) => {
+export const useGetSingleUser = (id: number | null) => {
   return useQuery({
     queryKey: ["users", id],
     queryFn: () =>
@@ -44,7 +44,7 @@ export const useCreateUser = () => {
 };
 
 // Update a user
-export const useUpdateUser = (id: string) => {
+export const useUpdateUser = (id: number | null) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (body: any) =>
@@ -76,7 +76,7 @@ export const useChangePassword = () => {
 };
 
 // Delete a user
-export const useDeleteUser = (id: string) => {
+export const useDeleteUser = (id: number | null) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async () =>

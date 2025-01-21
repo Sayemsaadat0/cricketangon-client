@@ -1,4 +1,5 @@
 "use client";
+import Cookies from "js-cookie";
 
 import { FC } from "react";
 import { useFormik } from "formik";
@@ -8,6 +9,7 @@ import ImgUploadField from "@/components/core/inputs/ImgUploadField";
 import { TextAreaInput } from "@/components/core/inputs/TextAreaInput";
 import { useAuth } from "@/context/AuthContext";
 import { useUpdateUser } from "@/hooks/users.hooks";
+import { useStoreUser } from "@/store/useStoreUser";
 
 type ProfileFormType = {
   instance?: {
@@ -19,8 +21,9 @@ type ProfileFormType = {
 };
 
 const ProfileForm: FC<ProfileFormType> = ({ instance }) => {
-  const { user } = useAuth();
-  const { mutateAsync } = useUpdateUser(user?.id)
+  const { user, loading } = useAuth();
+  const { user: storedUser, setUser } = useStoreUser()
+  const { mutateAsync } = useUpdateUser(storedUser?.id || null)
 
   const {
     handleChange,
@@ -41,6 +44,7 @@ const ProfileForm: FC<ProfileFormType> = ({ instance }) => {
         : "",
       address: instance?.address || "",
     },
+    enableReinitialize: true,
     onSubmit: async (data: any) => {
       try {
         const formData = new FormData();
@@ -56,9 +60,20 @@ const ProfileForm: FC<ProfileFormType> = ({ instance }) => {
             : data.image;
           formData.append("image", imageUrl);
         }
+
         if (instance) {
-         const response =  await mutateAsync(formData)
-         return console.log(response)
+          const response = await mutateAsync(formData)
+          if (response?.statusCode !== 200) {
+            console.log('erroa')
+          } else {
+            // setUser( response.data)
+            Cookies.set("authUser", JSON.stringify(response.data), { expires: 7 });
+
+            console.log('user updated')
+          }
+
+
+          return console.log('response', response)
         }
         // Handle the API call with formData here.
       } catch (error) {
@@ -67,9 +82,11 @@ const ProfileForm: FC<ProfileFormType> = ({ instance }) => {
     },
   });
 
-  console.log(values)
-  console.log(instance)
 
+  if (loading) {
+    return <div className="flex items-center justify-center text-center py-10 w-full">Loading..</div>
+
+  }
 
   return (
     <div className="rounded-[12px]">

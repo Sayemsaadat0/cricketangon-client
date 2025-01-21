@@ -7,7 +7,7 @@ import ProfileForm from "./ProfileForm";
 
 const ProfileContainer = () => {
   const { user } = useAuth();
-  const { data } = useGetSingleUser(user?.id);
+  const { data } = useGetSingleUser(user?.id || null);
   const { mutateAsync } = useChangePassword();
   const [activeTab, setActiveTab] = useState("Profile");
 

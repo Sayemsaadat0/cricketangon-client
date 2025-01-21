@@ -7,13 +7,15 @@ import React, {
   ReactNode,
 } from "react";
 import Cookies from "js-cookie";
+import { useStoreUser } from "@/store/useStoreUser";
 
 type User = {
   name: string;
   email: string;
   image: string;
   role: string;
-  id?: any;
+  address: string
+  id: number | null;
 };
 
 type AuthContextType = {
@@ -30,21 +32,25 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true); // Initialize loading to true
+  const { setUser: setUserToStore } = useStoreUser()
 
   useEffect(() => {
     const fetchUser = async () => {
       const storedUser = Cookies.get("authUser");
       if (storedUser) {
         setUser(JSON.parse(storedUser));
+        setUserToStore(JSON.parse(storedUser));
+
       }
       setLoading(false); // Set loading to false once user data is processed
     };
 
     fetchUser();
-  }, []);
+  }, [setUserToStore]);
 
   const login = (user: User) => {
     setUser(user);
+    setUserToStore(user);
     Cookies.set("authUser", JSON.stringify(user), { expires: 7 });
     setLoading(false); // Set loading to false after login
   };
