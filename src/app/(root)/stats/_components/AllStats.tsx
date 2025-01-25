@@ -31,7 +31,7 @@ const AllStats: FC = () => {
                     >
                         {data?.data?.data.map((i: any) => (
                             <div key={Math.random()} >
-                                <StatsCard id={i.id} image={`${process.env.NEXT_PUBLIC_IMAGE_URL}${i.image}`} title={i?.title} description={i?.description} />
+                                <StatsCard id={i.id} image={i?.image && ` ${process.env.NEXT_PUBLIC_IMAGE_URL}${i.image}`} title={i?.title} description={i?.description} />
                             </div>
                         ))}
                     </Masonry>

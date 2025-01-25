@@ -55,7 +55,7 @@ const PhotoGrid: FC<Omit<PhotoGalleryProps, "breakpointColumnsObj">> = ({
               className={`relative overflow-hidden rounded-[20px] ${getGridClass()}`}
             >
               <Image
-                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}${photo.image}`}
+                src={photo?.image && ` ${process.env.NEXT_PUBLIC_IMAGE_URL}${photo.image}`}
                 alt={`Photo ${photo.id}`}
                 width={390}
                 height={400}
@@ -151,8 +151,8 @@ const PhotosPageContainer = () => {
           <button
             onClick={() => setViewMode("masonry")}
             className={`p-2 rounded-full ${viewMode === "masonry"
-                ? "bg-purple-600 text-white"
-                : "bg-gray-200 text-gray-600"
+              ? "bg-purple-600 text-white"
+              : "bg-gray-200 text-gray-600"
               }`}
           >
             <LayoutGrid size={20} />
@@ -160,8 +160,8 @@ const PhotosPageContainer = () => {
           <button
             onClick={() => setViewMode("grid")}
             className={`p-2 rounded-full ${viewMode === "grid"
-                ? "bg-purple-600 text-white"
-                : "bg-gray-200 text-gray-600"
+              ? "bg-purple-600 text-white"
+              : "bg-gray-200 text-gray-600"
               }`}
           >
             <Grid size={20} />
@@ -175,8 +175,8 @@ const PhotosPageContainer = () => {
         <div className="space-x-3 mb-4">
           <button
             className={`${activeTab === "regular"
-                ? "text-white bg-purple-600 px-3 py-1 rounded-full"
-                : "text-gray-500 bg-gray-200 px-2 py-1 rounded-full"
+              ? "text-white bg-purple-600 px-3 py-1 rounded-full"
+              : "text-gray-500 bg-gray-200 px-2 py-1 rounded-full"
               }`}
             onClick={() => setActiveTab("regular")}
           >
@@ -184,8 +184,8 @@ const PhotosPageContainer = () => {
           </button>
           <button
             className={`${activeTab === "moment"
-                ? "text-white bg-purple-600 px-3 py-1 rounded-full"
-                : "text-gray-500 bg-gray-300 px-2 py-1 rounded-full"
+              ? "text-white bg-purple-600 px-3 py-1 rounded-full"
+              : "text-gray-500 bg-gray-300 px-2 py-1 rounded-full"
               }`}
             onClick={() => setActiveTab("moment")}
           >

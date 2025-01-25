@@ -38,7 +38,7 @@ const ArticleDetailsContainer = ({ data }: { data: any }) => {
         <div className="w-full h-full mt-5">
           <Image
             className="h-full"
-            src={
+            src={data?.data?.image &&
               `${process.env.NEXT_PUBLIC_IMAGE_URL}${data?.data?.image}` ||
               "https://images.pexels.com/photos/29401544/pexels-photo-29401544/free-photo-of-vibrant-field-of-orange-marigolds-in-bloom.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             }

@@ -35,7 +35,7 @@ const DefaultNavbar = () => {
   return (
     <div
       className={`${pathname === "/" && "mt-2"
-        } w-full  fixed top-0 left-0   z-30`}
+        } w-full  fixed top-0 left-0   z-[9999]`}
     >
       <nav className="text-white relative crick-Container">
         <div
@@ -68,7 +68,7 @@ const DefaultNavbar = () => {
                   <DropdownMenuTrigger>
                     <Image
                       className="rounded-full object-cover"
-                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}${user?.image}` || "/not.png"}
+                      src={user?.image && `${process.env.NEXT_PUBLIC_IMAGE_URL}${user?.image}` || "/not.png"}
                       width={40}
                       height={40}
                       alt={user?.image || ""}
