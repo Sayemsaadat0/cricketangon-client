@@ -45,7 +45,7 @@ const StatsDetailsContainer = ({ data }: { data: any }) => {
         <div className="w-full h-full mt-5">
           <Image
             className="h-full"
-            src={
+            src={data?.data?.image &&
               `${process.env.NEXT_PUBLIC_IMAGE_URL}${data?.data?.image}` ||
               "https://via.placeholder.com/1600x800"
             }

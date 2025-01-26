@@ -1,10 +1,12 @@
 import { create } from "zustand";
 
 type User = {
+  id: number | null,
   name: string;
   email: string;
   image: string;
   role: string;
+  address: string
 };
 
 type StoreState = {

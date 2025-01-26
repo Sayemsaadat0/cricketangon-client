@@ -15,32 +15,32 @@ import Image from "next/image";
 import HamburgerMenu from "./HamburgerMenu";
 import { DefaultNavMenuList } from "./DefaultNavMenuList";
 import useStoreToken from "@/store/useStoreToken";
+import { useStoreUser } from "@/store/useStoreUser";
+import { useEffect } from "react";
 
 // import Image from 'next/image';
 
 // Default Component
 const DefaultNavbar = () => {
-  const { user, logout } = useAuth();
-  const {token} = useStoreToken()
-  
-  console.log('user',token, user);
+  const { logout } = useAuth();
+  // const {token} = useStoreToken()
+  const { user } = useStoreUser()
+  useEffect(() => { }, [user])
   const pathname = usePathname();
 
   const handleLogout = () => {
     logout();
-    console.log("User logged out successfully!");
+    // console.log("User logged out successfully!");
   };
   return (
     <div
-      className={`${
-        pathname === "/" && "mt-2"
-      } w-full  fixed top-0 left-0   z-30`}
+      className={`${pathname === "/" && "mt-2"
+        } w-full  fixed top-0 left-0   z-[9999]`}
     >
       <nav className="text-white relative crick-Container">
         <div
-          className={`flex justify-between items-center bg-gradient-to-r from-c-violet-400 via-c-violet-700 to-c-violet-900 py-1.5 px-2 rounded-[20px] ${
-            pathname === "/article/:slug" && "md:rounded-b-none"
-          }`}
+          className={`flex justify-between items-center bg-gradient-to-r from-c-violet-400 via-c-violet-700 to-c-violet-900 py-1.5 px-2 rounded-[20px] ${pathname === "/article/:slug" && "md:rounded-b-none"
+            }`}
         >
           <div className="">
             <Logo />
@@ -60,15 +60,15 @@ const DefaultNavbar = () => {
                 <Link href={"/login"}>
                   <Button className="" variant="roundedBtn" label="Sign in" />
                 </Link>
-               
+
               </div>
             ) : (
               <div className="flex  items-center gap-3">
                 <DropdownMenu>
                   <DropdownMenuTrigger>
                     <Image
-                      className="rounded-full"
-                      src={user?.image || "/not.png"}
+                      className="rounded-full object-cover"
+                      src={user?.image && `${process.env.NEXT_PUBLIC_IMAGE_URL}${user?.image}` || "/not.png"}
                       width={40}
                       height={40}
                       alt={user?.image || ""}

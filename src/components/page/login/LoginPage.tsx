@@ -9,6 +9,7 @@ import { useLogin } from "@/hooks/auth.hook";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import useStoreToken from "@/store/useStoreToken";
+import { useStoreUser } from "@/store/useStoreUser";
 
 
 
@@ -22,6 +23,7 @@ const LoginPage = () => {
   const { mutateAsync } = useLogin();
   const router = useRouter();
   const { user } = useAuth();
+  const { setUser } = useStoreUser();
   const { setToken } = useStoreToken();
   const searchParams = useSearchParams();
   const {
@@ -45,6 +47,7 @@ const LoginPage = () => {
         // console.log('result', result)
         if (result) {
           setToken(result?.accessToken)
+          console.log(result)
           if (user?.role === "admin") {
             router.push("/admin/overview");
           } else {

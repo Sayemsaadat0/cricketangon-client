@@ -18,6 +18,7 @@ import EditIcon from "@/components/core/icons/dashboard/EditIcon";
 import { useGetCategory } from "@/app/(admin)/admin/article/category/_hooks/category.hook";
 import { useCreateArticle } from "@/app/(admin)/admin/article/_hook/article.hook";
 import { useAuth } from "@/context/AuthContext";
+import { revalidateHomePage } from "@/app/action";
 
 type ArticleFormType = {
   instance?: any;
@@ -76,6 +77,7 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
           // console.log("Editing Article:", formData);
         } else {
           const result = await mutateAsync(formData);
+          await revalidateHomePage();
           // console.log(result);
           if (result.success) {
             toast({

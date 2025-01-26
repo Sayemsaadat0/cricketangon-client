@@ -7,16 +7,16 @@ import ProfileForm from "./ProfileForm";
 
 const ProfileContainer = () => {
   const { user } = useAuth();
-  const { data } = useGetSingleUser(user?.id);
+  const { data } = useGetSingleUser(user?.id || null);
   const { mutateAsync } = useChangePassword();
   const [activeTab, setActiveTab] = useState("Profile");
 
   return (
     <div className=" bg-gray-50 w-full rounded-[20px]">
-      <div className="space-x-10 p-10 text-c-grey-300 font-semibold">
+      <div className="space-x-10  p-2 md:flex items-center justify-center   text-c-grey-300 font-semibold">
         <button
           onClick={() => setActiveTab("Profile")}
-          className={`px-5 py-2  ${
+          className={`px-5 w-full whitespace-nowrap py-2  ${
             activeTab === "Profile"
               ? "text-c-violet-600  border-b-2 border-b-c-violet-600"
               : ""
@@ -26,7 +26,7 @@ const ProfileContainer = () => {
         </button>
         <button
           onClick={() => setActiveTab("password")}
-          className={`px-5 py-2    ${
+          className={`px-5 w-full whitespace-nowrap py-2    ${
             activeTab === "password"
               ? "text-c-violet-600  border-b-2 border-b-c-violet-600"
               : ""
@@ -36,12 +36,11 @@ const ProfileContainer = () => {
         </button>
       </div>
 
-      <div className="p-10">
+      <div className="md:p-10 p-3">
         {activeTab === "Profile" && (
           <div>
             <ProfileForm
               instance={data?.data}
-              handleDataSubmit={() => undefined}
             />
           </div>
         )}
