@@ -16,11 +16,16 @@ const ChangePasswordForm: FC<ProfileType> = ({ handleDataSubmit }) => {
       initialValues: {
         oldPassword: "",
         newPassword: "",
+        confirm_password: "",
       },
       validationSchema: Yup.object({
         oldPassword: Yup.string().required("Old password is required"),
         newPassword: Yup.string()
           .required("New password is required")
+          .min(8, "Password must be at least 8 characters"),
+        confirm_password: Yup.string()
+          .required("Confirm password is required")
+          .oneOf([Yup.ref('newPassword')], "Passwords must match")
           .min(8, "Password must be at least 8 characters"),
       }),
       onSubmit: async (data) => {
@@ -45,8 +50,9 @@ const ChangePasswordForm: FC<ProfileType> = ({ handleDataSubmit }) => {
     <div>
       <form className="space-y-6" autoComplete="off" onSubmit={handleSubmit}>
         <div className="space-y-3">
-          <p>Old Password</p>
+          <p>Current Password</p>
           <TextInput
+            className="w-full sm:w-1/2 border-[#DFEAF2]"
             id="oldPassword"
             placeholder="Enter your old password"
             value={values.oldPassword}
@@ -62,6 +68,7 @@ const ChangePasswordForm: FC<ProfileType> = ({ handleDataSubmit }) => {
         <div className="space-y-3">
           <p>New Password</p>
           <TextInput
+            className="w-full sm:w-1/2 border-[#DFEAF2]"
             id="newPassword"
             placeholder="Enter your new password"
             value={values.newPassword}
@@ -74,11 +81,27 @@ const ChangePasswordForm: FC<ProfileType> = ({ handleDataSubmit }) => {
             }
           />
         </div>
+        <div className="space-y-3">
+          <p>Confirm Password</p>
+          <TextInput
+            className="w-full sm:w-1/2 border-[#DFEAF2]"
+            id="confirm_password"
+            placeholder="Enter your old password"
+            value={values.confirm_password}
+            onChange={handleChange}
+            type="password"
+            error={
+              Boolean(errors.confirm_password) &&
+              touched.confirm_password &&
+              errors.confirm_password
+            }
+          />
+        </div>
 
-        <div className="w-full flex justify-end">
+        <div className="w-full flex sm:justify-end">
           <Button
             disabled={isSubmitting}
-            className="w-auto"
+            className="w-36"
             variant="regulerBtn"
             label="Save"
           />

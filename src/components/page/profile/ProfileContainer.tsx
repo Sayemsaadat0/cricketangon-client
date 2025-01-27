@@ -19,7 +19,7 @@ const ProfileContainer = () => {
           className={`px-5 w-fit whitespace-nowrap py-2  ${
             activeTab === "Profile"
               ? "text-c-violet-600  border-b-2 border-b-c-violet-600"
-              : ""
+              : "text-[#718EBF]"
           }`}
         >
           Edit Profile
@@ -29,7 +29,7 @@ const ProfileContainer = () => {
           className={`px-5 w-fit whitespace-nowrap py-2    ${
             activeTab === "password"
               ? "text-c-violet-600  border-b-2 border-b-c-violet-600"
-              : ""
+              : "text-[#718EBF]"
           }`}
         >
           Change Password
