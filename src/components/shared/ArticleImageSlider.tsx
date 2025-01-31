@@ -22,12 +22,12 @@ const ArticleImageSlider = () => {
       <Swiper
         speed={1500}
         loop
+
+        modules={[Autoplay, Pagination]}
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,
-        }}
-        modules={[Autoplay, Pagination]}
-        pagination={{ clickable: true }}
+        }} pagination={{ clickable: true }}
         className="w-full h-full"
       >
         {isLoading ? (

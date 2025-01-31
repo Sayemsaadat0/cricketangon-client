@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import DashboardIcon from "@/components/core/icons/dashboard/DashboardIcon";
 import { formatDateToReadable } from "@/lib/timeStamp";
 import Image from "next/legacy/image";
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide , } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -12,9 +12,9 @@ import 'swiper/css/pagination';
 
 
 // import required modules
-import { FreeMode, Pagination } from 'swiper/modules';
+import { Autoplay, FreeMode, Pagination } from 'swiper/modules';
 import { useGetArticles } from '@/app/(admin)/admin/article/_hook/article.hook';
-import { Link } from 'lucide-react';
+// import { Link } from 'lucide-react';
 import { ArticleType } from '@/model/article.type';
 
 const ArticleDetailsContainer = ({ data }: { data: any }) => {
@@ -70,16 +70,38 @@ const ArticleDetailsContainer = ({ data }: { data: any }) => {
         <div>{data?.data?.description}</div>
 
         <div className='mb-12'>
+          <h2 className="text-2xl font-semibold  mb-6">Suggested Articles</h2>
           <Swiper
-            slidesPerView={3}
             spaceBetween={30}
             loop={true}
             freeMode={true}
             pagination={{
               clickable: true,
             }}
-            modules={[FreeMode, Pagination]}
+            autoplay={{
+              delay: 3000, // Delay between slides (in milliseconds)
+              disableOnInteraction: false, // Keeps autoplay active even after user interaction
+            }}
+            modules={[FreeMode, Pagination, Autoplay]} // Add Autoplay to modules
             className="mySwiper"
+            breakpoints={{
+              // When the screen width is 640px or less (small devices)
+              640: {
+                slidesPerView: 1,
+              },
+              // When the screen width is between 641px and 1024px (medium devices)
+              1024: {
+                slidesPerView: 2,
+              },
+              // When the screen width is larger than 1024px (large devices)
+              1280: {
+                slidesPerView: 3,
+              },
+              // For even larger screens, show 4 slides
+              1600: {
+                slidesPerView: 4,
+              },
+            }}
           >
             {!isLoading && articles?.map((i: ArticleType) => (
               <SwiperSlide
@@ -101,6 +123,8 @@ const ArticleDetailsContainer = ({ data }: { data: any }) => {
             ))}
           </Swiper>
         </div>
+
+
       </div>
     </div>
   );
