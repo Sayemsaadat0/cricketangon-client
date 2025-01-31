@@ -33,16 +33,22 @@ const HomeContainer = () => {
           </div>
         </Link>
       </div>
-      <Link href={'/article'} className="block row-span-3">
-        <div className=" w-full min-w-[330px] bg-gradient-to-t from-[#1B023B80] to-[#7E19A6] rounded-[20px] space-y-6 group hover:bg-c-violet-600 duration-300">
-          <div className="w-full   group-hover:scale-105 duration-300  ">
-            <ArticleImageSlider
-              autoPlayInterval={10000}
-              className="object-cover min-h-[620px] w-full rounded-[20px]"
-            ></ArticleImageSlider>
+      <Link href={'/article'} className="block row-span-3 w-full">
+        <div className="w-full max-w-[350px] sm:max-w-[250px] lg:max-w-[400px] mx-auto rounded-[20px] space-y-6 group duration-300">
+          <div className="group-hover:scale-105 duration-300">
+            <ArticleImageSlider />
           </div>
         </div>
       </Link>
+
+      {/* <Link href={'/article'} className="block row-span-3">
+        <div className=" w-full min-w-[350px] sm:max-w-[250px]  rounded-[20px] space-y-6 group  duration-300">
+          <div className="   group-hover:scale-105 duration-300  ">
+            <ArticleImageSlider
+            ></ArticleImageSlider>
+          </div>
+        </div>
+      </Link> */}
       <div className="w-full row-span-1 lg:max-w-[300px]">
         <Link
           href={"/photos"}
@@ -126,7 +132,7 @@ const HomeContainer = () => {
             />
           </div>
           <div className="w-full flex  flex-col justify-center items-center gap-2">
-            <h3 className="text-[32px] text-left ">Shop Now</h3>
+            <h3 className="text-[18px] lg:text-[32px]  text-left ">Shop Now</h3>
             <div className=" p-[1.5px] w-full bg-gradient-to-tr from-cyan-400 via-c-violet-200 to-c-violet-300  rounded-full ">
               <Link href={"/login"}>
                 <Button className="w-full" variant="roundedBtn" label="Sign in" />

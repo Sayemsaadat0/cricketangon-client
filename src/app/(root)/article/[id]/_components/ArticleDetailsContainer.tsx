@@ -1,11 +1,28 @@
+"use client"
+import React, { useRef, useState } from 'react';
 import DashboardIcon from "@/components/core/icons/dashboard/DashboardIcon";
 import { formatDateToReadable } from "@/lib/timeStamp";
 import Image from "next/legacy/image";
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+
+
+// import required modules
+import { FreeMode, Pagination } from 'swiper/modules';
+import { useGetArticles } from '@/app/(admin)/admin/article/_hook/article.hook';
+import { Link } from 'lucide-react';
+import { ArticleType } from '@/model/article.type';
 
 const ArticleDetailsContainer = ({ data }: { data: any }) => {
+  const { data: articlesData, isLoading } = useGetArticles();
+  const articles = articlesData?.data?.data;
   return (
     <div>
-      <div className="space-y-10">
+      <div className="space-y-10 pb-16">
         <p className="font-semibold">Category: -- {data?.data?.categoryName}</p>
         <div>
           <p className="text-w-title-3-Medium-36 md:max-w-[80%] text-center mx-auto">
@@ -51,6 +68,39 @@ const ArticleDetailsContainer = ({ data }: { data: any }) => {
         </div>
 
         <div>{data?.data?.description}</div>
+
+        <div className='mb-12'>
+          <Swiper
+            slidesPerView={3}
+            spaceBetween={30}
+            loop={true}
+            freeMode={true}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[FreeMode, Pagination]}
+            className="mySwiper"
+          >
+            {!isLoading && articles?.map((i: ArticleType) => (
+              <SwiperSlide
+                key={Math.random()}
+                className="relative overflow-hidden rounded-[20px] group"
+              >
+                <Image
+                  src={
+                    `${process.env.NEXT_PUBLIC_IMAGE_URL}${i.image}` ||
+                    "https://i.pinimg.com/564x/cd/a8/3c/cda83c0eee224d460c926479f224ec3e.jpg"
+                  }
+                  alt={`Placeholder`}
+                  width={280}
+                  height={300}
+                  layout="responsive"
+                  className="rounded-[20px] object-cover"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     </div>
   );

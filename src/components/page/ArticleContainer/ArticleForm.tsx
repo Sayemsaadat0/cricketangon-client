@@ -16,7 +16,7 @@ import ImgUploadField from "@/components/core/inputs/ImgUploadField";
 import { TextAreaInput } from "@/components/core/inputs/TextAreaInput";
 import EditIcon from "@/components/core/icons/dashboard/EditIcon";
 import { useGetCategory } from "@/app/(admin)/admin/article/category/_hooks/category.hook";
-import { useCreateArticle } from "@/app/(admin)/admin/article/_hook/article.hook";
+import { useCreateArticle, useUpdateArticle } from "@/app/(admin)/admin/article/_hook/article.hook";
 import { useAuth } from "@/context/AuthContext";
 import { revalidateHomePage } from "@/app/action";
 
@@ -29,6 +29,7 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
   const { user } = useAuth();
   const { data: categoryData } = useGetCategory();
   const { mutateAsync } = useCreateArticle();
+  const {mutateAsync: handleUpdate} = useUpdateArticle(instance?.id);
   const {
     handleChange,
     values,
@@ -75,6 +76,8 @@ const ArticleForm: FC<ArticleFormType> = ({ instance }) => {
 
         if (instance) {
           // console.log("Editing Article:", formData);
+          const result = await handleUpdate(formData);
+          console.log(result);
         } else {
           const result = await mutateAsync(formData);
           await revalidateHomePage();
