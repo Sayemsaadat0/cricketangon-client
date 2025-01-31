@@ -21,7 +21,7 @@ const ArticleImageSlider = ({
       : "https://placehold.co/100x100/e2e2db/red/png"
   ); // Extract and process images
 
-  console.log(images);
+  // console.log(images);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 

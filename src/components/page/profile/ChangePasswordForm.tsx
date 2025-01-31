@@ -24,7 +24,7 @@ const ChangePasswordForm: FC<ProfileType> = ({ handleDataSubmit }) => {
           .min(8, "Password must be at least 8 characters"),
       }),
       onSubmit: async (data) => {
-        console.log(data);
+        // console.log(data);
         try {
           // Only pass oldPassword and newPassword to handleDataSubmit
           await handleDataSubmit(data);

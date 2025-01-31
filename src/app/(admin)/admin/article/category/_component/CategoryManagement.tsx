@@ -87,7 +87,7 @@ const CategoryManagement = () => {
   };
 
   const { data } = useGetCategory();
-  console.log(data?.data?.data);
+  // console.log(data?.data?.data);
 
   return (
     <div className="space-y-10">

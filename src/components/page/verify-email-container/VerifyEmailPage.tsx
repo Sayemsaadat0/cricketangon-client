@@ -33,7 +33,7 @@ const VerifyEmailPage = () => {
           });
 
           // Check response status or any specific logic
-          console.log('response.data', response);
+          // console.log('response.data', response);
 
           // Save the email in the store and navigate to OTP verification page
           router.push("/verify-otp");

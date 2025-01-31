@@ -69,13 +69,13 @@ const StatsForm: FC<StatsFormType> = ({ instance, handleFormSubmit }) => {
         }
 
         if (instance) {
-          console.log("object");
+          // console.log("object");
           toast({
             variant: "default",
             description: "Data Edited Successfully!",
           });
         } else {
-          console.log("object");
+          // console.log("object");
           await mutateAsync(form_data);
           resetForm();
           setOpen(!open);
@@ -86,7 +86,7 @@ const StatsForm: FC<StatsFormType> = ({ instance, handleFormSubmit }) => {
         }
       } catch (err: any) {
         for (const key of err.errors) {
-          console.log(key);
+          // console.log(key);
           toast({
             variant: "destructive",
             description: `${key?.attr} - ${key?.detail}`,

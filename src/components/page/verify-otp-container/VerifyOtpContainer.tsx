@@ -41,11 +41,11 @@ const VerifyOtpContainer = () => {
 
     onSubmit: async (data : any) => {
       try {
-        console.log("data", data);
+        // console.log("data", data);
         await mutateAsync(data),
         router.push("/forget-password");
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     },
   });
@@ -54,7 +54,7 @@ const VerifyOtpContainer = () => {
     setFieldValue("code", value);
   };
 
-  console.log(values);
+  // console.log(values);
   return (
     <div className="bg-white rounded-[12px] p-5 md:p-10 w-fit space-y-3">
       <h3 className="text-xl font-semibold ">Enter the verification code</h3>

@@ -77,7 +77,7 @@ const PhotosForm: FC<PhotosFormType> = ({ instance }) => {
         console.error("Error during submission:", err);
         if (err.errors) {
           for (const key of err.errors) {
-            console.log(key);
+            // console.log(key);
             toast({
               variant: "destructive",
               description: `${key?.attr} - ${key?.detail}`,
@@ -94,7 +94,7 @@ const PhotosForm: FC<PhotosFormType> = ({ instance }) => {
   });
 
   // Debugging: Formik values during the form lifecycle
-  console.log("Formik values:", values);
+  // console.log("Formik values:", values);
 
   return (
     <div className="rounded-[12px]">
