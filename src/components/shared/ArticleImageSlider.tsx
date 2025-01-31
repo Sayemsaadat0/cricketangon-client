@@ -1,73 +1,56 @@
-"use client";
+'use client'
+
 import { useGetArticles } from "@/app/(admin)/admin/article/_hook/article.hook";
-import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import 'swiper/css';
+import 'swiper/css/pagination';
 
-interface TArticleImageSliderProps {
-  autoPlayInterval?: number;
-  className?: string;
-}
-
-const ArticleImageSlider = ({
-  autoPlayInterval = 3000,
-  className = "",
-}: TArticleImageSliderProps) => {
-  const { data } = useGetArticles();
+const ArticleImageSlider = () => {
+  const { data, isLoading } = useGetArticles();
   const articles = data?.data?.data?.slice(0, 5) || [];
+
   const images = articles.map((article: any) =>
     article.image
       ? `${process.env.NEXT_PUBLIC_IMAGE_URL}${article.image}`
-      : "https://placehold.co/100x100/e2e2db/red/png"
-  ); // Extract and process images
-
-  console.log(images);
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, autoPlayInterval);
-
-    return () => clearInterval(timer);
-  }, [images.length, autoPlayInterval]);
-
-  const handleDotClick = (index: number) => {
-    setCurrentIndex(index);
-  };
+      : "https://placehold.co/800x500/e2e2db/red/png"
+  ); // Fallback image if no article image exists
 
   return (
-    <div className={cn(`relative overflow-hidden rounded-lg `, className)}>
-      <div className={cn("aspect-w-2 aspect-h-1 h-full", className)}>
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={currentIndex}
-            src={images[currentIndex]} // Use the processed image URL
-            alt={`Slide ${currentIndex + 1}`}
-            className={cn("w-full h-full object-cover", className)}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.5 }}
-          />
-        </AnimatePresence>
-      </div>
-
-      {/* Pagination Dots */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {images.map((_ : any, index : any) => (
-          <button
-            key={index}
-            onClick={() => handleDotClick(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex
-                ? "bg-white scale-110"
-                : "bg-white/50 hover:bg-white/70"
-              }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
+    <div className="relative w-full min-w-full sm:-mx-12 md:-mx-0 md:min-w-[300px] sm:min-w-[360px] lg:max-w-[400px] mx-auto h-[580px] lg:h-[600px] rounded-[20px] overflow-hidden">
+      <Swiper
+        speed={1500}
+        loop
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        modules={[Autoplay, Pagination]}
+        pagination={{ clickable: true }}
+        className="w-full h-full"
+      >
+        {isLoading ? (
+          // Skeleton loader while data is loading
+          <SwiperSlide>
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="w-full h-full bg-gray-300 animate-pulse rounded-[20px]"></div>
+            </div>
+          </SwiperSlide>
+        ) : (
+          images.map((src: any, index: number) => (
+            <SwiperSlide key={index} className="w-full h-full relative">
+              <Image
+                src={src}
+                alt={`Slide ${index + 1}`}
+                fill
+                loading="lazy"
+                className="object-cover"
+              />
+            </SwiperSlide>
+          ))
+        )}
+      </Swiper>
     </div>
   );
 };

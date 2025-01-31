@@ -62,7 +62,7 @@ const CategoryForm: FC<CategoryFormType> = ({ instance }) => {
           });
         } else {
           const result = await mutateAsync(form_data);
-          console.log(result)
+          // console.log(result)
           toast({
             variant: "default",
             description: "Congratulations! New Added Successfully.",
@@ -73,7 +73,7 @@ const CategoryForm: FC<CategoryFormType> = ({ instance }) => {
         setOpen(!open);
       } catch (err: any) {
         for (const key of err.errors) {
-          console.log(key);
+          // console.log(key);
           toast({
             variant: "destructive",
             description: `${key?.attr} - ${key?.detail}`,
@@ -83,7 +83,7 @@ const CategoryForm: FC<CategoryFormType> = ({ instance }) => {
     },
   });
 
-  console.log(values);
+  // console.log(values);
 
   return (
     <div className=" rounded-[12px]">

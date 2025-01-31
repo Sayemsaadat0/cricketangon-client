@@ -47,7 +47,7 @@ const LoginPage = () => {
         // console.log('result', result)
         if (result) {
           setToken(result?.accessToken)
-          console.log(result)
+          // console.log(result)
           if (user?.role === "admin") {
             router.push("/admin/overview");
           } else {

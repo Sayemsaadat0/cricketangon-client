@@ -51,7 +51,7 @@ const SignupPage = () => {
       }
       try {
         const result = await handleSignupFn(data);
-        console.log(result?.message);
+        // console.log(result?.message);
         if (result?.success === false) {
           alert(result?.message);
           toast({

@@ -22,7 +22,7 @@ const DeleteAction: React.FC<DeleteActionProps> = ({ handleDeleteSubmit, isLoadi
             setOpen(false);
         } catch (err: any) {
             for (const key of err.errors) {
-                console.log(key)
+                // console.log(key)
                 // toast({
                 //     description: `${key?.attr}- ${key?.detail}`,
                 // });

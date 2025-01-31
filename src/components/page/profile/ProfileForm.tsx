@@ -64,12 +64,12 @@ const ProfileForm: FC<ProfileFormType> = ({ instance }) => {
         if (instance) {
           const response = await mutateAsync(formData)
           if (response?.statusCode !== 200) {
-            console.log('erroa')
+            // console.log('erroa')
           } else {
             // setUser( response.data)
             Cookies.set("authUser", JSON.stringify(response.data), { expires: 7 });
 
-            console.log('user updated')
+            // console.log('user updated')
           }
 
 
