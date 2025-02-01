@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import DashboardIcon from "@/components/core/icons/dashboard/DashboardIcon";
 import { formatDateToReadable } from "@/lib/timeStamp";
 import Image from "next/legacy/image";
-import { Swiper, SwiperSlide , } from 'swiper/react';
+import { Swiper, SwiperSlide, } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -30,13 +30,15 @@ const ArticleDetailsContainer = ({ data }: { data: any }) => {
           </p>
         </div>
 
-        <div className="flex justify-between">
-          <div className="flex items-center gap-5">
+        <div className="flex flex-col md:flex-row justify-between">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-5">
             <div className="w-5 h-5 bg-c-violet-50 rounded-full"></div>
-            <p>
-              -- Written by :{" "}
-              <span className="uppercase">{data?.data?.authorName}</span> ,{" "}
-              {formatDateToReadable(data?.data?.created_at)}
+            <p className='flex flex-col md:flex-row items-center'>
+              <span>
+                <span>-- Written by :{" "}</span>
+                <span className="uppercase">{data?.data?.authorName},{" "}</span>
+              </span> 
+              <span>{formatDateToReadable(data?.data?.created_at)}</span>
             </p>
           </div>
           <div className="flex gap-5">
