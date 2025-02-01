@@ -36,7 +36,7 @@ const SignupPage = () => {
       name: "",
       email: "",
       password: "",
-      role: "admin",
+      role: "user",
       confirm_password: "",
     },
     validationSchema,
